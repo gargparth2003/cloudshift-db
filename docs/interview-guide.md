@@ -25,15 +25,19 @@ Prometheus telemetry, replay evidence, and ten DBMS practicals complete the engi
 
 ## Five-minute demonstration
 
-1. Open the public landing page and state the recorded-evidence boundary.
-2. Launch the migration replay; play from DRAFT through initial sync, continuous replication, validation,
+1. Open the cloud migration studio and explain the `SIMULATED`, `RECORDED`, and `MEASURED LIVE` boundaries.
+2. Load a constrained scenario, inspect assessment blockers, then interrupt and recover the deterministic
+   simulation. Show why mismatch or lag blocks cutover.
+3. Inspect the architecture/network design, enter an explicit unit rate in the transparent cost model, and
+   export the plan or secure AWS-first Terraform review artifact.
+4. Launch the verified migration replay; play from DRAFT through initial sync, continuous replication, validation,
    ready-for-cutover, cutover-in-progress, and COMPLETED.
-3. Select source, replication, target, and router nodes. Show that the recorded route moves from SOURCE to
+5. Select source, replication, target, and router nodes. Show that the recorded route moves from SOURCE to
    TARGET and that active connections follow lifecycle state.
-4. Filter the 13-table tracker and the recorded transaction inspector. Explain estimates versus exact final
+6. Filter the 13-table tracker and the recorded transaction inspector. Explain estimates versus exact final
    validation and application instrumentation versus raw WAL decoding.
-5. Compare the 424 ms fence, 264 ms request failure, and 1,089 ms write transition. Show all 11 cutover stages.
-6. Open failure/recovery, backup evidence, and the final report. Finish with the Database Engineering Lab and
+7. Compare the 424 ms fence, 264 ms request failure, and 1,089 ms write transition. Show all 11 cutover stages.
+8. Open failure/recovery, backup evidence, and the final report. Finish with the Database Engineering Lab and
    explain why optional engines remain separate from the core product.
 
 ## System design questions
@@ -81,8 +85,14 @@ must reach zero, and a final quiesced checksum comparison must match before traf
 
 ### Why not deploy the prepared AWS architecture automatically?
 
-The repository contains cost-bearing VPC/RDS/EC2/S3 configuration, but V6 explicitly prohibits provisioning.
+The repository contains cost-bearing VPC/RDS/EC2/S3 configuration, but the project explicitly prohibits provisioning.
 Terraform validation proves configuration structure, not cloud operability or production readiness.
+
+### Why are estimator prices editable and initially zero?
+
+Provider prices vary by date, region, commitment, usage tier, and tax context. A hard-coded number would look
+authoritative after it became stale. The UI links official pricing sources, requires explicit rates, shows the
+formula, and labels the result estimated.
 
 ### How would this evolve in AWS?
 

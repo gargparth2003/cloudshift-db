@@ -1,10 +1,12 @@
-import { useEffect, useMemo, useState } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useState } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { Link, Navigate, Route, Routes } from 'react-router-dom'
 import ReactFlow, { Background, Controls, Edge, Handle, MarkerType, MiniMap, Node, Position } from 'reactflow'
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { api } from './api'
 import type { Connection, Resource, WorkloadStatus } from './types'
+
+const CloudPlatform = lazy(() => import('./cloud/CloudPlatform'))
 
 const positions: Record<string, { x: number; y: number }> = {
   commerce: { x: 20, y: 170 },
@@ -49,7 +51,7 @@ function Landing() {
           <div><strong>0</strong><span>final mismatches</span></div>
         </div>
         <p className="evidence-note">Verified locally on 27 November 2026. Results are specific to the recorded development run.</p>
-        <div className="landing-actions"><Link className="primary-action" to="/replay">Launch Interactive Migration Demo</Link><a className="secondary-action" href="#engineering-outcomes">Review engineering outcomes</a><Link className="secondary-action" to="/database-engineering-lab">Database Engineering Lab</Link></div>
+        <div className="landing-actions"><Link className="primary-action" to="/platform">Open Cloud Migration Studio</Link><Link className="secondary-action" to="/replay">Launch Interactive Migration Demo</Link><a className="secondary-action" href="#engineering-outcomes">Review engineering outcomes</a><Link className="secondary-action" to="/database-engineering-lab">Database Engineering Lab</Link></div>
         <section id="engineering-outcomes" className="landing-details">
           <div><span>DATA PLANE</span><h2>Native PostgreSQL replication</h2><p>Initial table synchronization transitions into WAL-backed continuous change replication while transaction boundaries remain PostgreSQL-managed.</p></div>
           <div><span>CONTROL PLANE</span><h2>Validated, staged cutover</h2><p>Assessment, mismatch blocking, write fencing, drain, final validation, sequence synchronization, route switching, and source protection are persisted as evidence.</p></div>
@@ -359,5 +361,6 @@ function CommandCenter() {
 }
 
 export default function App() {
-  return <Routes><Route path="/" element={<Landing/>}/><Route path="/replay" element={<Replay/>}/><Route path="/database-engineering-lab" element={<DatabaseLab/>}/><Route path="/console/migration-command-center" element={<CommandCenter/>}/><Route path="*" element={<Navigate to="/" replace/>}/></Routes>
+  const platform = <Suspense fallback={<main className="cloud-loading">Loading CloudShift operations workspace…</main>}><CloudPlatform/></Suspense>
+  return <Routes><Route path="/" element={<Landing/>}/><Route path="/replay" element={<Replay/>}/><Route path="/database-engineering-lab" element={<DatabaseLab/>}/><Route path="/console/migration-command-center" element={<CommandCenter/>}/><Route path="/platform" element={platform}/><Route path="/migration-studio/*" element={platform}/><Route path="/infrastructure/*" element={platform}/><Route path="/operations/*" element={platform}/><Route path="/optimization/*" element={platform}/><Route path="/documentation/*" element={platform}/><Route path="*" element={<Navigate to="/" replace/>}/></Routes>
 }

@@ -26,6 +26,9 @@ jobs:
         working-directory: apps/console
       - run: npm run typecheck
         working-directory: apps/console
+      - name: Test deterministic cloud-planning domain
+        run: npm run test:domain
+        working-directory: apps/console
       - run: npm run build
         working-directory: apps/console
       - run: npm run build:public

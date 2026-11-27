@@ -4,7 +4,8 @@
 
 CloudShift DB is a local-first PostgreSQL migration and reliability platform that performs native logical
 replication, deterministic data validation, staged cutover, workload/probe measurement, backup verification,
-and incident replay through an interactive command center.
+and incident replay through an interactive command center, now paired with a browser-local cloud planning,
+simulation, infrastructure, FinOps, and SRE workspace.
 
 ## Verified resume bullets
 
@@ -16,7 +17,10 @@ and incident replay through an interactive command center.
   window, and a 1,089 ms source-write-to-target-write transition at 250 ms probe precision.
 - Built an observable recovery and evidence system with Prometheus, durable incidents, a subscription-free
   logical backup that restored 13/13 tables and 13,696 rows, a 1,241 ms single-run destination recovery,
-  43 backend tests, 2 live browser tests, and 4 backend-independent public-demo tests.
+  43 backend tests, 2 live browser tests, 5 domain tests, and 10 backend-independent public-demo tests.
+- Shipped a deterministic AWS/Azure/GCP-aware planning experience with a ten-step persisted plan, nine failure
+  scenarios, CDC backlog/cutover guards, CIDR/security analysis, transparent editable cost formulas, draggable
+  architecture design, SRE/DR exercises, AWS Terraform output, and Kubernetes manifest exploration.
 
 ## Architecture
 

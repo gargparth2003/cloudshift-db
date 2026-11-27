@@ -1,7 +1,7 @@
 {
   "name": "@cloudshift/console",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.1.0",
   "type": "module",
   "scripts": {
     "build": "tsc -b && vite build",
@@ -9,6 +9,8 @@
     "dev": "vite --host 0.0.0.0",
     "typecheck": "tsc -b --pretty false",
     "preview:public": "vite preview --base=/cloudshift-db/ --outDir dist-public --host 127.0.0.1 --port 18083",
+    "test:domain": "node --experimental-strip-types --test src/cloud/domain.test.ts",
+    "capture:cloud": "node scripts/capture-cloud-platform.mjs",
     "test:browser": "playwright test",
     "test:public": "playwright test --config=playwright.public.config.ts"
   },
