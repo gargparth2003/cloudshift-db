@@ -4,8 +4,8 @@ Last updated: 2026-11-27 (Asia/Kolkata)
 
 ## Current phase
 
-Phase 8 — v1.1.0 cloud migration and operations release candidate. The v1.0.0 local acceptance and sanitized
-recorded evidence remain intact. The feature branch adds a browser-local planner, deterministic simulator,
+Phase 8 — Public v1.1.0 cloud migration and operations release. The v1.0.0 local acceptance and sanitized
+recorded evidence remain intact. This release adds a browser-local planner, deterministic simulator,
 architecture/network/FinOps/SRE/DR workspaces, configuration generators, and direct static routes. A clean
 DRAFT-to-COMPLETED run verified the migration core, workload, independent availability measurement,
 interruption recovery, mismatch guard, staged automated cutover, telemetry, replay, backup/restore,
@@ -13,8 +13,9 @@ DBMS practicals, and the expanded command center. All six jobs in GitHub Actions
 [`46024930887`](https://github.com/gargparth2003/cloudshift-db/actions/runs/46024930887) passed.
 
 The v1.1 cloud features are explicitly modeled/configuration-only. No provider credential was used and no
-AWS, Azure, Google Cloud, or Kubernetes resource was created. Publication and v1.1 remote CI evidence are
-recorded only after the feature branch completes its release gates.
+AWS, Azure, Google Cloud, or Kubernetes resource was created. Pull request #1 passed all six checks before
+merge, and post-merge main [run 46035540883](https://github.com/gargparth2003/cloudshift-db/actions/runs/46035540883)
+passed the frontend, backend, fresh Compose, infrastructure, browser, and secret gates.
 
 ## Phase 0 findings
 

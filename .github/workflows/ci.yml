@@ -17,8 +17,8 @@ jobs:
   frontend:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with: { node-version: 22.14.0, cache: npm, cache-dependency-path: apps/console/package-lock.json }
       - run: npm ci --ignore-scripts
         working-directory: apps/console
@@ -40,8 +40,8 @@ jobs:
   backend-unit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         # GitHub's rolling Ubuntu image does not retain every Python patch release.
         # Application containers remain pinned to Python 3.12.8.
         with: { python-version: '3.12', cache: pip, cache-dependency-path: services/control-plane/requirements.txt }
@@ -54,7 +54,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: cp .env.example .env
       - run: docker compose --project-name cloudshift-parth --profile core config --quiet
       - run: docker compose --project-name cloudshift-parth --profile core up -d --build --wait
@@ -68,13 +68,13 @@ jobs:
   infrastructure:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: hashicorp/setup-terraform@v3
+      - uses: actions/checkout@v7
+      - uses: hashicorp/setup-terraform@v4
         with: { terraform_version: 1.17.2 }
       - run: terraform -chdir=infrastructure/terraform/aws init -backend=false -input=false
       - run: terraform -chdir=infrastructure/terraform/aws fmt -check
       - run: terraform -chdir=infrastructure/terraform/aws validate
-      - uses: azure/setup-kubectl@v4
+      - uses: azure/setup-kubectl@v5
         with: { version: v1.37.3 }
       - run: kubectl kustomize infrastructure/kubernetes/base > /tmp/cloudshift-kubernetes.yaml
       - run: test -s /tmp/cloudshift-kubernetes.yaml
@@ -83,8 +83,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [frontend, compose-integration]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with: { node-version: 22.14.0, cache: npm, cache-dependency-path: apps/console/package-lock.json }
       - run: cp .env.example .env
       - run: docker compose --project-name cloudshift-parth --profile core up -d --build --wait
@@ -99,8 +99,8 @@ jobs:
   secret-scan:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with: { fetch-depth: 0 }
-      - uses: gitleaks/gitleaks-action@v2
+      - uses: gitleaks/gitleaks-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
