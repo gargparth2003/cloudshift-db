@@ -3,18 +3,21 @@
 [![CloudShift CI](https://github.com/gargparth2003/cloudshift-db/actions/workflows/ci.yml/badge.svg)](https://github.com/gargparth2003/cloudshift-db/actions/workflows/ci.yml)
 [![GitHub Pages](https://github.com/gargparth2003/cloudshift-db/actions/workflows/pages.yml/badge.svg)](https://github.com/gargparth2003/cloudshift-db/actions/workflows/pages.yml)
 
-CloudShift DB is a PostgreSQL migration and reliability platform for moving a transactional application
-while writes continue. It combines native logical replication, deterministic integrity checks, staged
-cutover, independent availability measurement, recovery evidence, and an interactive infrastructure console.
+CloudShift DB is an interactive cloud database migration and operations platform backed by a verified local
+PostgreSQL migration engine. It combines planning, deterministic simulation, infrastructure/security design,
+cost and reliability analysis, native logical replication, integrity checks, staged cutover, and preserved
+operational evidence.
 
-[Launch Interactive Migration Demo](https://gargparth2003.github.io/cloudshift-db/) ·
+[Open Cloud Migration Studio](https://gargparth2003.github.io/cloudshift-db/platform/) ·
+[Launch Verified Migration Replay](https://gargparth2003.github.io/cloudshift-db/replay/) ·
 [Database Engineering Lab](https://gargparth2003.github.io/cloudshift-db/database-engineering-lab) ·
 [Engineering evidence](docs/verification-matrix.md)
 
-> The public experience is a **RECORDED VERIFIED DEMONSTRATION** built from sanitized local synthetic
-> evidence. It is read-only and does not depend on the developer's computer or expose database controls.
+> Public v1.1 has explicit truth boundaries: cloud planning and failure exercises are **SIMULATED / ESTIMATED**;
+> migration evidence is **RECORDED** from sanitized local synthetic runs; **MEASURED LIVE** controls remain
+> loopback-only. The public site has no cloud credentials or infrastructure mutation path.
 
-![CloudShift DB live migration command center](artifacts/screenshots/live-resource-inspection.png)
+![CloudShift DB v1.1 cloud migration and operations platform](artifacts/screenshots/v1.1-platform-overview.png)
 
 ## The engineering problem
 
@@ -35,7 +38,7 @@ DB implements that complete local vertical slice rather than simulating progress
 | Last source write → first target write | 1,089 ms at 250 ms probe precision |
 | Subscription-free backup restore | 13 / 13 tables, 13,696 rows |
 | Destination interruption recovery | 1,241 ms in one bounded local trial |
-| Automated tests | 43 backend, 2 live browser, 4 backend-independent public |
+| Automated tests | 43 backend, 2 live browser, 5 deterministic domain, 10 backend-independent public |
 
 These measurements come from one synthetic Apple Silicon run on 27 November 2026. The 424 ms fence,
 264 ms request-failure window, and 1,089 ms write transition measure different boundaries. They are not
@@ -70,6 +73,15 @@ flowchart LR
   synchronization, source protection, subscription transition, smoke testing, and route switching are durable.
 - **Recovery and observability:** Prometheus metrics, incidents, workload operations, probe samples, backup
   reports, screenshots, and static replay evidence remain inspectable.
+
+## Cloud migration studio
+
+The v1.1 browser workspace includes a persistent ten-step planner, AWS/Azure/GCP terminology and region
+mapping, nine engineering scenarios, a draggable architecture canvas, CIDR and security checks, a transparent
+editable cost model, deterministic snapshot/CDC simulation, guarded validation and cutover, SRE/DR exercises,
+an AWS Terraform generator, and a Kubernetes manifest explorer. Every calculation exposes its inputs and
+formula; current provider rates are never fabricated. See the [v1.1 architecture](docs/architecture/cloud-platform-v1.1.md)
+and [cloud readiness runbook](docs/runbooks/cloud-deployment-readiness.md).
 
 ## Quickstart
 

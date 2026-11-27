@@ -106,27 +106,33 @@ resource "aws_db_subnet_group" "cloudshift" {
 }
 
 resource "aws_db_instance" "target" {
-  identifier                   = "cloudshift-parth-target"
-  engine                       = "postgres"
-  engine_version               = "16.6"
-  instance_class               = var.database_instance_class
-  allocated_storage            = 20
-  max_allocated_storage        = 100
-  storage_type                 = "gp3"
-  storage_encrypted            = true
-  db_name                      = var.database_name
-  username                     = var.database_username
-  password                     = var.database_password
-  db_subnet_group_name         = aws_db_subnet_group.cloudshift.name
-  vpc_security_group_ids       = [aws_security_group.database.id]
-  publicly_accessible          = false
-  backup_retention_period      = 7
-  deletion_protection          = true
-  skip_final_snapshot          = false
-  final_snapshot_identifier    = "cloudshift-parth-target-final"
-  auto_minor_version_upgrade   = true
-  performance_insights_enabled = false
-  tags                         = { Name = "cloudshift-parth-target" }
+  identifier                      = "cloudshift-parth-target"
+  engine                          = "postgres"
+  engine_version                  = "16.6"
+  instance_class                  = var.database_instance_class
+  allocated_storage               = var.database_allocated_storage_gb
+  max_allocated_storage           = var.database_max_allocated_storage_gb
+  storage_type                    = "gp3"
+  storage_encrypted               = true
+  db_name                         = var.database_name
+  username                        = var.database_username
+  password                        = var.database_password
+  db_subnet_group_name            = aws_db_subnet_group.cloudshift.name
+  vpc_security_group_ids          = [aws_security_group.database.id]
+  publicly_accessible             = false
+  multi_az                        = var.database_multi_az
+  backup_retention_period         = var.backup_retention_days
+  backup_window                   = "18:00-18:30"
+  maintenance_window              = "sun:19:00-sun:20:00"
+  deletion_protection             = var.deletion_protection
+  skip_final_snapshot             = false
+  final_snapshot_identifier       = "cloudshift-parth-target-final"
+  copy_tags_to_snapshot           = true
+  auto_minor_version_upgrade      = true
+  apply_immediately               = false
+  enabled_cloudwatch_logs_exports = ["postgresql"]
+  performance_insights_enabled    = false
+  tags                            = { Name = "cloudshift-parth-target" }
 }
 
 resource "aws_s3_bucket" "backups" {
@@ -153,6 +159,33 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "backups" {
 resource "aws_s3_bucket_versioning" "backups" {
   bucket = aws_s3_bucket.backups.id
   versioning_configuration { status = "Enabled" }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "backups" {
+  bucket = aws_s3_bucket.backups.id
+
+  rule {
+    id     = "abort-incomplete-and-expire-noncurrent"
+    status = "Enabled"
+    filter {}
+    abort_incomplete_multipart_upload { days_after_initiation = 7 }
+    noncurrent_version_expiration { noncurrent_days = 90 }
+  }
+}
+
+resource "aws_s3_bucket_policy" "backups_tls_only" {
+  bucket = aws_s3_bucket.backups.id
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Sid       = "DenyInsecureTransport"
+      Effect    = "Deny"
+      Principal = "*"
+      Action    = "s3:*"
+      Resource  = [aws_s3_bucket.backups.arn, "${aws_s3_bucket.backups.arn}/*"]
+      Condition = { Bool = { "aws:SecureTransport" = "false" } }
+    }]
+  })
 }
 
 resource "aws_iam_role" "application" {

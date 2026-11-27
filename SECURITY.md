@@ -22,7 +22,13 @@ CloudShift DB is currently a local engineering project, not a production service
 - **Evidence boundary:** captures are sanitized and scanned before replay generation. Database archives
   exclude subscriptions because subscription connection strings can contain credentials.
 - **Cloud preparation:** Terraform has no embedded credentials, RDS is private, S3 public access is
-  blocked, EC2 requires IMDSv2, and no plan/apply is autonomous.
+  blocked and TLS-only, EC2 requires IMDSv2, PostgreSQL ingress uses a security-group reference, public-
+  anywhere console CIDRs are rejected, and no plan/apply is autonomous.
+- **Public planner:** configuration stays in browser local storage, editable rates default to zero, and the
+  public build does not collect provider credentials or expose cloud SDK, Terraform execution, Docker, shell,
+  live database, or privileged control paths.
+- **Generated artifacts:** downloads are text configuration for review. AWS is the only implemented Terraform
+  target; unsupported providers are stated explicitly rather than emitting unverified infrastructure.
 
 Residual risks include a shared local static operator token, no production identity/rate-limiting layer,
 single-instance local databases, and unverified Kubernetes/AWS deployment behavior. These controls are

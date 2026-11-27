@@ -4,12 +4,17 @@ Last updated: 2026-11-27 (Asia/Kolkata)
 
 ## Current phase
 
-Phase 7 — Public v1.0.0 release. Local acceptance is complete, the sanitized read-only demonstration
-is deployed on GitHub Pages, and the public repository is configured. A clean
+Phase 8 — v1.1.0 cloud migration and operations release candidate. The v1.0.0 local acceptance and sanitized
+recorded evidence remain intact. The feature branch adds a browser-local planner, deterministic simulator,
+architecture/network/FinOps/SRE/DR workspaces, configuration generators, and direct static routes. A clean
 DRAFT-to-COMPLETED run verified the migration core, workload, independent availability measurement,
 interruption recovery, mismatch guard, staged automated cutover, telemetry, replay, backup/restore,
 DBMS practicals, and the expanded command center. All six jobs in GitHub Actions run
 [`46024930887`](https://github.com/gargparth2003/cloudshift-db/actions/runs/46024930887) passed.
+
+The v1.1 cloud features are explicitly modeled/configuration-only. No provider credential was used and no
+AWS, Azure, Google Cloud, or Kubernetes resource was created. Publication and v1.1 remote CI evidence are
+recorded only after the feature branch completes its release gates.
 
 ## Phase 0 findings
 
@@ -49,6 +54,9 @@ DBMS practicals, and the expanded command center. All six jobs in GitHub Actions
 - Command-center workload/probe controls, measured historical charts, and an application-instrumented
   transaction inspector. Operator credentials are entered at runtime and are not bundled.
 - Unit, foundation, replication, and intentional-mismatch integration checks.
+- Three-mode cloud operations shell, persistent ten-step planner, nine scenario templates, deterministic
+  simulation/backlog state machine, architecture builder, network/security checks, cost formulas, SRE/DR,
+  comparison, AWS Terraform generator, Kubernetes explorer, and route-specific static build artifacts.
 
 ## Verified
 
@@ -152,6 +160,16 @@ DBMS practicals, and the expanded command center. All six jobs in GitHub Actions
   replay and database-engineering-lab routes passed four Playwright tests against the deployed HTTPS site.
 - The release evidence now includes eleven purpose-specific screenshots and an actual WebM migration replay.
   The public bundle is schema v2 with 13 table records and 200 transaction-operation records.
+- The v1.1 browser planning domain passes five deterministic tests. Both production builds transform 719
+  modules; the lazy cloud-platform chunk is 69.69 kB (20.79 kB gzip). Ten backend-independent Playwright
+  journeys pass, including planner export, modeled interruption/recovery/mismatch/cutover, CIDR overlap,
+  cost/Terraform behavior, mobile layout, and successful direct refresh of representative static routes.
+- The hardened AWS reference passes Terraform 1.17.2/provider 6.74.0 schema validation without plan/apply.
+  The unchanged local backend passes 43 tests, its foundation reports 13,563 source rows, 13 target tables,
+  27 control tables, and logical WAL, and both live-local browser regressions pass.
+- Seven actual 1600-pixel v1.1 screenshots were generated and visually inspected. An actual 1440×900 WebM
+  records scenario selection, modeled network failure and blocked cutover, recovery, architecture, and FinOps.
+  Gitleaks scanned approximately 7.46 MB with no findings; npm reports zero known vulnerabilities.
 - The reproducible benchmark snapshot retained 30 timed reads after five warm-ups for each of three live
   endpoints. Median control/commerce/workload latencies were 0.909/7.738/0.715 ms in that run, with raw
   values, summary statistics, CSV, and an SVG chart saved. Benchmark cells A–E remain explicitly partial;
@@ -168,7 +186,8 @@ DBMS practicals, and the expanded command center. All six jobs in GitHub Actions
 - Authentication is a local static operator token, not a production identity or authorization system.
 - SQL control migrations exist, but Alembic orchestration is not yet configured.
 - Browser automation verifies replay interaction, completed topology, and reduced-motion behavior; it
-  does not yet automate every destructive pre-cutover lifecycle control.
+  does not automate every destructive live-local pre-cutover lifecycle control. v1.1 adds browser coverage
+  for modeled planner, failure/recovery, validation/cutover, network, cost, Terraform, routes, and mobile use.
 - The public site is a static, sanitized replay, not a hosted control plane or a claim that live databases
   are publicly reachable. Its controls cannot mutate local or cloud infrastructure.
 - Kubernetes and AWS resources are configuration-only and not deployed. Backup/restore is verified for
