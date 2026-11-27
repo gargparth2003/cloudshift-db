@@ -4,12 +4,12 @@ Last updated: 2026-11-27 (Asia/Kolkata)
 
 ## Current phase
 
-Phase 7 — Public v1.0.0 release candidate. Local acceptance is complete, the sanitized read-only
-demonstration is deployed on GitHub Pages, and the public repository is configured. A clean
+Phase 7 — Public v1.0.0 release. Local acceptance is complete, the sanitized read-only demonstration
+is deployed on GitHub Pages, and the public repository is configured. A clean
 DRAFT-to-COMPLETED run verified the migration core, workload, independent availability measurement,
 interruption recovery, mismatch guard, staged automated cutover, telemetry, replay, backup/restore,
-DBMS practicals, and the expanded command center. The release tag remains gated on a fully green
-final GitHub Actions run.
+DBMS practicals, and the expanded command center. All six jobs in GitHub Actions run
+[`46024930887`](https://github.com/gargparth2003/cloudshift-db/actions/runs/46024930887) passed.
 
 ## Phase 0 findings
 
@@ -144,8 +144,9 @@ final GitHub Actions run.
   Kubernetes Kustomize rendering succeeded; cluster-aware dry-run did not because no reachable cluster is
   configured, so Kubernetes is manifest-prepared but not deployment-verified.
 - Final local Gitleaks 8.30.1 scanning covered approximately 4.60 MB and found no leaks. GitHub Actions
-  independently passed the frontend/public-offline suite, all 43 backend tests, infrastructure validation,
-  and secret scan; the final Compose/browser release-candidate run is tracked by the public workflow.
+  independently passed the frontend/public-offline suite, all 43 backend tests, fresh Compose foundation
+  and in-container tests, infrastructure validation, secret scan, and fresh-stack recorded-replay browser
+  test in run `46024930887`.
 - The public repository is `https://github.com/gargparth2003/cloudshift-db`. GitHub Pages successfully
   deployed the read-only demonstration at `https://gargparth2003.github.io/cloudshift-db/`; its direct
   replay and database-engineering-lab routes passed four Playwright tests against the deployed HTTPS site.
