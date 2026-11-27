@@ -1,0 +1,338 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-11-27T14:27:31.096876+00:00",
+  "environment": {
+    "hardware": "Apple MacBook Air M4, 10 Docker CPUs, 7.748 GiB Docker memory",
+    "host_architecture": "arm64",
+    "python": "3.15.2",
+    "evidence_source": "artifacts/replay-evidence-20261127T141021Z.json"
+  },
+  "method": {
+    "read_warmup": 5,
+    "read_trials": 30,
+    "selection": "all observed trials retained; no favorable-run filtering"
+  },
+  "live_read_trials": {
+    "control_health": {
+      "url": "http://127.0.0.1:18000/api/v1/health/live",
+      "warmup_requests": 5,
+      "raw_ms": [
+        3.074,
+        2.048,
+        1.357,
+        1.018,
+        1.192,
+        1.346,
+        0.921,
+        1.02,
+        0.931,
+        0.827,
+        0.991,
+        0.87,
+        0.917,
+        0.971,
+        0.819,
+        0.797,
+        0.842,
+        0.721,
+        0.772,
+        0.9,
+        0.877,
+        0.858,
+        0.741,
+        1.633,
+        1.513,
+        0.839,
+        0.928,
+        0.732,
+        0.874,
+        0.883
+      ],
+      "trials": 30,
+      "mean_ms": 1.074,
+      "median_ms": 0.909,
+      "p95_ms": 1.862,
+      "p99_ms": 2.777,
+      "min_ms": 0.721,
+      "max_ms": 3.074,
+      "stdev_ms": 0.482
+    },
+    "commerce_orders": {
+      "url": "http://127.0.0.1:18001/api/v1/commerce/orders?limit=20",
+      "warmup_requests": 5,
+      "raw_ms": [
+        8.042,
+        7.423,
+        8.169,
+        7.882,
+        7.733,
+        7.777,
+        7.571,
+        7.794,
+        7.802,
+        7.375,
+        7.532,
+        7.635,
+        7.604,
+        8.98,
+        9.305,
+        7.959,
+        7.803,
+        7.596,
+        7.469,
+        7.771,
+        7.756,
+        7.743,
+        7.886,
+        8.66,
+        7.674,
+        7.191,
+        7.625,
+        7.477,
+        7.478,
+        7.446
+      ],
+      "trials": 30,
+      "mean_ms": 7.805,
+      "median_ms": 7.738,
+      "p95_ms": 8.836,
+      "p99_ms": 9.211,
+      "min_ms": 7.191,
+      "max_ms": 9.305,
+      "stdev_ms": 0.457
+    },
+    "workload_health": {
+      "url": "http://127.0.0.1:18002/api/v1/workload/health",
+      "warmup_requests": 5,
+      "raw_ms": [
+        0.83,
+        0.717,
+        0.739,
+        0.734,
+        0.607,
+        0.708,
+        0.697,
+        0.69,
+        0.725,
+        0.846,
+        0.751,
+        0.737,
+        0.828,
+        0.707,
+        0.708,
+        0.713,
+        0.695,
+        0.813,
+        0.695,
+        0.653,
+        0.691,
+        0.703,
+        0.636,
+        0.727,
+        0.665,
+        0.73,
+        0.749,
+        0.74,
+        0.735,
+        0.634
+      ],
+      "trials": 30,
+      "mean_ms": 0.72,
+      "median_ms": 0.715,
+      "p95_ms": 0.829,
+      "p99_ms": 0.841,
+      "min_ms": 0.607,
+      "max_ms": 0.846,
+      "stdev_ms": 0.056
+    }
+  },
+  "resources": {
+    "available": true,
+    "containers": [
+      {
+        "BlockIO": "0B / 4.1kB",
+        "CPUPerc": "0.00%",
+        "Container": "cloudshift-console",
+        "ID": "bf40591d2d94",
+        "MemPerc": "7.08%",
+        "MemUsage": "9.059MiB / 128MiB",
+        "Name": "cloudshift-console",
+        "NetIO": "123kB / 1.83MB",
+        "PIDs": "11"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "0.26%",
+        "Container": "cloudshift-control-plane",
+        "ID": "dbf81816cb2b",
+        "MemPerc": "11.03%",
+        "MemUsage": "42.35MiB / 384MiB",
+        "Name": "cloudshift-control-plane",
+        "NetIO": "2.1MB / 3.07MB",
+        "PIDs": "3"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "14.01%",
+        "Container": "cloudshift-workload-generator",
+        "ID": "8f0e0c4dfb8c",
+        "MemPerc": "17.19%",
+        "MemUsage": "44MiB / 256MiB",
+        "Name": "cloudshift-workload-generator",
+        "NetIO": "126kB / 521kB",
+        "PIDs": "4"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "0.34%",
+        "Container": "parth-commerce-application",
+        "ID": "0ae5d20c34f3",
+        "MemPerc": "17.40%",
+        "MemUsage": "44.54MiB / 256MiB",
+        "Name": "parth-commerce-application",
+        "NetIO": "5.8MB / 17.9MB",
+        "PIDs": "3"
+      },
+      {
+        "BlockIO": "0B / 89.8MB",
+        "CPUPerc": "0.00%",
+        "Container": "pg-source-parth",
+        "ID": "d9cea3a1eeb4",
+        "MemPerc": "4.41%",
+        "MemUsage": "33.91MiB / 768MiB",
+        "Name": "pg-source-parth",
+        "NetIO": "3.58MB / 10.2MB",
+        "PIDs": "6"
+      },
+      {
+        "BlockIO": "0B / 114MB",
+        "CPUPerc": "2.62%",
+        "Container": "pg-target-parth",
+        "ID": "a96f22ecec7c",
+        "MemPerc": "6.56%",
+        "MemUsage": "50.42MiB / 768MiB",
+        "Name": "pg-target-parth",
+        "NetIO": "1.11MB / 1.47MB",
+        "PIDs": "6"
+      },
+      {
+        "BlockIO": "0B / 67.7MB",
+        "CPUPerc": "0.00%",
+        "Container": "pg-control-parth",
+        "ID": "c115b236467c",
+        "MemPerc": "3.74%",
+        "MemUsage": "28.76MiB / 768MiB",
+        "Name": "pg-control-parth",
+        "NetIO": "6.77MB / 7.6MB",
+        "PIDs": "6"
+      },
+      {
+        "BlockIO": "0B / 3.04MB",
+        "CPUPerc": "0.91%",
+        "Container": "cloudshift-prometheus",
+        "ID": "99308f2f98e6",
+        "MemPerc": "13.05%",
+        "MemUsage": "33.41MiB / 256MiB",
+        "Name": "cloudshift-prometheus",
+        "NetIO": "25.7MB / 1.13MB",
+        "PIDs": "11"
+      }
+    ]
+  },
+  "benchmarks": {
+    "A_offline_vs_online": {
+      "status": "PARTIAL",
+      "measurements": {
+        "online_request_failure_window_ms": 264
+      },
+      "limitation": "Online migration was measured; a destructive offline baseline was not executed."
+    },
+    "B_dataset_sizes": {
+      "status": "PARTIAL",
+      "measurements": {
+        "migration_rows_observed": 13696,
+        "index_probe_rows": 100000
+      },
+      "limitation": "The 13,696-row migration and separate 100,000-row index probe are real; a 1,000,000-row migration was not run."
+    },
+    "C_workload_profiles": {
+      "status": "PARTIAL",
+      "measurements": {
+        "profiles_observed": "BALANCED,WRITE_HEAVY",
+        "runs": 2
+      },
+      "limitation": "Balanced and write-heavy completion events exist; no equivalent read-heavy repeated trial exists."
+    },
+    "D_workload_rates": {
+      "status": "PARTIAL",
+      "measurements": {
+        "configured_rates": "10,10",
+        "max_observed_ops_s": 7.617
+      },
+      "limitation": "Observed run summaries are single local trials and do not form a rate sweep."
+    },
+    "E_validation_modes": {
+      "status": "PARTIAL",
+      "measurements": {
+        "full_runs": 2,
+        "final_quiesced_runs": 1
+      },
+      "limitation": "Full and final-quiesced validation are implemented; sampled validation is not implemented."
+    },
+    "F_indexed_queries": {
+      "status": "OBSERVED_SINGLE_TRIAL",
+      "measurements": {
+        "rows": 100000,
+        "unindexed_ms": 3.732,
+        "btree_ms": 0.026,
+        "hash_ms": 0.021
+      },
+      "limitation": "Single local warm-cache observation; use repeated trials before drawing performance conclusions."
+    },
+    "G_redis_cache": {
+      "status": "OBSERVED_SINGLE_TRIAL",
+      "measurements": {
+        "database_read_ms": 51.848,
+        "cache_hit_ms": 49.851
+      },
+      "limitation": "One local subprocess-inclusive sample; not a statistically meaningful latency comparison."
+    },
+    "H_distributed_query": {
+      "status": "OBSERVED_SINGLE_TRIAL",
+      "measurements": {
+        "rows": 3000,
+        "sequential_ms": 175.241,
+        "parallel_ms": 67.808
+      },
+      "limitation": "One warm local trial; process and Docker overhead dominate this small dataset."
+    },
+    "I_interruption_recovery": {
+      "status": "OBSERVED_SINGLE_TRIAL",
+      "measurements": {
+        "detection_ms": 524,
+        "recovery_ms": 1241
+      },
+      "limitation": "Single local experiment; no failover replica is configured."
+    },
+    "J_cutover_availability": {
+      "status": "OBSERVED_SINGLE_TRIAL",
+      "measurements": {
+        "workflow_ms": 458,
+        "write_fence_ms": 424,
+        "request_failure_window_ms": 264,
+        "write_transition_ms": 1089,
+        "probe_precision_ms": 250
+      },
+      "limitation": "One synthetic local cutover; probe durations are bounded by 250 ms sampling precision."
+    },
+    "K_resources_and_live_reads": {
+      "status": "REPEATED_READS_AND_POINT_IN_TIME_RESOURCES",
+      "measurements": {
+        "control_health_median_ms": 0.909,
+        "commerce_orders_median_ms": 7.738,
+        "workload_health_median_ms": 0.715
+      },
+      "limitation": "Thirty read trials after five warm-ups plus one Docker stats snapshot; not a saturation or capacity test."
+    }
+  }
+}

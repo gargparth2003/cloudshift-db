@@ -1,0 +1,386 @@
+{
+  "explanation": "Counters represent cumulative operations and require rate/increase functions; gauges represent current availability, state, connections, or lag and can move both directions.",
+  "instant_results": {
+    "database_availability_gauge": {
+      "result": [
+        {
+          "metric": {
+            "__name__": "cloudshift_database_available",
+            "endpoint": "source",
+            "instance": "control-plane:8000",
+            "job": "cloudshift-control-plane"
+          },
+          "value": [
+            1795789019.387,
+            "1"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "cloudshift_database_available",
+            "endpoint": "target",
+            "instance": "control-plane:8000",
+            "job": "cloudshift-control-plane"
+          },
+          "value": [
+            1795789019.387,
+            "1"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "cloudshift_database_available",
+            "endpoint": "control",
+            "instance": "control-plane:8000",
+            "job": "cloudshift-control-plane"
+          },
+          "value": [
+            1795789019.387,
+            "1"
+          ]
+        }
+      ],
+      "resultType": "vector"
+    },
+    "instant_target_health": {
+      "result": [
+        {
+          "metric": {
+            "__name__": "up",
+            "instance": "control-plane:8000",
+            "job": "cloudshift-control-plane"
+          },
+          "value": [
+            1795789019.385,
+            "1"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "up",
+            "instance": "commerce-demo:8001",
+            "job": "cloudshift-commerce"
+          },
+          "value": [
+            1795789019.385,
+            "1"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "up",
+            "instance": "workload-generator:8002",
+            "job": "cloudshift-workload"
+          },
+          "value": [
+            1795789019.385,
+            "1"
+          ]
+        }
+      ],
+      "resultType": "vector"
+    },
+    "validation_duration": {
+      "result": [],
+      "resultType": "vector"
+    },
+    "wal_lag_gauge": {
+      "result": [
+        {
+          "metric": {
+            "__name__": "cloudshift_replication_wal_byte_lag",
+            "instance": "control-plane:8000",
+            "job": "cloudshift-control-plane"
+          },
+          "value": [
+            1795789019.391,
+            "46696"
+          ]
+        }
+      ],
+      "resultType": "vector"
+    },
+    "workload_counter": {
+      "result": [],
+      "resultType": "vector"
+    },
+    "workload_rate": {
+      "result": [],
+      "resultType": "vector"
+    }
+  },
+  "limitations": "Prometheus retention is six hours and the local process restart/reset history is intentionally bounded.",
+  "observed_at": "2026-11-27T14:16:59.359485+00:00",
+  "practical": 9,
+  "queries": {
+    "database_availability_gauge": "cloudshift_database_available",
+    "instant_target_health": "up",
+    "validation_duration": "cloudshift_validation_duration_ms",
+    "wal_lag_gauge": "cloudshift_replication_wal_byte_lag",
+    "workload_counter": "cloudshift_workload_operations_total",
+    "workload_rate": "sum(rate(cloudshift_workload_operations_total[5m]))"
+  },
+  "range_query": {
+    "result": {
+      "result": [
+        {
+          "metric": {
+            "__name__": "cloudshift_replication_wal_byte_lag",
+            "instance": "control-plane:8000",
+            "job": "cloudshift-control-plane"
+          },
+          "values": [
+            [
+              1795787219.359,
+              "0"
+            ],
+            [
+              1795787249.359,
+              "100920"
+            ],
+            [
+              1795787279.359,
+              "0"
+            ],
+            [
+              1795787309.359,
+              "46464"
+            ],
+            [
+              1795787339.359,
+              "46464"
+            ],
+            [
+              1795787369.359,
+              "46464"
+            ],
+            [
+              1795787399.359,
+              "46464"
+            ],
+            [
+              1795787429.359,
+              "46464"
+            ],
+            [
+              1795787459.359,
+              "46464"
+            ],
+            [
+              1795787489.359,
+              "46696"
+            ],
+            [
+              1795787519.359,
+              "46696"
+            ],
+            [
+              1795787549.359,
+              "46696"
+            ],
+            [
+              1795787579.359,
+              "46696"
+            ],
+            [
+              1795787609.359,
+              "46696"
+            ],
+            [
+              1795787639.359,
+              "46696"
+            ],
+            [
+              1795787669.359,
+              "46696"
+            ],
+            [
+              1795787699.359,
+              "46696"
+            ],
+            [
+              1795787729.359,
+              "46696"
+            ],
+            [
+              1795787759.359,
+              "46696"
+            ],
+            [
+              1795787789.359,
+              "46696"
+            ],
+            [
+              1795787819.359,
+              "46696"
+            ],
+            [
+              1795787849.359,
+              "46696"
+            ],
+            [
+              1795787879.359,
+              "46696"
+            ],
+            [
+              1795787909.359,
+              "46696"
+            ],
+            [
+              1795787939.359,
+              "46696"
+            ],
+            [
+              1795787969.359,
+              "46696"
+            ],
+            [
+              1795787999.359,
+              "46696"
+            ],
+            [
+              1795788029.359,
+              "46696"
+            ],
+            [
+              1795788059.359,
+              "46696"
+            ],
+            [
+              1795788089.359,
+              "46696"
+            ],
+            [
+              1795788119.359,
+              "46696"
+            ],
+            [
+              1795788149.359,
+              "46696"
+            ],
+            [
+              1795788179.359,
+              "46696"
+            ],
+            [
+              1795788209.359,
+              "46696"
+            ],
+            [
+              1795788239.359,
+              "46696"
+            ],
+            [
+              1795788269.359,
+              "46696"
+            ],
+            [
+              1795788299.359,
+              "46696"
+            ],
+            [
+              1795788329.359,
+              "46696"
+            ],
+            [
+              1795788359.359,
+              "46696"
+            ],
+            [
+              1795788389.359,
+              "46696"
+            ],
+            [
+              1795788419.359,
+              "46696"
+            ],
+            [
+              1795788449.359,
+              "46696"
+            ],
+            [
+              1795788479.359,
+              "46696"
+            ],
+            [
+              1795788509.359,
+              "46696"
+            ],
+            [
+              1795788539.359,
+              "46696"
+            ],
+            [
+              1795788569.359,
+              "46696"
+            ],
+            [
+              1795788599.359,
+              "46696"
+            ],
+            [
+              1795788629.359,
+              "46696"
+            ],
+            [
+              1795788659.359,
+              "46696"
+            ],
+            [
+              1795788689.359,
+              "46696"
+            ],
+            [
+              1795788719.359,
+              "46696"
+            ],
+            [
+              1795788749.359,
+              "46696"
+            ],
+            [
+              1795788779.359,
+              "46696"
+            ],
+            [
+              1795788809.359,
+              "46696"
+            ],
+            [
+              1795788839.359,
+              "46696"
+            ],
+            [
+              1795788869.359,
+              "46696"
+            ],
+            [
+              1795788899.359,
+              "46696"
+            ],
+            [
+              1795788929.359,
+              "46696"
+            ],
+            [
+              1795788959.359,
+              "46696"
+            ],
+            [
+              1795788989.359,
+              "46696"
+            ],
+            [
+              1795789019.359,
+              "46696"
+            ]
+          ]
+        }
+      ],
+      "resultType": "matrix"
+    },
+    "step": "30s",
+    "window": "1h"
+  },
+  "schema_version": 1
+}

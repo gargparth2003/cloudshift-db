@@ -1,0 +1,31 @@
+{
+  "name": "@cloudshift/console",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -b && vite build",
+    "build:public": "tsc -b && vite build --base=/cloudshift-db/ --outDir=dist-public && node scripts/copy-pages-fallback.mjs",
+    "dev": "vite --host 0.0.0.0",
+    "typecheck": "tsc -b --pretty false",
+    "preview:public": "vite preview --base=/cloudshift-db/ --outDir dist-public --host 127.0.0.1 --port 18083",
+    "test:browser": "playwright test",
+    "test:public": "playwright test --config=playwright.public.config.ts"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "5.62.8",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "7.18.7",
+    "reactflow": "11.11.4",
+    "recharts": "3.11.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.1",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "@vitejs/plugin-react": "4.3.4",
+    "typescript": "5.7.2",
+    "vite": "6.4.6"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "dependency_traversal": "reachable_table, hops\n\"customers\", 3\n\"order_items\", 3\n\"orders\", 3\n\"products\", 3",
+  "explanation": "Typed relationships support dependency traversal and migration impact analysis without recursive join construction.",
+  "graph_counts": "nodes, relationships\n9, 12",
+  "impact_analysis": "impacted_table, hops\n\"orders\", 1\n\"order_items\", 2",
+  "limitations": "Single-node optional Neo4j lab with a curated subset of the schema; not a production graph catalog.",
+  "migration_path": "source, target, hops\n\"pg-source-parth\", \"pg-target-parth\", 1",
+  "observed_at": "2026-11-27T14:22:52.400691+00:00",
+  "practical": 10,
+  "schema_version": 1
+}

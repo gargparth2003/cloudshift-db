@@ -1,0 +1,82 @@
+{
+  "collection": "diagnostics",
+  "database": "cloudshift_lab",
+  "features": [
+    "document insertion",
+    "filtering",
+    "grouping",
+    "aggregation",
+    "nested fields"
+  ],
+  "limitations": "Synthetic diagnostics in a single optional MongoDB instance; durable migration truth remains PostgreSQL.",
+  "observed_at": "2026-11-27T14:19:29.251580+00:00",
+  "practical": 7,
+  "result": {
+    "filtered": [
+      {
+        "evidence": {
+          "component": "validation",
+          "mismatches": 1,
+          "table": "products"
+        },
+        "kind": "validation",
+        "lab_run": "practical7",
+        "migration": "parth-commerce-migration-001",
+        "recovery": {
+          "duration_ms": 165,
+          "result": "RESTORED"
+        },
+        "severity": "BLOCKING"
+      },
+      {
+        "evidence": {
+          "component": "replication",
+          "wal_bytes": 42488,
+          "worker": "PAUSED"
+        },
+        "kind": "replication",
+        "lab_run": "practical7",
+        "migration": "parth-commerce-migration-001",
+        "recovery": {
+          "duration_ms": 1241,
+          "result": "RECOVERED"
+        },
+        "severity": "WARNING"
+      }
+    ],
+    "grouped": [
+      {
+        "_id": "BLOCKING",
+        "average_recovery_ms": 165,
+        "documents": 1
+      },
+      {
+        "_id": "INFORMATIONAL",
+        "average_recovery_ms": 470,
+        "documents": 1
+      },
+      {
+        "_id": "WARNING",
+        "average_recovery_ms": 1241,
+        "documents": 1
+      }
+    ],
+    "inserted": 3,
+    "nested": {
+      "evidence": {
+        "component": "replication",
+        "wal_bytes": 42488,
+        "worker": "PAUSED"
+      },
+      "kind": "replication",
+      "lab_run": "practical7",
+      "migration": "parth-commerce-migration-001",
+      "recovery": {
+        "duration_ms": 1241,
+        "result": "RECOVERED"
+      },
+      "severity": "WARNING"
+    }
+  },
+  "schema_version": 1
+}

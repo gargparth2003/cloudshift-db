@@ -1,0 +1,26 @@
+groups:
+  - name: cloudshift-local
+    rules:
+      - alert: CloudShiftDatabaseUnavailable
+        expr: cloudshift_database_available == 0
+        for: 15s
+        labels:
+          severity: critical
+        annotations:
+          summary: "CloudShift database endpoint is unavailable"
+
+      - alert: CloudShiftRetainedWalGrowth
+        expr: cloudshift_replication_wal_byte_lag > 67108864
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "CloudShift logical slot retains more than 64 MiB of WAL"
+
+      - alert: CloudShiftWorkloadFailures
+        expr: sum(rate(cloudshift_workload_operations_total{result="failure"}[1m])) > 1
+        for: 30s
+        labels:
+          severity: warning
+        annotations:
+          summary: "CloudShift workload failures exceed one operation per second"

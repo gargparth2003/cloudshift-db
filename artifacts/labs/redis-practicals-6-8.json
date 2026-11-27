@@ -1,0 +1,61 @@
+{
+  "observed_at": "2026-11-27T14:16:23.258401+00:00",
+  "practical_6": {
+    "delete": {
+      "keys_removed": 1,
+      "latency_ms": 50.889
+    },
+    "get": {
+      "latency_ms": 52.84,
+      "value": "CONTINUOUS_REPLICATION"
+    },
+    "set": {
+      "latency_ms": 60.34,
+      "result": "OK"
+    },
+    "ttl": {
+      "latency_ms": 51.021,
+      "seconds": 60
+    },
+    "update": {
+      "latency_ms": 104.30199999999999,
+      "result": "OK",
+      "value": "COMPLETED"
+    }
+  },
+  "practical_8": {
+    "after_invalidation": {
+      "latency_ms": 52.182,
+      "value": null
+    },
+    "cache_hit": {
+      "latency_ms": 49.851,
+      "value": {
+        "active_endpoint": "TARGET",
+        "version": 3,
+        "writes_enabled": true
+      }
+    },
+    "cache_miss": {
+      "latency_ms": 49.711,
+      "value": null
+    },
+    "database_read": {
+      "latency_ms": 51.848,
+      "value": {
+        "active_endpoint": "TARGET",
+        "version": 3,
+        "writes_enabled": true
+      }
+    },
+    "durable_source": "PostgreSQL control.application_routes",
+    "invalidation": {
+      "keys_removed": 1,
+      "latency_ms": 51.196
+    },
+    "limitations": "One local subprocess-inclusive sample; not a statistically meaningful latency comparison.",
+    "stale_data_prevention": "Route mutations must delete/version this cache key; PostgreSQL remains authoritative.",
+    "ttl_seconds": 30
+  },
+  "schema_version": 1
+}

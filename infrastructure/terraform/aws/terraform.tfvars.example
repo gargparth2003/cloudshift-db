@@ -1,0 +1,7 @@
+aws_region                = "ap-south-1"
+database_instance_class   = "db.t4g.micro"
+application_instance_type = "t4g.small"
+allowed_console_cidrs     = ["203.0.113.10/32"]
+
+# Never commit database_password. Supply it at runtime:
+# export TF_VAR_database_password='use-a-secret-manager-generated-value'

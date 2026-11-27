@@ -1,0 +1,16 @@
+title = "CloudShift DB secret scanning"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Exclude local-only ignored dependencies, state, archives, and documented disposable examples."
+paths = [
+  '''(^|/)\.git/''',
+  '''(^|/)node_modules/''',
+  '''(^|/)\.terraform/''',
+  '''(^|/)(dist|dist-public)/''',
+  '''(^|/)backups/''',
+  '''(^|/)\.env$''',
+  '''(^|/)\.env\.example$''',
+]

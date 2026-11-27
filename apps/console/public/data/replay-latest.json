@@ -1,0 +1,4704 @@
+{
+  "backups": [
+    {
+      "backup_id": "31409b6a-55da-4646-9010-faa4abe54c33",
+      "checksum": "56696f44a6185bfed9af4d73020e22eb50d4ffb72d9f626db0e61f0162d69028",
+      "created_at": "2026-11-27T13:52:54.993847+00:00",
+      "endpoint_key": "target",
+      "resource_name": "pg-target-parth",
+      "size_bytes": 238246,
+      "storage_reference": "backups/target-20261127T135254Z.dump",
+      "verification_status": "VERIFIED",
+      "verified_at": "2026-11-27T13:52:54.993847+00:00"
+    },
+    {
+      "backup_id": "ffb37bd3-adc6-46da-b466-252251b432ce",
+      "checksum": "78e2a76f63bf6386c4f6a89aeb5dbe4a8d914e7d5657f08e2f28434050bdce0a",
+      "created_at": "2026-11-27T13:51:40.344597+00:00",
+      "endpoint_key": "target",
+      "resource_name": "pg-target-parth",
+      "size_bytes": 238778,
+      "storage_reference": "backups/target-20261127T135139Z.dump",
+      "verification_status": "REVOKED_EMBEDDED_SUBSCRIPTION",
+      "verified_at": "2026-11-27T13:51:40.344597+00:00"
+    }
+  ],
+  "benchmark": {
+    "benchmarks": {
+      "A_offline_vs_online": {
+        "limitation": "Online migration was measured; a destructive offline baseline was not executed.",
+        "measurements": {
+          "online_request_failure_window_ms": 264
+        },
+        "status": "PARTIAL"
+      },
+      "B_dataset_sizes": {
+        "limitation": "The 13,696-row migration and separate 100,000-row index probe are real; a 1,000,000-row migration was not run.",
+        "measurements": {
+          "index_probe_rows": 100000,
+          "migration_rows_observed": 13696
+        },
+        "status": "PARTIAL"
+      },
+      "C_workload_profiles": {
+        "limitation": "Balanced and write-heavy completion events exist; no equivalent read-heavy repeated trial exists.",
+        "measurements": {
+          "profiles_observed": "BALANCED,WRITE_HEAVY",
+          "runs": 2
+        },
+        "status": "PARTIAL"
+      },
+      "D_workload_rates": {
+        "limitation": "Observed run summaries are single local trials and do not form a rate sweep.",
+        "measurements": {
+          "configured_rates": "10,10",
+          "max_observed_ops_s": 7.617
+        },
+        "status": "PARTIAL"
+      },
+      "E_validation_modes": {
+        "limitation": "Full and final-quiesced validation are implemented; sampled validation is not implemented.",
+        "measurements": {
+          "final_quiesced_runs": 1,
+          "full_runs": 2
+        },
+        "status": "PARTIAL"
+      },
+      "F_indexed_queries": {
+        "limitation": "Single local warm-cache observation; use repeated trials before drawing performance conclusions.",
+        "measurements": {
+          "btree_ms": 0.026,
+          "hash_ms": 0.021,
+          "rows": 100000,
+          "unindexed_ms": 3.732
+        },
+        "status": "OBSERVED_SINGLE_TRIAL"
+      },
+      "G_redis_cache": {
+        "limitation": "One local subprocess-inclusive sample; not a statistically meaningful latency comparison.",
+        "measurements": {
+          "cache_hit_ms": 49.851,
+          "database_read_ms": 51.848
+        },
+        "status": "OBSERVED_SINGLE_TRIAL"
+      },
+      "H_distributed_query": {
+        "limitation": "One warm local trial; process and Docker overhead dominate this small dataset.",
+        "measurements": {
+          "parallel_ms": 67.808,
+          "rows": 3000,
+          "sequential_ms": 175.241
+        },
+        "status": "OBSERVED_SINGLE_TRIAL"
+      },
+      "I_interruption_recovery": {
+        "limitation": "Single local experiment; no failover replica is configured.",
+        "measurements": {
+          "detection_ms": 524,
+          "recovery_ms": 1241
+        },
+        "status": "OBSERVED_SINGLE_TRIAL"
+      },
+      "J_cutover_availability": {
+        "limitation": "One synthetic local cutover; probe durations are bounded by 250 ms sampling precision.",
+        "measurements": {
+          "probe_precision_ms": 250,
+          "request_failure_window_ms": 264,
+          "workflow_ms": 458,
+          "write_fence_ms": 424,
+          "write_transition_ms": 1089
+        },
+        "status": "OBSERVED_SINGLE_TRIAL"
+      },
+      "K_resources_and_live_reads": {
+        "limitation": "Thirty read trials after five warm-ups plus one Docker stats snapshot; not a saturation or capacity test.",
+        "measurements": {
+          "commerce_orders_median_ms": 7.738,
+          "control_health_median_ms": 0.909,
+          "workload_health_median_ms": 0.715
+        },
+        "status": "REPEATED_READS_AND_POINT_IN_TIME_RESOURCES"
+      }
+    },
+    "live_read_trials": {
+      "commerce_orders": {
+        "max_ms": 9.305,
+        "mean_ms": 7.805,
+        "median_ms": 7.738,
+        "min_ms": 7.191,
+        "p95_ms": 8.836,
+        "p99_ms": 9.211,
+        "raw_ms": [
+          8.042,
+          7.423,
+          8.169,
+          7.882,
+          7.733,
+          7.777,
+          7.571,
+          7.794,
+          7.802,
+          7.375,
+          7.532,
+          7.635,
+          7.604,
+          8.98,
+          9.305,
+          7.959,
+          7.803,
+          7.596,
+          7.469,
+          7.771,
+          7.756,
+          7.743,
+          7.886,
+          8.66,
+          7.674,
+          7.191,
+          7.625,
+          7.477,
+          7.478,
+          7.446
+        ],
+        "stdev_ms": 0.457,
+        "trials": 30,
+        "url": "http://127.0.0.1:18001/api/v1/commerce/orders?limit=20",
+        "warmup_requests": 5
+      },
+      "control_health": {
+        "max_ms": 3.074,
+        "mean_ms": 1.074,
+        "median_ms": 0.909,
+        "min_ms": 0.721,
+        "p95_ms": 1.862,
+        "p99_ms": 2.777,
+        "raw_ms": [
+          3.074,
+          2.048,
+          1.357,
+          1.018,
+          1.192,
+          1.346,
+          0.921,
+          1.02,
+          0.931,
+          0.827,
+          0.991,
+          0.87,
+          0.917,
+          0.971,
+          0.819,
+          0.797,
+          0.842,
+          0.721,
+          0.772,
+          0.9,
+          0.877,
+          0.858,
+          0.741,
+          1.633,
+          1.513,
+          0.839,
+          0.928,
+          0.732,
+          0.874,
+          0.883
+        ],
+        "stdev_ms": 0.482,
+        "trials": 30,
+        "url": "http://127.0.0.1:18000/api/v1/health/live",
+        "warmup_requests": 5
+      },
+      "workload_health": {
+        "max_ms": 0.846,
+        "mean_ms": 0.72,
+        "median_ms": 0.715,
+        "min_ms": 0.607,
+        "p95_ms": 0.829,
+        "p99_ms": 0.841,
+        "raw_ms": [
+          0.83,
+          0.717,
+          0.739,
+          0.734,
+          0.607,
+          0.708,
+          0.697,
+          0.69,
+          0.725,
+          0.846,
+          0.751,
+          0.737,
+          0.828,
+          0.707,
+          0.708,
+          0.713,
+          0.695,
+          0.813,
+          0.695,
+          0.653,
+          0.691,
+          0.703,
+          0.636,
+          0.727,
+          0.665,
+          0.73,
+          0.749,
+          0.74,
+          0.735,
+          0.634
+        ],
+        "stdev_ms": 0.056,
+        "trials": 30,
+        "url": "http://127.0.0.1:18002/api/v1/workload/health",
+        "warmup_requests": 5
+      }
+    },
+    "method": {
+      "read_trials": 30,
+      "read_warmup": 5,
+      "selection": "all observed trials retained; no favorable-run filtering"
+    },
+    "observed_at": "2026-11-27T14:27:31.096876+00:00"
+  },
+  "captured_at": "2026-11-27T14:10:21.471775+00:00",
+  "claim_boundary": "Sanitized observations from one local development run; not a production, cloud, zero-downtime, or capacity claim.",
+  "commerce": {
+    "activity": [
+      {
+        "committed_at": "2026-11-27T13:48:30.426077+00:00",
+        "entity_id": 1059,
+        "entity_type": "ORDER",
+        "event_id": 1422,
+        "event_type": "ORDER_CREATED",
+        "payload": {
+          "order_ref": "ORD-LIVE-F89F046F7A2A4EE4",
+          "route": "TARGET"
+        },
+        "transaction_ref": "commerce-db7269b8-f32f-4a0b-9157-4039b57cb527"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:29.993789+00:00",
+        "entity_id": 0,
+        "entity_type": "AVAILABILITY_PROBE",
+        "event_id": 1421,
+        "event_type": "PROBE_WRITE",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "probe-9831e3ef-5931-4cc9-b939-646e10a985d9"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:29.899675+00:00",
+        "entity_id": 1000,
+        "entity_type": "SHIPMENT",
+        "event_id": 1420,
+        "event_type": "SHIPMENT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-shipment_update-6c5e49ee-1e98-46c5-98ca-a7b2c1d69663"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:29.645325+00:00",
+        "entity_id": 172,
+        "entity_type": "PRODUCT",
+        "event_id": 1419,
+        "event_type": "PRODUCT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-product_update-9cde6f24-5552-4af6-b9f8-cabf1adb21e5"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:29.517311+00:00",
+        "entity_id": 3061,
+        "entity_type": "CUSTOMER",
+        "event_id": 1418,
+        "event_type": "CUSTOMER_CREATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-customer-b139c5f9-8b53-4c2d-809f-b29fbd9e1601"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:29.387081+00:00",
+        "entity_id": 1058,
+        "entity_type": "ORDER",
+        "event_id": 1417,
+        "event_type": "ORDER_CREATED",
+        "payload": {
+          "order_ref": "ORD-LIVE-2269E24A88DB4192",
+          "route": "TARGET"
+        },
+        "transaction_ref": "commerce-8bcc3744-c1f5-4991-97f9-6e0960dacd34"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:29.110197+00:00",
+        "entity_id": 1000,
+        "entity_type": "SHIPMENT",
+        "event_id": 1416,
+        "event_type": "SHIPMENT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-shipment_update-4d0636c7-d8db-4682-a306-2b70436181e5"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:28.967718+00:00",
+        "entity_id": 1057,
+        "entity_type": "ORDER",
+        "event_id": 1415,
+        "event_type": "ORDER_CREATED",
+        "payload": {
+          "order_ref": "ORD-LIVE-F9EE4521CF77408B",
+          "route": "TARGET"
+        },
+        "transaction_ref": "commerce-c8a85e73-621c-4c3d-89d3-8ccb69f6cc81"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:28.851440+00:00",
+        "entity_id": 0,
+        "entity_type": "AVAILABILITY_PROBE",
+        "event_id": 1414,
+        "event_type": "PROBE_WRITE",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "probe-95c191d3-0506-48f1-8aca-1341e859bca2"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:28.840712+00:00",
+        "entity_id": 1056,
+        "entity_type": "PAYMENT",
+        "event_id": 1413,
+        "event_type": "PAYMENT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-payment_update-bd2d9280-5495-4a31-a861-6dec43dbd371"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:28.709746+00:00",
+        "entity_id": 3,
+        "entity_type": "PRODUCT",
+        "event_id": 1412,
+        "event_type": "PRODUCT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-product_update-c73b4954-e147-4331-805f-c6f97b84cf6a"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:28.450302+00:00",
+        "entity_id": 1056,
+        "entity_type": "PAYMENT",
+        "event_id": 1411,
+        "event_type": "PAYMENT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-payment_update-65a5ea1a-19ad-49bd-bc96-d299424e3ac6"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:28.063606+00:00",
+        "entity_id": 1056,
+        "entity_type": "PAYMENT",
+        "event_id": 1410,
+        "event_type": "PAYMENT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-payment_update-cfc8f18e-6cfe-495d-96d6-94f910d1c4f0"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:27.932230+00:00",
+        "entity_id": 3060,
+        "entity_type": "CUSTOMER",
+        "event_id": 1409,
+        "event_type": "CONTROLLED_DELETE",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-delete_customer-9d686d02-aa99-4a44-b9cd-88355618c955"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:27.799002+00:00",
+        "entity_id": 539,
+        "entity_type": "PRODUCT",
+        "event_id": 1408,
+        "event_type": "PRODUCT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-product_update-334ca8de-3949-4f4d-a36b-efa6f724bb00"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:27.731443+00:00",
+        "entity_id": 0,
+        "entity_type": "AVAILABILITY_PROBE",
+        "event_id": 1407,
+        "event_type": "PROBE_WRITE",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "probe-8b10ae45-b652-4bbd-b12a-4b177602de96"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:27.532323+00:00",
+        "entity_id": 3060,
+        "entity_type": "CUSTOMER",
+        "event_id": 1406,
+        "event_type": "CUSTOMER_CREATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-customer-80410425-9917-4591-8b42-85e3172cede0"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:26.855770+00:00",
+        "entity_id": 1056,
+        "entity_type": "ORDER",
+        "event_id": 1405,
+        "event_type": "ORDER_CREATED",
+        "payload": {
+          "order_ref": "ORD-LIVE-A35C0E11716C475A",
+          "route": "TARGET"
+        },
+        "transaction_ref": "commerce-ce3c20e4-9da5-4d63-88ff-3de84d7ea4de"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:26.638740+00:00",
+        "entity_id": 0,
+        "entity_type": "AVAILABILITY_PROBE",
+        "event_id": 1404,
+        "event_type": "PROBE_WRITE",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "probe-033326e9-b827-49a9-87a6-f6db4ccb3c17"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:26.332446+00:00",
+        "entity_id": 15,
+        "entity_type": "PRODUCT",
+        "event_id": 1403,
+        "event_type": "PRODUCT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-product_update-5048eeb7-1c3d-45ce-9bc7-8040d2b2c48c"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:26.187334+00:00",
+        "entity_id": 3059,
+        "entity_type": "CUSTOMER",
+        "event_id": 1402,
+        "event_type": "CONTROLLED_DELETE",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-delete_customer-236eb895-1e20-4f7b-a132-936e333a392b"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:25.916704+00:00",
+        "entity_id": 1000,
+        "entity_type": "SHIPMENT",
+        "event_id": 1401,
+        "event_type": "SHIPMENT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-shipment_update-4f653d34-1b75-412a-9ba6-9c3c6324fcea"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:25.794759+00:00",
+        "entity_id": 1055,
+        "entity_type": "PAYMENT",
+        "event_id": 1400,
+        "event_type": "PAYMENT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-payment_update-6fd5e2dc-3a74-417d-b8d8-7d6aa4546874"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:25.556135+00:00",
+        "entity_id": 0,
+        "entity_type": "AVAILABILITY_PROBE",
+        "event_id": 1399,
+        "event_type": "PROBE_WRITE",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "probe-53d54eb9-adbf-4827-9da2-2d97ca0369ad"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:25.102944+00:00",
+        "entity_id": 1055,
+        "entity_type": "PAYMENT",
+        "event_id": 1398,
+        "event_type": "PAYMENT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-payment_update-b989d0dc-1227-46d3-a896-60cb2561ba4c"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:24.863959+00:00",
+        "entity_id": 3059,
+        "entity_type": "CUSTOMER",
+        "event_id": 1397,
+        "event_type": "CUSTOMER_CREATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-customer-1146bb85-e1a2-4a9b-b4d6-62b841454ed1"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:24.516051+00:00",
+        "entity_id": 839,
+        "entity_type": "PRODUCT",
+        "event_id": 1396,
+        "event_type": "PRODUCT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-product_update-359119fa-60c6-4f21-b188-ec979c1e82ac"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:24.420908+00:00",
+        "entity_id": 0,
+        "entity_type": "AVAILABILITY_PROBE",
+        "event_id": 1395,
+        "event_type": "PROBE_WRITE",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "probe-21c93498-cefd-4560-80f0-6ff868a53b5d"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:24.389936+00:00",
+        "entity_id": 943,
+        "entity_type": "PRODUCT",
+        "event_id": 1394,
+        "event_type": "PRODUCT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-product_update-32c2dc13-7c3e-4a0c-9388-666e2dd50cc8"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:24.121100+00:00",
+        "entity_id": 861,
+        "entity_type": "PRODUCT",
+        "event_id": 1393,
+        "event_type": "PRODUCT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-product_update-aa900208-0c54-4d6e-9254-0dcc9b7a499d"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:23.974428+00:00",
+        "entity_id": 3058,
+        "entity_type": "CUSTOMER",
+        "event_id": 1392,
+        "event_type": "CONTROLLED_DELETE",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-delete_customer-1a582d36-b237-4fd3-ac78-87697d4c7561"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:23.575132+00:00",
+        "entity_id": 860,
+        "entity_type": "PRODUCT",
+        "event_id": 1391,
+        "event_type": "PRODUCT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-product_update-14c8825b-3535-4b93-9d96-4649b3dcea2d"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:23.333985+00:00",
+        "entity_id": 0,
+        "entity_type": "AVAILABILITY_PROBE",
+        "event_id": 1390,
+        "event_type": "PROBE_WRITE",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "probe-e727c164-f602-49b1-ac52-a80f7af7ab1f"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:23.174455+00:00",
+        "entity_id": 3058,
+        "entity_type": "CUSTOMER",
+        "event_id": 1389,
+        "event_type": "CUSTOMER_CREATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-customer-611bacb1-affb-4e8c-ba35-1711768fc60a"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:23.040239+00:00",
+        "entity_id": 611,
+        "entity_type": "PRODUCT",
+        "event_id": 1388,
+        "event_type": "PRODUCT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-product_update-96515e4a-acf1-4c1c-9c8e-0ccc9064e605"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:22.654379+00:00",
+        "entity_id": 3057,
+        "entity_type": "CUSTOMER",
+        "event_id": 1387,
+        "event_type": "CONTROLLED_DELETE",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-delete_customer-a18eb7b4-8dca-4a51-90f9-0311107fded2"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:22.404200+00:00",
+        "entity_id": 26,
+        "entity_type": "PRODUCT",
+        "event_id": 1386,
+        "event_type": "PRODUCT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-product_update-3ea46cf5-71da-4dfb-907a-719858cdf856"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:22.207893+00:00",
+        "entity_id": 0,
+        "entity_type": "AVAILABILITY_PROBE",
+        "event_id": 1385,
+        "event_type": "PROBE_WRITE",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "probe-7b33bad1-8fbc-45aa-ac16-78178140b11e"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:22.029161+00:00",
+        "entity_id": 1055,
+        "entity_type": "PAYMENT",
+        "event_id": 1384,
+        "event_type": "PAYMENT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-payment_update-2ddbb868-b4c4-4a7b-b7a3-7a8cd7fcb2b4"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:21.886707+00:00",
+        "entity_id": 1055,
+        "entity_type": "ORDER",
+        "event_id": 1383,
+        "event_type": "ORDER_CREATED",
+        "payload": {
+          "order_ref": "ORD-LIVE-398D7821AE4242F4",
+          "route": "TARGET"
+        },
+        "transaction_ref": "commerce-41bd3ddf-a375-44ff-8015-3c6c86b5bf0c"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:21.616195+00:00",
+        "entity_id": 272,
+        "entity_type": "PRODUCT",
+        "event_id": 1382,
+        "event_type": "PRODUCT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-product_update-2c560a04-70e7-4c64-a999-92efb9caab7e"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:21.119738+00:00",
+        "entity_id": 0,
+        "entity_type": "AVAILABILITY_PROBE",
+        "event_id": 1381,
+        "event_type": "PROBE_WRITE",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "probe-20802370-5454-4e4c-97ec-e776cada2aa7"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:21.104700+00:00",
+        "entity_id": 3056,
+        "entity_type": "CUSTOMER",
+        "event_id": 1380,
+        "event_type": "CONTROLLED_DELETE",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-delete_customer-c613ab65-958c-4a9b-90af-4d84ff4ae8d9"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:20.851007+00:00",
+        "entity_id": 1054,
+        "entity_type": "ORDER",
+        "event_id": 1379,
+        "event_type": "ORDER_CREATED",
+        "payload": {
+          "order_ref": "ORD-LIVE-2D097B74263344AC",
+          "route": "TARGET"
+        },
+        "transaction_ref": "commerce-845d964c-092e-4682-bfc9-b01f799d251a"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:20.726981+00:00",
+        "entity_id": 1053,
+        "entity_type": "ORDER",
+        "event_id": 1378,
+        "event_type": "ORDER_CREATED",
+        "payload": {
+          "order_ref": "ORD-LIVE-6CE064632FD04B79",
+          "route": "TARGET"
+        },
+        "transaction_ref": "commerce-533f0f05-b2c6-4ea1-a337-b4c74de67a17"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:20.595076+00:00",
+        "entity_id": 3057,
+        "entity_type": "CUSTOMER",
+        "event_id": 1377,
+        "event_type": "CUSTOMER_CREATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-customer-c2d4ecc1-880e-44e6-8e50-382c32bc4a1c"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:20.344179+00:00",
+        "entity_id": 1052,
+        "entity_type": "PAYMENT",
+        "event_id": 1376,
+        "event_type": "PAYMENT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-payment_update-a547d080-d282-4a75-8f66-6dfe0393cf75"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:20.101310+00:00",
+        "entity_id": 1000,
+        "entity_type": "SHIPMENT",
+        "event_id": 1375,
+        "event_type": "SHIPMENT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-shipment_update-82bde00c-9a9f-4d46-9875-6c36c8a20d7c"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:20.005559+00:00",
+        "entity_id": 0,
+        "entity_type": "AVAILABILITY_PROBE",
+        "event_id": 1374,
+        "event_type": "PROBE_WRITE",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "probe-ab418c30-4d1c-4782-8dc1-0265e5a3f7eb"
+      },
+      {
+        "committed_at": "2026-11-27T13:48:19.832163+00:00",
+        "entity_id": 952,
+        "entity_type": "PRODUCT",
+        "event_id": 1373,
+        "event_type": "PRODUCT_UPDATED",
+        "payload": {
+          "route": "TARGET"
+        },
+        "transaction_ref": "workload-product_update-4c702630-e475-4237-acdf-0a8015366fcb"
+      }
+    ],
+    "health": {
+      "active_database": "TARGET",
+      "application": "parth-commerce-application",
+      "observed_at": "2026-11-27T14:10:21.705837+00:00",
+      "route_version": 3,
+      "state": "AVAILABLE",
+      "writes_enabled": true
+    },
+    "orders": [
+      {
+        "created_at": "2026-11-27T13:48:30.426077+00:00",
+        "currency": "INR",
+        "customer_id": 1,
+        "order_id": 1059,
+        "order_ref": "ORD-LIVE-F89F046F7A2A4EE4",
+        "status": "PAID",
+        "total": 95.8
+      },
+      {
+        "created_at": "2026-11-27T13:48:29.387081+00:00",
+        "currency": "INR",
+        "customer_id": 1,
+        "order_id": 1058,
+        "order_ref": "ORD-LIVE-2269E24A88DB4192",
+        "status": "PAID",
+        "total": 1020.17
+      },
+      {
+        "created_at": "2026-11-27T13:48:28.967718+00:00",
+        "currency": "INR",
+        "customer_id": 1,
+        "order_id": 1057,
+        "order_ref": "ORD-LIVE-F9EE4521CF77408B",
+        "status": "PAID",
+        "total": 972.73
+      },
+      {
+        "created_at": "2026-11-27T13:48:26.855770+00:00",
+        "currency": "INR",
+        "customer_id": 1,
+        "order_id": 1056,
+        "order_ref": "ORD-LIVE-A35C0E11716C475A",
+        "status": "PAID",
+        "total": 195.49
+      },
+      {
+        "created_at": "2026-11-27T13:48:21.886707+00:00",
+        "currency": "INR",
+        "customer_id": 1,
+        "order_id": 1055,
+        "order_ref": "ORD-LIVE-398D7821AE4242F4",
+        "status": "PAID",
+        "total": 509.74
+      },
+      {
+        "created_at": "2026-11-27T13:48:20.851007+00:00",
+        "currency": "INR",
+        "customer_id": 1,
+        "order_id": 1054,
+        "order_ref": "ORD-LIVE-2D097B74263344AC",
+        "status": "PAID",
+        "total": 135.98
+      },
+      {
+        "created_at": "2026-11-27T13:48:20.726981+00:00",
+        "currency": "INR",
+        "customer_id": 1,
+        "order_id": 1053,
+        "order_ref": "ORD-LIVE-6CE064632FD04B79",
+        "status": "PAID",
+        "total": 672.84
+      },
+      {
+        "created_at": "2026-11-27T13:48:15.951790+00:00",
+        "currency": "INR",
+        "customer_id": 1,
+        "order_id": 1052,
+        "order_ref": "ORD-LIVE-347A8E2205C94E03",
+        "status": "PAID",
+        "total": 198.49
+      },
+      {
+        "created_at": "2026-11-27T13:48:15.670316+00:00",
+        "currency": "INR",
+        "customer_id": 1,
+        "order_id": 1051,
+        "order_ref": "ORD-LIVE-4F337BAECB8A41D8",
+        "status": "PAID",
+        "total": 72.4
+      },
+      {
+        "created_at": "2026-11-27T13:48:14.991612+00:00",
+        "currency": "INR",
+        "customer_id": 1,
+        "order_id": 1050,
+        "order_ref": "ORD-LIVE-975FB3685ECE4247",
+        "status": "PAID",
+        "total": 953.46
+      },
+      {
+        "created_at": "2026-11-27T13:48:13.847030+00:00",
+        "currency": "INR",
+        "customer_id": 1,
+        "order_id": 1049,
+        "order_ref": "ORD-LIVE-23221BFB12084A10",
+        "status": "PAID",
+        "total": 440.23
+      },
+      {
+        "created_at": "2026-11-27T13:48:11.173308+00:00",
+        "currency": "INR",
+        "customer_id": 1,
+        "order_id": 1048,
+        "order_ref": "ORD-LIVE-CCB3CD20633E4004",
+        "status": "PAID",
+        "total": 1856.49
+      },
+      {
+        "created_at": "2026-11-27T13:48:08.372842+00:00",
+        "currency": "INR",
+        "customer_id": 1,
+        "order_id": 1047,
+        "order_ref": "ORD-LIVE-1E0B05602C2D4222",
+        "status": "PAID",
+        "total": 394.03
+      },
+      {
+        "created_at": "2026-11-27T13:48:07.737205+00:00",
+        "currency": "INR",
+        "customer_id": 1,
+        "order_id": 1046,
+        "order_ref": "ORD-LIVE-ABB16842F66F417C",
+        "status": "PAID",
+        "total": 41.29
+      },
+      {
+        "created_at": "2026-11-27T13:47:49.042114+00:00",
+        "currency": "INR",
+        "customer_id": 1,
+        "order_id": 1045,
+        "order_ref": "ORD-LIVE-193FC0359EE84F48",
+        "status": "PAID",
+        "total": 1972.11
+      },
+      {
+        "created_at": "2026-11-27T13:47:48.767349+00:00",
+        "currency": "INR",
+        "customer_id": 1,
+        "order_id": 1044,
+        "order_ref": "ORD-LIVE-FF70C9BD242243AC",
+        "status": "PAID",
+        "total": 1743.73
+      },
+      {
+        "created_at": "2026-11-27T13:47:47.710995+00:00",
+        "currency": "INR",
+        "customer_id": 1,
+        "order_id": 1043,
+        "order_ref": "ORD-LIVE-94BEC91C6E7B4AC3",
+        "status": "PAID",
+        "total": 103.57
+      },
+      {
+        "created_at": "2026-11-27T13:47:47.118789+00:00",
+        "currency": "INR",
+        "customer_id": 1,
+        "order_id": 1042,
+        "order_ref": "ORD-LIVE-0C891A765488459A",
+        "status": "PAID",
+        "total": 925.3
+      },
+      {
+        "created_at": "2026-11-27T13:47:45.000766+00:00",
+        "currency": "INR",
+        "customer_id": 1,
+        "order_id": 1041,
+        "order_ref": "ORD-LIVE-11C7894DA1FD4C39",
+        "status": "PAID",
+        "total": 782.89
+      },
+      {
+        "created_at": "2026-11-27T13:47:44.076826+00:00",
+        "currency": "INR",
+        "customer_id": 1,
+        "order_id": 1040,
+        "order_ref": "ORD-LIVE-00BCEFF34363426D",
+        "status": "PAID",
+        "total": 296.11
+      }
+    ]
+  },
+  "cutover": {
+    "completed_at": "2026-11-27T13:48:10.193979+00:00",
+    "cutover_id": "e8ac3dd6-cc6b-4054-9d31-df4cb51bfe9e",
+    "evidence": {
+      "measurement": "CONTROLLED_WRITE_FENCE_DURATION",
+      "sequence_count": 12,
+      "target_smoke_test": true
+    },
+    "final_validation_run_id": "14aa1dc2-72f0-4100-b54c-04adb1659f67",
+    "outcome": "COMPLETED",
+    "requested_at": "2026-11-27T13:48:09.735922+00:00",
+    "stages": [
+      {
+        "completed_at": "2026-11-27T13:48:09.749825+00:00",
+        "error_message": null,
+        "evidence": {
+          "health": "AVAILABLE"
+        },
+        "stage_name": "DESTINATION_READINESS",
+        "stage_order": 1,
+        "started_at": "2026-11-27T13:48:09.742450+00:00",
+        "status": "COMPLETED"
+      },
+      {
+        "completed_at": "2026-11-27T13:48:09.760988+00:00",
+        "error_message": null,
+        "evidence": {
+          "fenced_at": "2026-11-27 13:48:09.757527+00:00"
+        },
+        "stage_name": "SOURCE_WRITE_FENCE",
+        "stage_order": 2,
+        "started_at": "2026-11-27T13:48:09.753757+00:00",
+        "status": "COMPLETED"
+      },
+      {
+        "completed_at": "2026-11-27T13:48:09.771337+00:00",
+        "error_message": null,
+        "evidence": {},
+        "stage_name": "IN_FLIGHT_DRAIN",
+        "stage_order": 3,
+        "started_at": "2026-11-27T13:48:09.764686+00:00",
+        "status": "COMPLETED"
+      },
+      {
+        "completed_at": "2026-11-27T13:48:09.914183+00:00",
+        "error_message": null,
+        "evidence": {
+          "wal_byte_lag": 0
+        },
+        "stage_name": "FINAL_SYNCHRONIZATION",
+        "stage_order": 4,
+        "started_at": "2026-11-27T13:48:09.774967+00:00",
+        "status": "COMPLETED"
+      },
+      {
+        "completed_at": "2026-11-27T13:48:10.102623+00:00",
+        "error_message": null,
+        "evidence": {
+          "rows_checked": 13563,
+          "validation_run_id": "14aa1dc2-72f0-4100-b54c-04adb1659f67"
+        },
+        "stage_name": "FINAL_VALIDATION",
+        "stage_order": 5,
+        "started_at": "2026-11-27T13:48:09.918822+00:00",
+        "status": "COMPLETED"
+      },
+      {
+        "completed_at": "2026-11-27T13:48:10.143416+00:00",
+        "error_message": null,
+        "evidence": {
+          "sequence_count": 12
+        },
+        "stage_name": "SEQUENCE_SYNCHRONIZATION",
+        "stage_order": 6,
+        "started_at": "2026-11-27T13:48:10.131783+00:00",
+        "status": "COMPLETED"
+      },
+      {
+        "completed_at": "2026-11-27T13:48:10.165277+00:00",
+        "error_message": null,
+        "evidence": {},
+        "stage_name": "SOURCE_WRITE_PROTECTION",
+        "stage_order": 7,
+        "started_at": "2026-11-27T13:48:10.157119+00:00",
+        "status": "COMPLETED"
+      },
+      {
+        "completed_at": "2026-11-27T13:48:10.153445+00:00",
+        "error_message": null,
+        "evidence": {
+          "subscription_enabled": false
+        },
+        "stage_name": "REPLICATION_TRANSITION",
+        "stage_order": 8,
+        "started_at": "2026-11-27T13:48:10.146701+00:00",
+        "status": "COMPLETED"
+      },
+      {
+        "completed_at": "2026-11-27T13:48:10.184183+00:00",
+        "error_message": null,
+        "evidence": {
+          "active_endpoint": "TARGET"
+        },
+        "stage_name": "APPLICATION_ROUTE_SWITCH",
+        "stage_order": 9,
+        "started_at": "2026-11-27T13:48:10.178143+00:00",
+        "status": "COMPLETED"
+      },
+      {
+        "completed_at": "2026-11-27T13:48:10.174915+00:00",
+        "error_message": null,
+        "evidence": {},
+        "stage_name": "DESTINATION_SMOKE_TEST",
+        "stage_order": 10,
+        "started_at": "2026-11-27T13:48:10.168539+00:00",
+        "status": "COMPLETED"
+      },
+      {
+        "completed_at": "2026-11-27T13:48:10.187477+00:00",
+        "error_message": null,
+        "evidence": {
+          "writes_enabled": true
+        },
+        "stage_name": "APPLICATION_TRAFFIC_RESTORED",
+        "stage_order": 11,
+        "started_at": null,
+        "status": "COMPLETED"
+      }
+    ],
+    "write_unavailability_ms": 424
+  },
+  "events": [
+    {
+      "component": "cloudshift-control-plane",
+      "event_id": 1,
+      "event_type": "MIGRATION_CREATED",
+      "evidence": {},
+      "message": "Migration task created in DRAFT state.",
+      "occurred_at": "2026-11-27T13:45:42.225279+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-control-plane",
+      "event_id": 2,
+      "event_type": "STATE_TRANSITION",
+      "evidence": {
+        "current_state": "ASSESSING",
+        "previous_state": "DRAFT",
+        "trigger": "API_ASSESSMENT_REQUEST"
+      },
+      "message": "Migration transitioned from DRAFT to ASSESSING.",
+      "occurred_at": "2026-11-27T13:46:32.140187+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-control-plane",
+      "event_id": 3,
+      "event_type": "STATE_TRANSITION",
+      "evidence": {
+        "current_state": "READY",
+        "previous_state": "ASSESSING",
+        "trigger": "ASSESSMENT_COMPLETED"
+      },
+      "message": "Migration transitioned from ASSESSING to READY.",
+      "occurred_at": "2026-11-27T13:46:32.164390+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-control-plane",
+      "event_id": 4,
+      "event_type": "STATE_TRANSITION",
+      "evidence": {
+        "current_state": "INITIAL_SYNC",
+        "previous_state": "READY",
+        "trigger": "API_START_REQUEST"
+      },
+      "message": "Migration transitioned from READY to INITIAL_SYNC.",
+      "occurred_at": "2026-11-27T13:46:32.184200+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-control-plane",
+      "event_id": 5,
+      "event_type": "STATE_TRANSITION",
+      "evidence": {
+        "current_state": "CONTINUOUS_REPLICATION",
+        "previous_state": "INITIAL_SYNC",
+        "trigger": "REPLICATION_READY_OBSERVED"
+      },
+      "message": "Migration transitioned from INITIAL_SYNC to CONTINUOUS_REPLICATION.",
+      "occurred_at": "2026-11-27T13:46:40.904745+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-workload-generator",
+      "event_id": 6,
+      "event_type": "WORKLOAD_STARTED",
+      "evidence": {
+        "configured_rate": 10,
+        "profile": "WRITE_HEAVY",
+        "run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+      },
+      "message": "Continuous workload started.",
+      "occurred_at": "2026-11-27T13:46:59.214199+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-workload-generator",
+      "event_id": 7,
+      "event_type": "AVAILABILITY_PROBE_STARTED",
+      "evidence": {
+        "run_id": "36308d88-6d64-4e55-9288-0821e9ae0d01",
+        "sample_interval_ms": 250,
+        "write_interval_ms": 1000
+      },
+      "message": "Independent availability probe started.",
+      "occurred_at": "2026-11-27T13:46:59.255445+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-control-plane",
+      "event_id": 8,
+      "event_type": "STATE_TRANSITION",
+      "evidence": {
+        "current_state": "PAUSED",
+        "previous_state": "CONTINUOUS_REPLICATION",
+        "trigger": "REPLICATION_PAUSE_REQUEST"
+      },
+      "message": "Migration transitioned from CONTINUOUS_REPLICATION to PAUSED.",
+      "occurred_at": "2026-11-27T13:47:15.629400+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-control-plane",
+      "event_id": 9,
+      "event_type": "STATE_TRANSITION",
+      "evidence": {
+        "current_state": "CONTINUOUS_REPLICATION",
+        "previous_state": "PAUSED",
+        "trigger": "REPLICATION_RESUME_REQUEST"
+      },
+      "message": "Migration transitioned from PAUSED to CONTINUOUS_REPLICATION.",
+      "occurred_at": "2026-11-27T13:47:33.188816+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-workload-generator",
+      "event_id": 10,
+      "event_type": "WORKLOAD_STOPPED",
+      "evidence": {
+        "metrics": {
+          "active_database": "SOURCE",
+          "active_window_seconds": 50.647,
+          "committed_transactions": 274,
+          "configured_rate": 10,
+          "failed_operations": 4,
+          "measurement_window": "LAST_60_SECONDS_IN_PROCESS",
+          "observed_at": "2026-11-27 13:47:49.847217+00:00",
+          "operations_per_second": 7.542,
+          "p50_latency_ms": 21.631,
+          "p95_latency_ms": 32.308,
+          "p99_latency_ms": 37.87,
+          "profile": "WRITE_HEAVY",
+          "reads_per_second": 2.053,
+          "rolled_back_or_rejected": 4,
+          "state": "STOPPED",
+          "successful_operations": 378,
+          "transactions_per_second": 5.41,
+          "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109",
+          "writes_per_second": 5.489
+        },
+        "run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+      },
+      "message": "Continuous workload stopped.",
+      "occurred_at": "2026-11-27T13:47:49.850759+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-workload-generator",
+      "event_id": 11,
+      "event_type": "AVAILABILITY_PROBE_STOPPED",
+      "evidence": {
+        "run_id": "36308d88-6d64-4e55-9288-0821e9ae0d01",
+        "summary": {
+          "failed": 0,
+          "first_failure": null,
+          "first_observation": "2026-11-27 13:46:59.282109+00:00",
+          "first_target_success": null,
+          "first_target_write": null,
+          "first_write_failure": null,
+          "last_observation": "2026-11-27 13:47:49.760917+00:00",
+          "last_source_success": "2026-11-27 13:47:49.760917+00:00",
+          "last_source_write": "2026-11-27 13:47:49.228777+00:00",
+          "method": "HTTP commerce read and committed synthetic write probes",
+          "observations": 229,
+          "observed_at": "2026-11-27 13:47:50.028331+00:00",
+          "observed_request_failure_window_ms": null,
+          "observed_write_unavailability_ms": null,
+          "precision_limit_ms": 250,
+          "probe_run_id": "36308d88-6d64-4e55-9288-0821e9ae0d01",
+          "sample_interval_ms": 250,
+          "state": "STOPPED",
+          "successful": 229,
+          "successful_reads": 183,
+          "successful_writes": 46,
+          "write_interval_ms": 1000
+        }
+      },
+      "message": "Independent availability probe stopped.",
+      "occurred_at": "2026-11-27T13:47:50.032478+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-control-plane",
+      "event_id": 12,
+      "event_type": "STATE_TRANSITION",
+      "evidence": {
+        "current_state": "VALIDATING",
+        "previous_state": "CONTINUOUS_REPLICATION",
+        "trigger": "VALIDATION_REQUEST"
+      },
+      "message": "Migration transitioned from CONTINUOUS_REPLICATION to VALIDATING.",
+      "occurred_at": "2026-11-27T13:47:50.407826+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-control-plane",
+      "event_id": 13,
+      "event_type": "STATE_TRANSITION",
+      "evidence": {
+        "current_state": "CONTINUOUS_REPLICATION",
+        "previous_state": "VALIDATING",
+        "trigger": "VALIDATION_COMPLETED"
+      },
+      "message": "Migration transitioned from VALIDATING to CONTINUOUS_REPLICATION.",
+      "occurred_at": "2026-11-27T13:47:50.576066+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-control-plane",
+      "event_id": 14,
+      "event_type": "STATE_TRANSITION",
+      "evidence": {
+        "current_state": "VALIDATING",
+        "previous_state": "CONTINUOUS_REPLICATION",
+        "trigger": "VALIDATION_REQUEST"
+      },
+      "message": "Migration transitioned from CONTINUOUS_REPLICATION to VALIDATING.",
+      "occurred_at": "2026-11-27T13:47:50.740252+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-control-plane",
+      "event_id": 15,
+      "event_type": "STATE_TRANSITION",
+      "evidence": {
+        "current_state": "CONTINUOUS_REPLICATION",
+        "previous_state": "VALIDATING",
+        "trigger": "VALIDATION_COMPLETED"
+      },
+      "message": "Migration transitioned from VALIDATING to CONTINUOUS_REPLICATION.",
+      "occurred_at": "2026-11-27T13:47:50.894845+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-workload-generator",
+      "event_id": 16,
+      "event_type": "WORKLOAD_STARTED",
+      "evidence": {
+        "configured_rate": 10,
+        "profile": "BALANCED",
+        "run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+      },
+      "message": "Continuous workload started.",
+      "occurred_at": "2026-11-27T13:48:06.656131+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-workload-generator",
+      "event_id": 17,
+      "event_type": "AVAILABILITY_PROBE_STARTED",
+      "evidence": {
+        "run_id": "4c1f6247-a736-4841-874b-570a15d7ed2f",
+        "sample_interval_ms": 250,
+        "write_interval_ms": 1000
+      },
+      "message": "Independent availability probe started.",
+      "occurred_at": "2026-11-27T13:48:06.686960+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-control-plane",
+      "event_id": 18,
+      "event_type": "STATE_TRANSITION",
+      "evidence": {
+        "current_state": "VALIDATING",
+        "previous_state": "CONTINUOUS_REPLICATION",
+        "trigger": "VALIDATION_REQUEST"
+      },
+      "message": "Migration transitioned from CONTINUOUS_REPLICATION to VALIDATING.",
+      "occurred_at": "2026-11-27T13:48:09.940428+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-control-plane",
+      "event_id": 19,
+      "event_type": "STATE_TRANSITION",
+      "evidence": {
+        "current_state": "READY_FOR_CUTOVER",
+        "previous_state": "VALIDATING",
+        "trigger": "VALIDATION_COMPLETED"
+      },
+      "message": "Migration transitioned from VALIDATING to READY_FOR_CUTOVER.",
+      "occurred_at": "2026-11-27T13:48:10.098881+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-control-plane",
+      "event_id": 20,
+      "event_type": "STATE_TRANSITION",
+      "evidence": {
+        "current_state": "CUTOVER_IN_PROGRESS",
+        "previous_state": "READY_FOR_CUTOVER",
+        "trigger": "CUTOVER_CONFIRMED"
+      },
+      "message": "Migration transitioned from READY_FOR_CUTOVER to CUTOVER_IN_PROGRESS.",
+      "occurred_at": "2026-11-27T13:48:10.118120+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-control-plane",
+      "event_id": 21,
+      "event_type": "STATE_TRANSITION",
+      "evidence": {
+        "current_state": "COMPLETED",
+        "previous_state": "CUTOVER_IN_PROGRESS",
+        "trigger": "TARGET_SMOKE_TEST_PASSED"
+      },
+      "message": "Migration transitioned from CUTOVER_IN_PROGRESS to COMPLETED.",
+      "occurred_at": "2026-11-27T13:48:10.190575+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-workload-generator",
+      "event_id": 22,
+      "event_type": "WORKLOAD_STOPPED",
+      "evidence": {
+        "metrics": {
+          "active_database": "TARGET",
+          "active_window_seconds": 23.368,
+          "committed_transactions": 76,
+          "configured_rate": 10,
+          "failed_operations": 10,
+          "measurement_window": "LAST_60_SECONDS_IN_PROCESS",
+          "observed_at": "2026-11-27 13:48:30.028019+00:00",
+          "operations_per_second": 7.617,
+          "p50_latency_ms": 19.586,
+          "p95_latency_ms": 34.185,
+          "p99_latency_ms": 36.739,
+          "profile": "BALANCED",
+          "reads_per_second": 3.937,
+          "rolled_back_or_rejected": 10,
+          "state": "STOPPED",
+          "successful_operations": 168,
+          "transactions_per_second": 3.252,
+          "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754",
+          "writes_per_second": 3.68
+        },
+        "run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+      },
+      "message": "Continuous workload stopped.",
+      "occurred_at": "2026-11-27T13:48:30.031598+00:00",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "component": "cloudshift-workload-generator",
+      "event_id": 23,
+      "event_type": "AVAILABILITY_PROBE_STOPPED",
+      "evidence": {
+        "run_id": "4c1f6247-a736-4841-874b-570a15d7ed2f",
+        "summary": {
+          "failed": 1,
+          "first_failure": "2026-11-27 13:48:10.015224+00:00",
+          "first_observation": "2026-11-27 13:48:06.710149+00:00",
+          "first_target_success": "2026-11-27 13:48:10.278784+00:00",
+          "first_target_write": "2026-11-27 13:48:11.103900+00:00",
+          "first_write_failure": "2026-11-27 13:48:10.015224+00:00",
+          "last_observation": "2026-11-27 13:48:30.010290+00:00",
+          "last_source_success": "2026-11-27 13:48:10.006224+00:00",
+          "last_source_write": "2026-11-27 13:48:08.949603+00:00",
+          "method": "HTTP commerce read and committed synthetic write probes",
+          "observations": 107,
+          "observed_at": "2026-11-27 13:48:30.301284+00:00",
+          "observed_request_failure_window_ms": 264,
+          "observed_write_unavailability_ms": 1089,
+          "precision_limit_ms": 250,
+          "probe_run_id": "4c1f6247-a736-4841-874b-570a15d7ed2f",
+          "sample_interval_ms": 250,
+          "state": "STOPPED",
+          "successful": 106,
+          "successful_reads": 85,
+          "successful_writes": 21,
+          "write_interval_ms": 1000
+        }
+      },
+      "message": "Independent availability probe stopped.",
+      "occurred_at": "2026-11-27T13:48:30.306096+00:00",
+      "severity": "INFORMATIONAL"
+    }
+  ],
+  "experiments": [
+    {
+      "completed_at": "2026-11-27T14:02:08.055491+00:00",
+      "configuration": {
+        "scope": "cloudshift-parth",
+        "service": "target-db",
+        "timeout_seconds": 45
+      },
+      "experiment_id": "990ae9a9-7b8d-4c73-b4e5-eeb1415cdb06",
+      "experiment_type": "DESTINATION_DATABASE_INTERRUPTION",
+      "result": {
+        "baseline": {
+          "active_database": "TARGET",
+          "application": "parth-commerce-application",
+          "observed_at": "2026-11-27T14:02:06.564455+00:00",
+          "route_version": 3,
+          "state": "AVAILABLE",
+          "writes_enabled": true
+        },
+        "completed_at": "2026-11-27T14:02:07.995566+00:00",
+        "consistency_check": "TARGET_LOCAL_INVARIANT_ONLY_SOURCE_IS_STALE_AFTER_CUTOVER",
+        "control_health": {
+          "databases": [
+            {
+              "database_name": "parth_commerce_source",
+              "endpoint_id": "source",
+              "error": null,
+              "latency_ms": 6.0,
+              "observed_at": "2026-11-27T14:02:07.889844Z",
+              "postgres_version": "PostgreSQL 16.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit",
+              "resource_name": "pg-source-parth",
+              "state": "AVAILABLE"
+            },
+            {
+              "database_name": "parth_commerce_target",
+              "endpoint_id": "target",
+              "error": null,
+              "latency_ms": 5.04,
+              "observed_at": "2026-11-27T14:02:07.894924Z",
+              "postgres_version": "PostgreSQL 16.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit",
+              "resource_name": "pg-target-parth",
+              "state": "AVAILABLE"
+            },
+            {
+              "database_name": "cloudshift_control",
+              "endpoint_id": "control",
+              "error": null,
+              "latency_ms": 3.96,
+              "observed_at": "2026-11-27T14:02:07.898906Z",
+              "postgres_version": "PostgreSQL 16.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit",
+              "resource_name": "pg-control-parth",
+              "state": "AVAILABLE"
+            }
+          ],
+          "deployment_mode": "LIVE_LOCAL",
+          "observed_at": "2026-11-27T14:02:07.898951Z",
+          "service": "cloudshift-control-plane",
+          "state": "AVAILABLE"
+        },
+        "control_health_available": true,
+        "detected": {
+          "payload": {
+            "active_database": "TARGET",
+            "application": "parth-commerce-application",
+            "observed_at": "2026-11-27T14:02:07.356300+00:00",
+            "route_version": 3,
+            "state": "UNREACHABLE",
+            "writes_enabled": true
+          },
+          "transport_ok": true
+        },
+        "detection_duration_ms": 524,
+        "experiment_id": "990ae9a9-7b8d-4c73-b4e5-eeb1415cdb06",
+        "incident_id": "0dc7ff4d-34be-4625-beb7-cf56b0623f51",
+        "post_cutover_order_count": 1,
+        "recovered": {
+          "active_database": "TARGET",
+          "application": "parth-commerce-application",
+          "observed_at": "2026-11-27T14:02:07.880098+00:00",
+          "route_version": 3,
+          "state": "AVAILABLE",
+          "writes_enabled": true
+        },
+        "recovery_duration_ms": 1241,
+        "remaining_risk": "Single local experiment; no failover replica is configured.",
+        "result": "RECOVERED",
+        "scenario": "DESTINATION_DATABASE_INTERRUPTION",
+        "schema_version": 1,
+        "service_recovery_poll_ms": 295,
+        "started_at": "2026-11-27T14:02:06.524697+00:00",
+        "timeout_seconds": 45
+      },
+      "started_at": "2026-11-27T14:02:06.630770+00:00",
+      "status": "COMPLETED"
+    }
+  ],
+  "incidents": [
+    {
+      "affected_resources": [
+        "pg-target-parth"
+      ],
+      "detected_at": "2026-11-27T14:02:07.461353+00:00",
+      "detection_duration_ms": 524,
+      "incident_id": "0dc7ff4d-34be-4625-beb7-cf56b0623f51",
+      "recovery_action": "Restarted target-db and waited for PostgreSQL and commerce health.",
+      "recovery_duration_ms": 1241,
+      "recovery_result": "RECOVERED; target-only post-cutover order remained present.",
+      "recovery_timestamp": "2026-11-27T14:02:08.054378+00:00",
+      "remaining_risk": "Single local experiment; no failover replica is configured.",
+      "resolved_at": "2026-11-27T14:02:08.054378+00:00",
+      "severity": "CRITICAL",
+      "supporting_evidence": {
+        "experiment_id": "990ae9a9-7b8d-4c73-b4e5-eeb1415cdb06",
+        "observation": "{'transport_ok': True, 'payload': {'application': 'parth-commerce-application', 'state': 'UNREACHABLE', 'active_database': 'TARGET', 'writes_enabled': True, 'route_version': 3, 'observed_at': '2026-11-27T14:02:07.356300+00:00'}}"
+      },
+      "suspected_cause": "Controlled destination database interruption.",
+      "symptoms": "Target-routed commerce health became unavailable.",
+      "task_key": "parth-commerce-migration-001",
+      "verified_cause": "The project-owned target-db service was stopped by a bounded experiment."
+    }
+  ],
+  "kind": "cloudshift-static-replay",
+  "migration": {
+    "created_at": "2026-11-27T13:45:42.224779+00:00",
+    "state": "COMPLETED",
+    "task_key": "parth-commerce-migration-001",
+    "updated_at": "2026-11-27T13:48:10.190575+00:00",
+    "version": 15
+  },
+  "probe": {
+    "failed": 1,
+    "first_failure": "2026-11-27T13:48:10.015224+00:00",
+    "first_observation": "2026-11-27T13:48:06.710149+00:00",
+    "first_target_success": "2026-11-27T13:48:10.278784+00:00",
+    "first_target_write": "2026-11-27T13:48:11.103900+00:00",
+    "first_write_failure": "2026-11-27T13:48:10.015224+00:00",
+    "last_observation": "2026-11-27T13:48:30.010290+00:00",
+    "last_source_success": "2026-11-27T13:48:10.006224+00:00",
+    "last_source_write": "2026-11-27T13:48:08.949603+00:00",
+    "method": "HTTP commerce read and committed synthetic write probes",
+    "observations": 107,
+    "observed_at": "2026-11-27T14:10:21.690733+00:00",
+    "observed_request_failure_window_ms": 264,
+    "observed_write_unavailability_ms": 1089,
+    "precision_limit_ms": 250,
+    "probe_run_id": "4c1f6247-a736-4841-874b-570a15d7ed2f",
+    "sample_interval_ms": 250,
+    "state": "STOPPED",
+    "successful": 106,
+    "successful_reads": 85,
+    "successful_writes": 21,
+    "write_interval_ms": 1000
+  },
+  "route": {
+    "active_endpoint": "TARGET",
+    "route_key": "parth-commerce-application",
+    "updated_at": "2026-11-27T13:48:10.181312+00:00",
+    "version": 3,
+    "writes_enabled": true
+  },
+  "schema_version": 2,
+  "tables": [
+    {
+      "schema": "commerce",
+      "source_bytes": 368640,
+      "source_row_estimate": 2000,
+      "subscription_state": "r",
+      "table": "customer_addresses",
+      "target_bytes": 368640,
+      "target_row_estimate": 2000,
+      "validation": {
+        "completed_at": "2026-11-27T13:48:10.094176+00:00",
+        "extra_rows": 0,
+        "mismatched_rows": 0,
+        "missing_rows": 0,
+        "status": "MATCHED",
+        "table_name": "customer_addresses"
+      }
+    },
+    {
+      "schema": "commerce",
+      "source_bytes": 1089536,
+      "source_row_estimate": 3000,
+      "subscription_state": "r",
+      "table": "customers",
+      "target_bytes": 1089536,
+      "target_row_estimate": 3004,
+      "validation": {
+        "completed_at": "2026-11-27T13:48:10.094176+00:00",
+        "extra_rows": 0,
+        "mismatched_rows": 0,
+        "missing_rows": 0,
+        "status": "MATCHED",
+        "table_name": "customers"
+      }
+    },
+    {
+      "schema": "commerce",
+      "source_bytes": 221184,
+      "source_row_estimate": 1000,
+      "subscription_state": "r",
+      "table": "inventory",
+      "target_bytes": 221184,
+      "target_row_estimate": 1000,
+      "validation": {
+        "completed_at": "2026-11-27T13:48:10.094176+00:00",
+        "extra_rows": 0,
+        "mismatched_rows": 0,
+        "missing_rows": 0,
+        "status": "MATCHED",
+        "table_name": "inventory"
+      }
+    },
+    {
+      "schema": "commerce",
+      "source_bytes": 163840,
+      "source_row_estimate": 1000,
+      "subscription_state": "r",
+      "table": "inventory_movements",
+      "target_bytes": 172032,
+      "target_row_estimate": 1002,
+      "validation": {
+        "completed_at": "2026-11-27T13:48:10.094176+00:00",
+        "extra_rows": 0,
+        "mismatched_rows": 0,
+        "missing_rows": 0,
+        "status": "MATCHED",
+        "table_name": "inventory_movements"
+      }
+    },
+    {
+      "schema": "commerce",
+      "source_bytes": 196608,
+      "source_row_estimate": 1000,
+      "subscription_state": "r",
+      "table": "order_items",
+      "target_bytes": 204800,
+      "target_row_estimate": 1002,
+      "validation": {
+        "completed_at": "2026-11-27T13:48:10.094176+00:00",
+        "extra_rows": 0,
+        "mismatched_rows": 0,
+        "missing_rows": 0,
+        "status": "MATCHED",
+        "table_name": "order_items"
+      }
+    },
+    {
+      "schema": "commerce",
+      "source_bytes": 385024,
+      "source_row_estimate": 1000,
+      "subscription_state": "r",
+      "table": "orders",
+      "target_bytes": 409600,
+      "target_row_estimate": 1002,
+      "validation": {
+        "completed_at": "2026-11-27T13:48:10.094176+00:00",
+        "extra_rows": 0,
+        "mismatched_rows": 0,
+        "missing_rows": 0,
+        "status": "MATCHED",
+        "table_name": "orders"
+      }
+    },
+    {
+      "schema": "commerce",
+      "source_bytes": 294912,
+      "source_row_estimate": 1000,
+      "subscription_state": "r",
+      "table": "payments",
+      "target_bytes": 311296,
+      "target_row_estimate": 1002,
+      "validation": {
+        "completed_at": "2026-11-27T13:48:10.094176+00:00",
+        "extra_rows": 0,
+        "mismatched_rows": 0,
+        "missing_rows": 0,
+        "status": "MATCHED",
+        "table_name": "payments"
+      }
+    },
+    {
+      "schema": "commerce",
+      "source_bytes": 49152,
+      "source_row_estimate": 0,
+      "subscription_state": "r",
+      "table": "product_categories",
+      "target_bytes": 49152,
+      "target_row_estimate": 0,
+      "validation": {
+        "completed_at": "2026-11-27T13:48:10.094176+00:00",
+        "extra_rows": 0,
+        "mismatched_rows": 0,
+        "missing_rows": 0,
+        "status": "MATCHED",
+        "table_name": "product_categories"
+      }
+    },
+    {
+      "schema": "commerce",
+      "source_bytes": 335872,
+      "source_row_estimate": 1000,
+      "subscription_state": "r",
+      "table": "products",
+      "target_bytes": 475136,
+      "target_row_estimate": 1000,
+      "validation": {
+        "completed_at": "2026-11-27T13:48:10.094176+00:00",
+        "extra_rows": 0,
+        "mismatched_rows": 0,
+        "missing_rows": 0,
+        "status": "MATCHED",
+        "table_name": "products"
+      }
+    },
+    {
+      "schema": "commerce",
+      "source_bytes": 352256,
+      "source_row_estimate": 1000,
+      "subscription_state": "r",
+      "table": "shipments",
+      "target_bytes": 376832,
+      "target_row_estimate": 1000,
+      "validation": {
+        "completed_at": "2026-11-27T13:48:10.094176+00:00",
+        "extra_rows": 0,
+        "mismatched_rows": 0,
+        "missing_rows": 0,
+        "status": "MATCHED",
+        "table_name": "shipments"
+      }
+    },
+    {
+      "schema": "commerce",
+      "source_bytes": 49152,
+      "source_row_estimate": 0,
+      "subscription_state": "r",
+      "table": "suppliers",
+      "target_bytes": 49152,
+      "target_row_estimate": 0,
+      "validation": {
+        "completed_at": "2026-11-27T13:48:10.094176+00:00",
+        "extra_rows": 0,
+        "mismatched_rows": 0,
+        "missing_rows": 0,
+        "status": "MATCHED",
+        "table_name": "suppliers"
+      }
+    },
+    {
+      "schema": "commerce",
+      "source_bytes": 475136,
+      "source_row_estimate": 1324,
+      "subscription_state": "r",
+      "table": "transaction_events",
+      "target_bytes": 507904,
+      "target_row_estimate": 1324,
+      "validation": {
+        "completed_at": "2026-11-27T13:48:10.094176+00:00",
+        "extra_rows": 0,
+        "mismatched_rows": 0,
+        "missing_rows": 0,
+        "status": "MATCHED",
+        "table_name": "transaction_events"
+      }
+    },
+    {
+      "schema": "commerce",
+      "source_bytes": 49152,
+      "source_row_estimate": 0,
+      "subscription_state": "r",
+      "table": "warehouses",
+      "target_bytes": 49152,
+      "target_row_estimate": 0,
+      "validation": {
+        "completed_at": "2026-11-27T13:48:10.094176+00:00",
+        "extra_rows": 0,
+        "mismatched_rows": 0,
+        "missing_rows": 0,
+        "status": "MATCHED",
+        "table_name": "warehouses"
+      }
+    }
+  ],
+  "topology": {
+    "connections": [
+      {
+        "active": true,
+        "category": "APPLICATION",
+        "id": "commerce-router",
+        "source": "commerce",
+        "target": "router"
+      },
+      {
+        "active": false,
+        "category": "APPLICATION",
+        "id": "router-source",
+        "source": "router",
+        "target": "source"
+      },
+      {
+        "active": true,
+        "category": "APPLICATION",
+        "id": "router-target",
+        "source": "router",
+        "target": "target"
+      },
+      {
+        "active": false,
+        "category": "REPLICATION",
+        "id": "source-replication",
+        "source": "source",
+        "target": "replication"
+      },
+      {
+        "active": false,
+        "category": "REPLICATION",
+        "id": "replication-target",
+        "source": "replication",
+        "target": "target"
+      },
+      {
+        "active": false,
+        "category": "VALIDATION",
+        "id": "source-validation",
+        "source": "source",
+        "target": "validation"
+      },
+      {
+        "active": false,
+        "category": "VALIDATION",
+        "id": "target-validation",
+        "source": "target",
+        "target": "validation"
+      }
+    ],
+    "observed_at": "2026-11-27T14:10:21.614649+00:00",
+    "replication": {
+      "measurement": {
+        "table_progress": "OBSERVED_STATE",
+        "wal_byte_lag": "MEASURED"
+      },
+      "observed_at": "2026-11-27T14:10:21.614636+00:00",
+      "ready_tables": 13,
+      "slot": {
+        "active": false,
+        "confirmed_flush_lsn": "0/207E130",
+        "wal_byte_lag": 46696
+      },
+      "state": "COMPLETED",
+      "subscription": {
+        "latest_end_lsn": null,
+        "latest_end_time": null,
+        "received_lsn": null,
+        "subname": "parth_cloudshift_subscription",
+        "worker_active": false
+      },
+      "table_states": {
+        "r": 13
+      },
+      "task_key": "parth-commerce-migration-001",
+      "total_tables": 13
+    },
+    "resources": [
+      {
+        "health": "AVAILABLE",
+        "id": "commerce",
+        "name": "parth-commerce-application",
+        "type": "APPLICATION"
+      },
+      {
+        "health": "AVAILABLE",
+        "id": "router",
+        "name": "parth-application-router",
+        "state": "TARGET",
+        "type": "ROUTER"
+      },
+      {
+        "health": "AVAILABLE",
+        "id": "source",
+        "last_observed": "2026-11-27T14:10:21.594447+00:00",
+        "name": "pg-source-parth",
+        "type": "POSTGRESQL",
+        "version": "PostgreSQL 16.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit"
+      },
+      {
+        "health": "AVAILABLE",
+        "id": "target",
+        "last_observed": "2026-11-27T14:10:21.597677+00:00",
+        "name": "pg-target-parth",
+        "type": "POSTGRESQL",
+        "version": "PostgreSQL 16.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit"
+      },
+      {
+        "health": "AVAILABLE",
+        "id": "control",
+        "last_observed": "2026-11-27T14:10:21.600580+00:00",
+        "name": "pg-control-parth",
+        "type": "POSTGRESQL",
+        "version": "PostgreSQL 16.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit"
+      },
+      {
+        "health": "AVAILABLE",
+        "id": "replication",
+        "name": "PostgreSQL logical replication",
+        "state": "STOPPED",
+        "type": "INTERNAL_WORKER"
+      },
+      {
+        "health": "AVAILABLE",
+        "id": "validation",
+        "name": "cloudshift-validation-engine",
+        "type": "CONTROL_PLANE"
+      }
+    ],
+    "route": {
+      "active_endpoint": "TARGET",
+      "route_key": "parth-commerce-application",
+      "updated_at": "2026-11-27T13:48:10.181312+00:00",
+      "version": 3,
+      "writes_enabled": true
+    },
+    "state": "COMPLETED",
+    "task_key": "parth-commerce-migration-001"
+  },
+  "validations": [
+    {
+      "completed_at": "2026-11-27T13:48:10.094176+00:00",
+      "mismatches": 0,
+      "rows_checked": 13563,
+      "scope": "FINAL_QUIESCED",
+      "started_at": "2026-11-27T13:48:09.944337+00:00",
+      "status": "MATCHED",
+      "validation_run_id": "14aa1dc2-72f0-4100-b54c-04adb1659f67"
+    },
+    {
+      "completed_at": "2026-11-27T13:47:50.889788+00:00",
+      "mismatches": 0,
+      "rows_checked": 13542,
+      "scope": "FULL",
+      "started_at": "2026-11-27T13:47:50.744517+00:00",
+      "status": "MATCHED",
+      "validation_run_id": "a54a9993-938d-48bb-ade9-f30225c23a75"
+    },
+    {
+      "completed_at": "2026-11-27T13:47:50.570062+00:00",
+      "mismatches": 1,
+      "rows_checked": 13542,
+      "scope": "FULL",
+      "started_at": "2026-11-27T13:47:50.413293+00:00",
+      "status": "MISMATCHED",
+      "validation_run_id": "f0d8afd2-15ad-47ce-b140-4bcf7de2d595"
+    }
+  ],
+  "workload": {
+    "active_database": "TARGET",
+    "active_window_seconds": 60.0,
+    "committed_transactions": 0,
+    "configured_rate": 5,
+    "failed_operations": 0,
+    "measurement_window": "LAST_60_SECONDS_IN_PROCESS",
+    "observed_at": "2026-11-27T14:10:21.673581+00:00",
+    "operations_per_second": 0.0,
+    "p50_latency_ms": null,
+    "p95_latency_ms": null,
+    "p99_latency_ms": null,
+    "profile": "BALANCED",
+    "reads_per_second": 0.0,
+    "rolled_back_or_rejected": 0,
+    "state": "STOPPED",
+    "successful_operations": 0,
+    "transactions_per_second": 0.0,
+    "workload_run_id": null,
+    "writes_per_second": 0.0
+  },
+  "workload_operations": [
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 22.131,
+      "observed_at": "2026-11-27T13:48:29.911966+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 560,
+      "operation_type": "shipment_update",
+      "success": true,
+      "transaction_ref": "workload-shipment_update-6c5e49ee-1e98-46c5-98ca-a7b2c1d69663",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 15.198,
+      "observed_at": "2026-11-27T13:48:29.781149+00:00",
+      "operation_class": "READ",
+      "operation_id": 559,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 20.663,
+      "observed_at": "2026-11-27T13:48:29.657401+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 558,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-9cde6f24-5552-4af6-b9f8-cabf1adb21e5",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 15.265,
+      "observed_at": "2026-11-27T13:48:29.526862+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 557,
+      "operation_type": "customer",
+      "success": true,
+      "transaction_ref": "workload-customer-b139c5f9-8b53-4c2d-809f-b29fbd9e1601",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 36.739,
+      "observed_at": "2026-11-27T13:48:29.406574+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 556,
+      "operation_type": "order",
+      "success": true,
+      "transaction_ref": "commerce-8bcc3744-c1f5-4991-97f9-6e0960dacd34",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 16.374,
+      "observed_at": "2026-11-27T13:48:29.256694+00:00",
+      "operation_class": "READ",
+      "operation_id": 555,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 28.847,
+      "observed_at": "2026-11-27T13:48:29.123895+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 554,
+      "operation_type": "shipment_update",
+      "success": true,
+      "transaction_ref": "workload-shipment_update-4d0636c7-d8db-4682-a306-2b70436181e5",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 24.598,
+      "observed_at": "2026-11-27T13:48:28.983067+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 553,
+      "operation_type": "order",
+      "success": true,
+      "transaction_ref": "commerce-c8a85e73-621c-4c3d-89d3-8ccb69f6cc81",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 20.608,
+      "observed_at": "2026-11-27T13:48:28.851747+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 552,
+      "operation_type": "payment_update",
+      "success": true,
+      "transaction_ref": "workload-payment_update-bd2d9280-5495-4a31-a861-6dec43dbd371",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 25.007,
+      "observed_at": "2026-11-27T13:48:28.723401+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 551,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-c73b4954-e147-4331-805f-c6f97b84cf6a",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 11.698,
+      "observed_at": "2026-11-27T13:48:28.581312+00:00",
+      "operation_class": "READ",
+      "operation_id": 550,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 23.437,
+      "observed_at": "2026-11-27T13:48:28.463146+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 549,
+      "operation_type": "payment_update",
+      "success": true,
+      "transaction_ref": "workload-payment_update-65a5ea1a-19ad-49bd-bc96-d299424e3ac6",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 10.99,
+      "observed_at": "2026-11-27T13:48:28.326300+00:00",
+      "operation_class": "READ",
+      "operation_id": 548,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": null,
+      "committed": false,
+      "error_class": "HTTP_409",
+      "latency_ms": 21.793,
+      "observed_at": "2026-11-27T13:48:28.208294+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 547,
+      "operation_type": "delete_customer",
+      "success": false,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 18.378,
+      "observed_at": "2026-11-27T13:48:28.074697+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 546,
+      "operation_type": "payment_update",
+      "success": true,
+      "transaction_ref": "workload-payment_update-cfc8f18e-6cfe-495d-96d6-94f910d1c4f0",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 24.92,
+      "observed_at": "2026-11-27T13:48:27.946747+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 545,
+      "operation_type": "delete_customer",
+      "success": true,
+      "transaction_ref": "workload-delete_customer-9d686d02-aa99-4a44-b9cd-88355618c955",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 16.773,
+      "observed_at": "2026-11-27T13:48:27.809671+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 544,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-334ca8de-3949-4f4d-a36b-efa6f724bb00",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 16.189,
+      "observed_at": "2026-11-27T13:48:27.685265+00:00",
+      "operation_class": "READ",
+      "operation_id": 543,
+      "operation_type": "products",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 36.453,
+      "observed_at": "2026-11-27T13:48:27.552346+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 542,
+      "operation_type": "customer",
+      "success": true,
+      "transaction_ref": "workload-customer-80410425-9917-4591-8b42-85e3172cede0",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 29.047,
+      "observed_at": "2026-11-27T13:48:27.403208+00:00",
+      "operation_class": "READ",
+      "operation_id": 541,
+      "operation_type": "orders",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 14.787,
+      "observed_at": "2026-11-27T13:48:27.264906+00:00",
+      "operation_class": "READ",
+      "operation_id": 540,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 23.076,
+      "observed_at": "2026-11-27T13:48:27.133020+00:00",
+      "operation_class": "READ",
+      "operation_id": 539,
+      "operation_type": "customers",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 13.797,
+      "observed_at": "2026-11-27T13:48:26.997142+00:00",
+      "operation_class": "READ",
+      "operation_id": 538,
+      "operation_type": "orders",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 28.206,
+      "observed_at": "2026-11-27T13:48:26.871963+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 537,
+      "operation_type": "order",
+      "success": true,
+      "transaction_ref": "commerce-ce3c20e4-9da5-4d63-88ff-3de84d7ea4de",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 11.932,
+      "observed_at": "2026-11-27T13:48:26.737233+00:00",
+      "operation_class": "READ",
+      "operation_id": 536,
+      "operation_type": "orders",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 24.162,
+      "observed_at": "2026-11-27T13:48:26.612880+00:00",
+      "operation_class": "READ",
+      "operation_id": 535,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 16.068,
+      "observed_at": "2026-11-27T13:48:26.478215+00:00",
+      "operation_class": "READ",
+      "operation_id": 534,
+      "operation_type": "products",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 29.116,
+      "observed_at": "2026-11-27T13:48:26.345932+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 533,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-5048eeb7-1c3d-45ce-9bc7-8040d2b2c48c",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 22.439,
+      "observed_at": "2026-11-27T13:48:26.200333+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 532,
+      "operation_type": "delete_customer",
+      "success": true,
+      "transaction_ref": "workload-delete_customer-236eb895-1e20-4f7b-a132-936e333a392b",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 19.499,
+      "observed_at": "2026-11-27T13:48:26.061368+00:00",
+      "operation_class": "READ",
+      "operation_id": 531,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 18.02,
+      "observed_at": "2026-11-27T13:48:25.927441+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 530,
+      "operation_type": "shipment_update",
+      "success": true,
+      "transaction_ref": "workload-shipment_update-4f653d34-1b75-412a-9ba6-9c3c6324fcea",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 17.851,
+      "observed_at": "2026-11-27T13:48:25.804497+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 529,
+      "operation_type": "payment_update",
+      "success": true,
+      "transaction_ref": "workload-payment_update-6fd5e2dc-3a74-417d-b8d8-7d6aa4546874",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 15.35,
+      "observed_at": "2026-11-27T13:48:25.678986+00:00",
+      "operation_class": "READ",
+      "operation_id": 528,
+      "operation_type": "customers",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 28.081,
+      "observed_at": "2026-11-27T13:48:25.544655+00:00",
+      "operation_class": "READ",
+      "operation_id": 527,
+      "operation_type": "customers",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 28.917,
+      "observed_at": "2026-11-27T13:48:25.401851+00:00",
+      "operation_class": "READ",
+      "operation_id": 526,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 23.783,
+      "observed_at": "2026-11-27T13:48:25.254557+00:00",
+      "operation_class": "READ",
+      "operation_id": 525,
+      "operation_type": "orders",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 20.88,
+      "observed_at": "2026-11-27T13:48:25.114620+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 524,
+      "operation_type": "payment_update",
+      "success": true,
+      "transaction_ref": "workload-payment_update-b989d0dc-1227-46d3-a896-60cb2561ba4c",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 9.117,
+      "observed_at": "2026-11-27T13:48:24.986759+00:00",
+      "operation_class": "READ",
+      "operation_id": 523,
+      "operation_type": "orders",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 13.248,
+      "observed_at": "2026-11-27T13:48:24.872207+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 522,
+      "operation_type": "customer",
+      "success": true,
+      "transaction_ref": "workload-customer-1146bb85-e1a2-4a9b-b4d6-62b841454ed1",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 8.831,
+      "observed_at": "2026-11-27T13:48:24.752684+00:00",
+      "operation_class": "READ",
+      "operation_id": 521,
+      "operation_type": "orders",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 8.906,
+      "observed_at": "2026-11-27T13:48:24.637939+00:00",
+      "operation_class": "READ",
+      "operation_id": 520,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 12.736,
+      "observed_at": "2026-11-27T13:48:24.524268+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 519,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-359119fa-60c6-4f21-b188-ec979c1e82ac",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 33.613,
+      "observed_at": "2026-11-27T13:48:24.404872+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 518,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-32c2dc13-7c3e-4a0c-9388-666e2dd50cc8",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 15.282,
+      "observed_at": "2026-11-27T13:48:24.259496+00:00",
+      "operation_class": "READ",
+      "operation_id": 517,
+      "operation_type": "products",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 30.171,
+      "observed_at": "2026-11-27T13:48:24.135545+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 516,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-aa900208-0c54-4d6e-9254-0dcc9b7a499d",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 23.18,
+      "observed_at": "2026-11-27T13:48:23.987977+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 515,
+      "operation_type": "delete_customer",
+      "success": true,
+      "transaction_ref": "workload-delete_customer-1a582d36-b237-4fd3-ac78-87697d4c7561",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 24.525,
+      "observed_at": "2026-11-27T13:48:23.848689+00:00",
+      "operation_class": "READ",
+      "operation_id": 514,
+      "operation_type": "products",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 14.828,
+      "observed_at": "2026-11-27T13:48:23.714062+00:00",
+      "operation_class": "READ",
+      "operation_id": 513,
+      "operation_type": "products",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 28.596,
+      "observed_at": "2026-11-27T13:48:23.588957+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 512,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-14c8825b-3535-4b93-9d96-4649b3dcea2d",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 16.215,
+      "observed_at": "2026-11-27T13:48:23.452215+00:00",
+      "operation_class": "READ",
+      "operation_id": 511,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 24.026,
+      "observed_at": "2026-11-27T13:48:23.323709+00:00",
+      "operation_class": "READ",
+      "operation_id": 510,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 28.066,
+      "observed_at": "2026-11-27T13:48:23.188042+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 509,
+      "operation_type": "customer",
+      "success": true,
+      "transaction_ref": "workload-customer-611bacb1-affb-4e8c-ba35-1711768fc60a",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 21.081,
+      "observed_at": "2026-11-27T13:48:23.051710+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 508,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-96515e4a-acf1-4c1c-9c8e-0ccc9064e605",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 17.515,
+      "observed_at": "2026-11-27T13:48:22.923419+00:00",
+      "operation_class": "READ",
+      "operation_id": 507,
+      "operation_type": "orders",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": null,
+      "committed": false,
+      "error_class": "HTTP_409",
+      "latency_ms": 15.475,
+      "observed_at": "2026-11-27T13:48:22.788375+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 506,
+      "operation_type": "delete_customer",
+      "success": false,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 21.477,
+      "observed_at": "2026-11-27T13:48:22.667190+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 505,
+      "operation_type": "delete_customer",
+      "success": true,
+      "transaction_ref": "workload-delete_customer-a18eb7b4-8dca-4a51-90f9-0311107fded2",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 11.502,
+      "observed_at": "2026-11-27T13:48:22.530640+00:00",
+      "operation_class": "READ",
+      "operation_id": 504,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 18.415,
+      "observed_at": "2026-11-27T13:48:22.414856+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 503,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-3ea46cf5-71da-4dfb-907a-719858cdf856",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 11.379,
+      "observed_at": "2026-11-27T13:48:22.289744+00:00",
+      "operation_class": "READ",
+      "operation_id": 502,
+      "operation_type": "orders",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 20.785,
+      "observed_at": "2026-11-27T13:48:22.168670+00:00",
+      "operation_class": "READ",
+      "operation_id": 501,
+      "operation_type": "customers",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 21.611,
+      "observed_at": "2026-11-27T13:48:22.041697+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 500,
+      "operation_type": "payment_update",
+      "success": true,
+      "transaction_ref": "workload-payment_update-2ddbb868-b4c4-4a7b-b7a3-7a8cd7fcb2b4",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 34.311,
+      "observed_at": "2026-11-27T13:48:21.904473+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 499,
+      "operation_type": "order",
+      "success": true,
+      "transaction_ref": "commerce-41bd3ddf-a375-44ff-8015-3c6c86b5bf0c",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 14.94,
+      "observed_at": "2026-11-27T13:48:21.753373+00:00",
+      "operation_class": "READ",
+      "operation_id": 498,
+      "operation_type": "products",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 34.185,
+      "observed_at": "2026-11-27T13:48:21.630163+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 497,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-2c560a04-70e7-4c64-a999-92efb9caab7e",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 13.888,
+      "observed_at": "2026-11-27T13:48:21.478658+00:00",
+      "operation_class": "READ",
+      "operation_id": 496,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 12.411,
+      "observed_at": "2026-11-27T13:48:21.352308+00:00",
+      "operation_class": "READ",
+      "operation_id": 495,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 9.935,
+      "observed_at": "2026-11-27T13:48:21.233830+00:00",
+      "operation_class": "READ",
+      "operation_id": 494,
+      "operation_type": "orders",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 21.488,
+      "observed_at": "2026-11-27T13:48:21.118266+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 493,
+      "operation_type": "delete_customer",
+      "success": true,
+      "transaction_ref": "workload-delete_customer-c613ab65-958c-4a9b-90af-4d84ff4ae8d9",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 14.507,
+      "observed_at": "2026-11-27T13:48:20.990151+00:00",
+      "operation_class": "READ",
+      "operation_id": 492,
+      "operation_type": "products",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 22.219,
+      "observed_at": "2026-11-27T13:48:20.866802+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 491,
+      "operation_type": "order",
+      "success": true,
+      "transaction_ref": "commerce-845d964c-092e-4682-bfc9-b01f799d251a",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 18.825,
+      "observed_at": "2026-11-27T13:48:20.738829+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 490,
+      "operation_type": "order",
+      "success": true,
+      "transaction_ref": "commerce-533f0f05-b2c6-4ea1-a337-b4c74de67a17",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 23.419,
+      "observed_at": "2026-11-27T13:48:20.609452+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 489,
+      "operation_type": "customer",
+      "success": true,
+      "transaction_ref": "workload-customer-c2d4ecc1-880e-44e6-8e50-382c32bc4a1c",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 16.225,
+      "observed_at": "2026-11-27T13:48:20.479026+00:00",
+      "operation_class": "READ",
+      "operation_id": 488,
+      "operation_type": "orders",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 17.391,
+      "observed_at": "2026-11-27T13:48:20.354755+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 487,
+      "operation_type": "payment_update",
+      "success": true,
+      "transaction_ref": "workload-payment_update-a547d080-d282-4a75-8f66-6dfe0393cf75",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 12.485,
+      "observed_at": "2026-11-27T13:48:20.229463+00:00",
+      "operation_class": "READ",
+      "operation_id": 486,
+      "operation_type": "products",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 17.825,
+      "observed_at": "2026-11-27T13:48:20.111937+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 485,
+      "operation_type": "shipment_update",
+      "success": true,
+      "transaction_ref": "workload-shipment_update-82bde00c-9a9f-4d46-9875-6c36c8a20d7c",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 21.981,
+      "observed_at": "2026-11-27T13:48:19.981154+00:00",
+      "operation_class": "READ",
+      "operation_id": 484,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 20.122,
+      "observed_at": "2026-11-27T13:48:19.844124+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 483,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-4c702630-e475-4237-acdf-0a8015366fcb",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 17.436,
+      "observed_at": "2026-11-27T13:48:19.715642+00:00",
+      "operation_class": "READ",
+      "operation_id": 482,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 12.934,
+      "observed_at": "2026-11-27T13:48:19.591923+00:00",
+      "operation_class": "READ",
+      "operation_id": 481,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 34.352,
+      "observed_at": "2026-11-27T13:48:19.469771+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 480,
+      "operation_type": "customer",
+      "success": true,
+      "transaction_ref": "workload-customer-6c06db6f-ad2c-4973-87f6-f98c2cbc100d",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 29.973,
+      "observed_at": "2026-11-27T13:48:19.319046+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 479,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-3c162778-9f97-432c-ab0a-2cf2081ed2b3",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": null,
+      "committed": false,
+      "error_class": "HTTP_409",
+      "latency_ms": 26.842,
+      "observed_at": "2026-11-27T13:48:19.172453+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 478,
+      "operation_type": "delete_customer",
+      "success": false,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 23.681,
+      "observed_at": "2026-11-27T13:48:19.037128+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 477,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-0bf47166-0ca0-4bfc-b750-46f33f6dcaee",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 9.493,
+      "observed_at": "2026-11-27T13:48:18.906658+00:00",
+      "operation_class": "READ",
+      "operation_id": 476,
+      "operation_type": "orders",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 18.24,
+      "observed_at": "2026-11-27T13:48:18.786732+00:00",
+      "operation_class": "READ",
+      "operation_id": 475,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 20.967,
+      "observed_at": "2026-11-27T13:48:18.654145+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 474,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-b2830ac8-7737-42fa-922c-1680bbae9732",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 20.703,
+      "observed_at": "2026-11-27T13:48:18.524811+00:00",
+      "operation_class": "READ",
+      "operation_id": 473,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 13.47,
+      "observed_at": "2026-11-27T13:48:18.395708+00:00",
+      "operation_class": "READ",
+      "operation_id": 472,
+      "operation_type": "customers",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 27.087,
+      "observed_at": "2026-11-27T13:48:18.267384+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 471,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-e2d6664b-6d0a-4482-84eb-36a2746d567c",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 15.041,
+      "observed_at": "2026-11-27T13:48:18.128166+00:00",
+      "operation_class": "READ",
+      "operation_id": 470,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 18.628,
+      "observed_at": "2026-11-27T13:48:17.995516+00:00",
+      "operation_class": "READ",
+      "operation_id": 469,
+      "operation_type": "customers",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": null,
+      "committed": false,
+      "error_class": "HTTP_409",
+      "latency_ms": 15.581,
+      "observed_at": "2026-11-27T13:48:17.859731+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 468,
+      "operation_type": "delete_customer",
+      "success": false,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 28.221,
+      "observed_at": "2026-11-27T13:48:17.731665+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 467,
+      "operation_type": "shipment_update",
+      "success": true,
+      "transaction_ref": "workload-shipment_update-f4d300b0-9272-479f-a9fe-e00a969bbafb",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 12.469,
+      "observed_at": "2026-11-27T13:48:17.586416+00:00",
+      "operation_class": "READ",
+      "operation_id": 466,
+      "operation_type": "customers",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 28.516,
+      "observed_at": "2026-11-27T13:48:17.463413+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 465,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-3f082261-b6bf-4321-92ff-6973e18a6a18",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 21.093,
+      "observed_at": "2026-11-27T13:48:17.318138+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 464,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-e8d4b41e-81fb-430c-8f76-d522cdab2c76",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 23.005,
+      "observed_at": "2026-11-27T13:48:17.188828+00:00",
+      "operation_class": "READ",
+      "operation_id": 463,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 14.784,
+      "observed_at": "2026-11-27T13:48:17.055609+00:00",
+      "operation_class": "READ",
+      "operation_id": 462,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 24.049,
+      "observed_at": "2026-11-27T13:48:16.930925+00:00",
+      "operation_class": "READ",
+      "operation_id": 461,
+      "operation_type": "products",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 14.818,
+      "observed_at": "2026-11-27T13:48:16.790533+00:00",
+      "operation_class": "READ",
+      "operation_id": 460,
+      "operation_type": "orders",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 29.655,
+      "observed_at": "2026-11-27T13:48:16.665462+00:00",
+      "operation_class": "READ",
+      "operation_id": 459,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 21.337,
+      "observed_at": "2026-11-27T13:48:16.517439+00:00",
+      "operation_class": "READ",
+      "operation_id": 458,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 26.129,
+      "observed_at": "2026-11-27T13:48:16.387508+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 457,
+      "operation_type": "payment_update",
+      "success": true,
+      "transaction_ref": "workload-payment_update-524c39d7-f514-47d2-a45a-e3fde7c721f0",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 27.793,
+      "observed_at": "2026-11-27T13:48:16.253300+00:00",
+      "operation_class": "READ",
+      "operation_id": 456,
+      "operation_type": "customers",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 22.134,
+      "observed_at": "2026-11-27T13:48:16.107662+00:00",
+      "operation_class": "READ",
+      "operation_id": 455,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 25.724,
+      "observed_at": "2026-11-27T13:48:15.967403+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 454,
+      "operation_type": "order",
+      "success": true,
+      "transaction_ref": "commerce-fb92b28e-8a35-435b-a1d9-1fbce639e954",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 27.309,
+      "observed_at": "2026-11-27T13:48:15.826769+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 453,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-6d11b3a5-d345-46cf-b4a9-8828300c6e70",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 24.185,
+      "observed_at": "2026-11-27T13:48:15.685100+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 452,
+      "operation_type": "order",
+      "success": true,
+      "transaction_ref": "commerce-92c9e099-7dd4-448c-b53b-c3869c956bb9",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 22.027,
+      "observed_at": "2026-11-27T13:48:15.547779+00:00",
+      "operation_class": "READ",
+      "operation_id": 451,
+      "operation_type": "orders",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 35.457,
+      "observed_at": "2026-11-27T13:48:15.419170+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 450,
+      "operation_type": "payment_update",
+      "success": true,
+      "transaction_ref": "workload-payment_update-9d5530f9-4e1a-47fe-9f9c-a449590e282d",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 22.656,
+      "observed_at": "2026-11-27T13:48:15.266193+00:00",
+      "operation_class": "READ",
+      "operation_id": 449,
+      "operation_type": "orders",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 19.02,
+      "observed_at": "2026-11-27T13:48:15.135144+00:00",
+      "operation_class": "READ",
+      "operation_id": 448,
+      "operation_type": "products",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 21.043,
+      "observed_at": "2026-11-27T13:48:15.005003+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 447,
+      "operation_type": "order",
+      "success": true,
+      "transaction_ref": "commerce-aa11ddff-8acc-41e1-90b6-31957f0f449c",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 14.521,
+      "observed_at": "2026-11-27T13:48:14.875930+00:00",
+      "operation_class": "READ",
+      "operation_id": 446,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 8.508,
+      "observed_at": "2026-11-27T13:48:14.744474+00:00",
+      "operation_class": "READ",
+      "operation_id": 445,
+      "operation_type": "customers",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 9.639,
+      "observed_at": "2026-11-27T13:48:14.630772+00:00",
+      "operation_class": "READ",
+      "operation_id": 444,
+      "operation_type": "products",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 9.172,
+      "observed_at": "2026-11-27T13:48:14.515507+00:00",
+      "operation_class": "READ",
+      "operation_id": 443,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 29.3,
+      "observed_at": "2026-11-27T13:48:14.400410+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 442,
+      "operation_type": "shipment_update",
+      "success": true,
+      "transaction_ref": "workload-shipment_update-ca37c001-0c52-4454-936d-3f4bd4f2c72d",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 13.75,
+      "observed_at": "2026-11-27T13:48:14.255657+00:00",
+      "operation_class": "READ",
+      "operation_id": 441,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": null,
+      "committed": false,
+      "error_class": "HTTP_409",
+      "latency_ms": 27.543,
+      "observed_at": "2026-11-27T13:48:14.126524+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 440,
+      "operation_type": "delete_customer",
+      "success": false,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 12.502,
+      "observed_at": "2026-11-27T13:48:13.986724+00:00",
+      "operation_class": "READ",
+      "operation_id": 439,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 21.656,
+      "observed_at": "2026-11-27T13:48:13.859483+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 438,
+      "operation_type": "order",
+      "success": true,
+      "transaction_ref": "commerce-2354790e-7ca6-409f-be36-0802652b9e9a",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 12.501,
+      "observed_at": "2026-11-27T13:48:13.732262+00:00",
+      "operation_class": "READ",
+      "operation_id": 437,
+      "operation_type": "customers",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 19.586,
+      "observed_at": "2026-11-27T13:48:13.613561+00:00",
+      "operation_class": "READ",
+      "operation_id": 436,
+      "operation_type": "products",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 12.427,
+      "observed_at": "2026-11-27T13:48:13.481213+00:00",
+      "operation_class": "READ",
+      "operation_id": 435,
+      "operation_type": "products",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": null,
+      "committed": false,
+      "error_class": "HTTP_409",
+      "latency_ms": 57.235,
+      "observed_at": "2026-11-27T13:48:13.353589+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 434,
+      "operation_type": "delete_customer",
+      "success": false,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 35.954,
+      "observed_at": "2026-11-27T13:48:13.185274+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 433,
+      "operation_type": "delete_customer",
+      "success": true,
+      "transaction_ref": "workload-delete_customer-0808f58e-77ed-4611-9609-588547d00b1d",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 25.961,
+      "observed_at": "2026-11-27T13:48:13.031675+00:00",
+      "operation_class": "READ",
+      "operation_id": 432,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 25.055,
+      "observed_at": "2026-11-27T13:48:12.888492+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 431,
+      "operation_type": "customer",
+      "success": true,
+      "transaction_ref": "workload-customer-50a40e44-e3f9-48d5-ba0a-271e9eec579f",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 22.408,
+      "observed_at": "2026-11-27T13:48:12.750863+00:00",
+      "operation_class": "READ",
+      "operation_id": 430,
+      "operation_type": "products",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": null,
+      "committed": false,
+      "error_class": "HTTP_409",
+      "latency_ms": 23.011,
+      "observed_at": "2026-11-27T13:48:12.618918+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 429,
+      "operation_type": "delete_customer",
+      "success": false,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 40.173,
+      "observed_at": "2026-11-27T13:48:12.488042+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 428,
+      "operation_type": "delete_customer",
+      "success": true,
+      "transaction_ref": "workload-delete_customer-71fdfa1c-4560-4d86-9ea5-3c438ec3a75b",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 13.529,
+      "observed_at": "2026-11-27T13:48:12.333107+00:00",
+      "operation_class": "READ",
+      "operation_id": 427,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 15.401,
+      "observed_at": "2026-11-27T13:48:12.208800+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 426,
+      "operation_type": "payment_update",
+      "success": true,
+      "transaction_ref": "workload-payment_update-7f70d09d-52ba-44e2-80b0-1b2eafb37c07",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 21.978,
+      "observed_at": "2026-11-27T13:48:12.086727+00:00",
+      "operation_class": "READ",
+      "operation_id": 425,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 19.346,
+      "observed_at": "2026-11-27T13:48:11.947029+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 424,
+      "operation_type": "shipment_update",
+      "success": true,
+      "transaction_ref": "workload-shipment_update-2b4c1abf-f1a8-49a2-9abb-3a5cf14c236b",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 22.851,
+      "observed_at": "2026-11-27T13:48:11.821452+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 423,
+      "operation_type": "customer",
+      "success": true,
+      "transaction_ref": "workload-customer-e827fd74-4e53-484e-a440-4dd2857d5379",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 18.874,
+      "observed_at": "2026-11-27T13:48:11.689505+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 422,
+      "operation_type": "delete_customer",
+      "success": true,
+      "transaction_ref": "workload-delete_customer-770bf55c-4425-4a29-89e4-7f09b5393e6f",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 16.041,
+      "observed_at": "2026-11-27T13:48:11.564028+00:00",
+      "operation_class": "READ",
+      "operation_id": 421,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 12.03,
+      "observed_at": "2026-11-27T13:48:11.440023+00:00",
+      "operation_class": "READ",
+      "operation_id": 420,
+      "operation_type": "orders",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 17.462,
+      "observed_at": "2026-11-27T13:48:11.320778+00:00",
+      "operation_class": "READ",
+      "operation_id": 419,
+      "operation_type": "customers",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 19.334,
+      "observed_at": "2026-11-27T13:48:11.186477+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 418,
+      "operation_type": "order",
+      "success": true,
+      "transaction_ref": "commerce-af75dc98-063a-42da-8a37-e37f10f2d7f2",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 22.585,
+      "observed_at": "2026-11-27T13:48:11.060565+00:00",
+      "operation_class": "READ",
+      "operation_id": 417,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 16.327,
+      "observed_at": "2026-11-27T13:48:10.926211+00:00",
+      "operation_class": "READ",
+      "operation_id": 416,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 17.574,
+      "observed_at": "2026-11-27T13:48:10.801051+00:00",
+      "operation_class": "READ",
+      "operation_id": 415,
+      "operation_type": "customers",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 11.612,
+      "observed_at": "2026-11-27T13:48:10.669180+00:00",
+      "operation_class": "READ",
+      "operation_id": 414,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 23.236,
+      "observed_at": "2026-11-27T13:48:10.550898+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 413,
+      "operation_type": "customer",
+      "success": true,
+      "transaction_ref": "workload-customer-7f21e13b-8ec0-470b-947c-e6b406ccb341",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "TARGET",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 23.311,
+      "observed_at": "2026-11-27T13:48:10.418623+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 412,
+      "operation_type": "shipment_update",
+      "success": true,
+      "transaction_ref": "workload-shipment_update-c7e73e77-cffe-4a12-b199-6f01210ecd36",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": null,
+      "committed": false,
+      "error_class": "HTTP_409",
+      "latency_ms": 14.379,
+      "observed_at": "2026-11-27T13:48:10.282075+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 411,
+      "operation_type": "delete_customer",
+      "success": false,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": null,
+      "committed": false,
+      "error_class": "HTTP_503",
+      "latency_ms": 5.383,
+      "observed_at": "2026-11-27T13:48:10.159242+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 410,
+      "operation_type": "product_update",
+      "success": false,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 8.47,
+      "observed_at": "2026-11-27T13:48:10.047277+00:00",
+      "operation_class": "READ",
+      "operation_id": 409,
+      "operation_type": "products",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 8.921,
+      "observed_at": "2026-11-27T13:48:09.932219+00:00",
+      "operation_class": "READ",
+      "operation_id": 408,
+      "operation_type": "customers",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 9.303,
+      "observed_at": "2026-11-27T13:48:09.816936+00:00",
+      "operation_class": "READ",
+      "operation_id": 407,
+      "operation_type": "products",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 14.765,
+      "observed_at": "2026-11-27T13:48:09.701685+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 406,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-d99a0196-9a21-467d-ba65-d38de2b49685",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 19.453,
+      "observed_at": "2026-11-27T13:48:09.576792+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 405,
+      "operation_type": "delete_customer",
+      "success": true,
+      "transaction_ref": "workload-delete_customer-419e7d01-12ee-4a71-b843-139c79f306ed",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 10.927,
+      "observed_at": "2026-11-27T13:48:09.451132+00:00",
+      "operation_class": "READ",
+      "operation_id": 404,
+      "operation_type": "customers",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 22.167,
+      "observed_at": "2026-11-27T13:48:09.334371+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 403,
+      "operation_type": "customer",
+      "success": true,
+      "transaction_ref": "workload-customer-6e862575-b08f-4f29-85b5-f27e15b54d7a",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 23.328,
+      "observed_at": "2026-11-27T13:48:09.201022+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 402,
+      "operation_type": "shipment_update",
+      "success": true,
+      "transaction_ref": "workload-shipment_update-f8c2bb07-0b8e-449f-a6b7-930450214590",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": null,
+      "committed": false,
+      "error_class": "HTTP_409",
+      "latency_ms": 24.277,
+      "observed_at": "2026-11-27T13:48:09.069773+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 401,
+      "operation_type": "delete_customer",
+      "success": false,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 33.695,
+      "observed_at": "2026-11-27T13:48:08.938476+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 400,
+      "operation_type": "delete_customer",
+      "success": true,
+      "transaction_ref": "workload-delete_customer-0feeef04-af8a-44e3-b032-6228eea0f5eb",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 20.007,
+      "observed_at": "2026-11-27T13:48:08.789077+00:00",
+      "operation_class": "READ",
+      "operation_id": 399,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 25.945,
+      "observed_at": "2026-11-27T13:48:08.652612+00:00",
+      "operation_class": "READ",
+      "operation_id": 398,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 18.479,
+      "observed_at": "2026-11-27T13:48:08.515042+00:00",
+      "operation_class": "READ",
+      "operation_id": 397,
+      "operation_type": "customers",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 28.282,
+      "observed_at": "2026-11-27T13:48:08.388390+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 396,
+      "operation_type": "order",
+      "success": true,
+      "transaction_ref": "commerce-f9dde4fc-cc62-4f64-8bce-27d6a840a355",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 16.801,
+      "observed_at": "2026-11-27T13:48:08.253701+00:00",
+      "operation_class": "READ",
+      "operation_id": 395,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 12.366,
+      "observed_at": "2026-11-27T13:48:08.123976+00:00",
+      "operation_class": "READ",
+      "operation_id": 394,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 16.437,
+      "observed_at": "2026-11-27T13:48:08.002924+00:00",
+      "operation_class": "READ",
+      "operation_id": 393,
+      "operation_type": "orders",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 15.013,
+      "observed_at": "2026-11-27T13:48:07.875881+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 392,
+      "operation_type": "shipment_update",
+      "success": true,
+      "transaction_ref": "workload-shipment_update-e9b19234-e1b5-4b70-99e9-7aff88c45aa2",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 34.166,
+      "observed_at": "2026-11-27T13:48:07.755389+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 391,
+      "operation_type": "order",
+      "success": true,
+      "transaction_ref": "commerce-55b1b8a9-cf77-4266-9838-d9ac25ce4a20",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 12.536,
+      "observed_at": "2026-11-27T13:48:07.611115+00:00",
+      "operation_class": "READ",
+      "operation_id": 390,
+      "operation_type": "orders",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 12.3,
+      "observed_at": "2026-11-27T13:48:07.488941+00:00",
+      "operation_class": "READ",
+      "operation_id": 389,
+      "operation_type": "customers",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 17.714,
+      "observed_at": "2026-11-27T13:48:07.369385+00:00",
+      "operation_class": "READ",
+      "operation_id": 388,
+      "operation_type": "activity",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 32.446,
+      "observed_at": "2026-11-27T13:48:07.234283+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 387,
+      "operation_type": "payment_update",
+      "success": true,
+      "transaction_ref": "workload-payment_update-085c9696-8982-452a-a132-a7caf70c13de",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 14.366,
+      "observed_at": "2026-11-27T13:48:07.084825+00:00",
+      "operation_class": "READ",
+      "operation_id": 386,
+      "operation_type": "inventory",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 25.187,
+      "observed_at": "2026-11-27T13:48:06.954836+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 385,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-5c5e9d24-9c48-42c9-97fb-1158dbd58c54",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 10.243,
+      "observed_at": "2026-11-27T13:48:06.821839+00:00",
+      "operation_class": "READ",
+      "operation_id": 384,
+      "operation_type": "products",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 35.114,
+      "observed_at": "2026-11-27T13:48:06.702087+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 383,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-06fe01e3-776d-4904-bc7b-ae0625158e51",
+      "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 15.542,
+      "observed_at": "2026-11-27T13:47:49.729634+00:00",
+      "operation_class": "READ",
+      "operation_id": 382,
+      "operation_type": "orders",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 11.125,
+      "observed_at": "2026-11-27T13:47:49.606305+00:00",
+      "operation_class": "READ",
+      "operation_id": 381,
+      "operation_type": "customers",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 29.258,
+      "observed_at": "2026-11-27T13:47:49.483677+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 380,
+      "operation_type": "payment_update",
+      "success": true,
+      "transaction_ref": "workload-payment_update-ad02f285-aaca-4abb-9f60-fcf06be2f7e2",
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 19.11,
+      "observed_at": "2026-11-27T13:47:49.341654+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 379,
+      "operation_type": "shipment_update",
+      "success": true,
+      "transaction_ref": "workload-shipment_update-4fd9959d-6e80-422c-bb87-1763a1aa1760",
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 39.33,
+      "observed_at": "2026-11-27T13:47:49.214594+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 378,
+      "operation_type": "customer",
+      "success": true,
+      "transaction_ref": "workload-customer-45523ff9-4365-47be-a039-c912fe5904e3",
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 26.341,
+      "observed_at": "2026-11-27T13:47:49.058056+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 377,
+      "operation_type": "order",
+      "success": true,
+      "transaction_ref": "commerce-bfead41c-ff57-49e1-91ad-a13a5f3a985c",
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": null,
+      "committed": false,
+      "error_class": "HTTP_409",
+      "latency_ms": 26.821,
+      "observed_at": "2026-11-27T13:47:48.922293+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 376,
+      "operation_type": "delete_customer",
+      "success": false,
+      "transaction_ref": null,
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 24.494,
+      "observed_at": "2026-11-27T13:47:48.782367+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 375,
+      "operation_type": "order",
+      "success": true,
+      "transaction_ref": "commerce-ae97689c-0b04-4721-b4dd-538a729c0536",
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 29.594,
+      "observed_at": "2026-11-27T13:47:48.645476+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 374,
+      "operation_type": "delete_customer",
+      "success": true,
+      "transaction_ref": "workload-delete_customer-f0cfde51-268f-499a-aae5-2059c73235d4",
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 14.706,
+      "observed_at": "2026-11-27T13:47:48.508885+00:00",
+      "operation_class": "READ",
+      "operation_id": 373,
+      "operation_type": "products",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 24.45,
+      "observed_at": "2026-11-27T13:47:48.383480+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 372,
+      "operation_type": "delete_customer",
+      "success": true,
+      "transaction_ref": "workload-delete_customer-d3774534-588c-4eb6-8786-61f8e19a1d54",
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 18.572,
+      "observed_at": "2026-11-27T13:47:48.251506+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 371,
+      "operation_type": "payment_update",
+      "success": true,
+      "transaction_ref": "workload-payment_update-2298d01b-5967-4db1-a9f8-6e3b06f7245e",
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 19.693,
+      "observed_at": "2026-11-27T13:47:48.122721+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 370,
+      "operation_type": "shipment_update",
+      "success": true,
+      "transaction_ref": "workload-shipment_update-21cebd93-81b6-42fb-8cd3-6212572b19b5",
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 26.16,
+      "observed_at": "2026-11-27T13:47:47.997452+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 369,
+      "operation_type": "shipment_update",
+      "success": true,
+      "transaction_ref": "workload-shipment_update-e05a9577-2ed7-4774-8e1d-2dcedabf8ee1",
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 19.486,
+      "observed_at": "2026-11-27T13:47:47.854722+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 368,
+      "operation_type": "payment_update",
+      "success": true,
+      "transaction_ref": "workload-payment_update-854d0e84-a46d-4001-b8a4-0d17ec24bc8f",
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 49.673,
+      "observed_at": "2026-11-27T13:47:47.729133+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 367,
+      "operation_type": "order",
+      "success": true,
+      "transaction_ref": "commerce-7941fdb1-61d6-459c-a56d-1db8c96d5355",
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 32.308,
+      "observed_at": "2026-11-27T13:47:47.564097+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 366,
+      "operation_type": "delete_customer",
+      "success": true,
+      "transaction_ref": "workload-delete_customer-52ae6d90-125d-417c-853b-f76774e6e3ed",
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 22.018,
+      "observed_at": "2026-11-27T13:47:47.420020+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 365,
+      "operation_type": "payment_update",
+      "success": true,
+      "transaction_ref": "workload-payment_update-60f9256b-116d-4ba9-a48b-c9f15c4f625b",
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 31.11,
+      "observed_at": "2026-11-27T13:47:47.284762+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 364,
+      "operation_type": "delete_customer",
+      "success": true,
+      "transaction_ref": "workload-delete_customer-3fd5499d-82cc-4e00-a7b5-d8432abcc675",
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 24.744,
+      "observed_at": "2026-11-27T13:47:47.134385+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 363,
+      "operation_type": "order",
+      "success": true,
+      "transaction_ref": "commerce-cae6606a-823d-4ba3-92f9-9efe921f38be",
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": true,
+      "error_class": null,
+      "latency_ms": 36.213,
+      "observed_at": "2026-11-27T13:47:47.002300+00:00",
+      "operation_class": "WRITE",
+      "operation_id": 362,
+      "operation_type": "product_update",
+      "success": true,
+      "transaction_ref": "workload-product_update-ffd427a3-7fc7-442e-ae60-f8e6a21ce1bf",
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    },
+    {
+      "active_endpoint": "SOURCE",
+      "committed": false,
+      "error_class": null,
+      "latency_ms": 26.549,
+      "observed_at": "2026-11-27T13:47:46.858738+00:00",
+      "operation_class": "READ",
+      "operation_id": 361,
+      "operation_type": "customers",
+      "success": true,
+      "transaction_ref": null,
+      "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+    }
+  ]
+}

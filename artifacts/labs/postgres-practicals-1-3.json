@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-11-27T14:14:44.097383+00:00",
+  "database": "parth_commerce_target",
+  "practicals": [
+    {
+      "practical": 1,
+      "objective": "Compare normalized commerce relationships with a denormalized analytical representation.",
+      "normal_forms": {
+        "1NF": "Scalar columns and primary keys; repeating order items are separate rows.",
+        "2NF": "Non-key order-item facts depend on the complete order_item_id key.",
+        "3NF": "Customer, product, supplier, payment, shipment, and warehouse attributes are separated.",
+        "BCNF": "Determinants represented by declared candidate keys; business dependencies outside constraints remain an application responsibility."
+      },
+      "constraints": {
+        "primary_keys": 13,
+        "foreign_keys": 13,
+        "unique_constraints": 14
+      },
+      "relation_storage": [
+        {
+          "relation": "product_sales_summary",
+          "relkind": "m",
+          "total_bytes": 16384
+        },
+        {
+          "relation": "customer_addresses",
+          "relkind": "r",
+          "total_bytes": 368640
+        },
+        {
+          "relation": "customers",
+          "relkind": "r",
+          "total_bytes": 1089536
+        },
+        {
+          "relation": "inventory",
+          "relkind": "r",
+          "total_bytes": 221184
+        },
+        {
+          "relation": "inventory_movements",
+          "relkind": "r",
+          "total_bytes": 172032
+        },
+        {
+          "relation": "order_items",
+          "relkind": "r",
+          "total_bytes": 204800
+        },
+        {
+          "relation": "orders",
+          "relkind": "r",
+          "total_bytes": 409600
+        },
+        {
+          "relation": "payments",
+          "relkind": "r",
+          "total_bytes": 311296
+        },
+        {
+          "relation": "product_categories",
+          "relkind": "r",
+          "total_bytes": 49152
+        },
+        {
+          "relation": "products",
+          "relkind": "r",
+          "total_bytes": 475136
+        },
+        {
+          "relation": "shipments",
+          "relkind": "r",
+          "total_bytes": 376832
+        },
+        {
+          "relation": "suppliers",
+          "relkind": "r",
+          "total_bytes": 49152
+        },
+        {
+          "relation": "transaction_events",
+          "relkind": "r",
+          "total_bytes": 507904
+        },
+        {
+          "relation": "warehouses",
+          "relkind": "r",
+          "total_bytes": 49152
+        }
+      ],
+      "normalized_aggregate_plan": {
+        "node_type": "Aggregate",
+        "index_name": null,
+        "actual_rows": 1000,
+        "planning_time_ms": 0.184,
+        "execution_time_ms": 0.601,
+        "shared_hit_blocks": 49,
+        "shared_read_blocks": 0
+      },
+      "materialized_summary_plan": {
+        "node_type": "Sort",
+        "index_name": null,
+        "actual_rows": 1000,
+        "planning_time_ms": 0.049,
+        "execution_time_ms": 0.181,
+        "shared_hit_blocks": 16,
+        "shared_read_blocks": 0
+      },
+      "limitations": "One local dataset and warm-cache plans; materialized data trades freshness and refresh cost for read speed."
+    },
+    {
+      "practical": 2,
+      "atomicity": {
+        "before": 2000,
+        "after_rollback": 2000,
+        "preserved": true
+      },
+      "consistency": {
+        "negative_balance_rejected": true
+      },
+      "durability": {
+        "committed_balance_from_new_session": 1025
+      },
+      "read_committed": {
+        "first_read": 1000,
+        "second_read": 1010
+      },
+      "repeatable_read": {
+        "first_read": 1000,
+        "second_read": 1000
+      },
+      "serializable": {
+        "outcomes": [
+          "COMMITTED",
+          "SERIALIZATION_FAILURE"
+        ]
+      },
+      "lock_contention": {
+        "blocked_ms": 512.65
+      },
+      "limitations": "PostgreSQL maps READ UNCOMMITTED to READ COMMITTED; anomaly outcomes are PostgreSQL-specific."
+    },
+    {
+      "practical": 3,
+      "rows": 100000,
+      "unindexed": {
+        "node_type": "Seq Scan",
+        "index_name": null,
+        "actual_rows": 1,
+        "planning_time_ms": 0.135,
+        "execution_time_ms": 3.732,
+        "shared_hit_blocks": 2041,
+        "shared_read_blocks": 0
+      },
+      "btree": {
+        "node_type": "Index Scan",
+        "index_name": "index_probe_lookup_btree",
+        "actual_rows": 1,
+        "planning_time_ms": 0.092,
+        "execution_time_ms": 0.026,
+        "shared_hit_blocks": 1,
+        "shared_read_blocks": 3
+      },
+      "hash": {
+        "node_type": "Index Scan",
+        "index_name": "index_probe_lookup_hash",
+        "actual_rows": 1,
+        "planning_time_ms": 0.214,
+        "execution_time_ms": 0.021,
+        "shared_hit_blocks": 3,
+        "shared_read_blocks": 0
+      },
+      "composite": {
+        "node_type": "Limit",
+        "index_name": null,
+        "actual_rows": 100,
+        "planning_time_ms": 0.038,
+        "execution_time_ms": 0.102,
+        "shared_hit_blocks": 100,
+        "shared_read_blocks": 4
+      },
+      "index_sizes": [
+        {
+          "index_name": "lab.index_probe_bucket_id",
+          "bytes": 3178496
+        },
+        {
+          "index_name": "lab.index_probe_lookup_hash",
+          "bytes": 4210688
+        },
+        {
+          "index_name": "lab.index_probe_pkey",
+          "bytes": 2260992
+        }
+      ],
+      "explanation": "B-tree supports equality, ordering, and ranges; hash targets equality. PostgreSQL bitmap scans are runtime access paths, not a separately stored bitmap index type.",
+      "limitations": "Single local warm-cache observation; use repeated trials before drawing performance conclusions."
+    }
+  ]
+}

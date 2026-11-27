@@ -1,0 +1,82 @@
+{
+  "baseline": {
+    "active_database": "TARGET",
+    "application": "parth-commerce-application",
+    "observed_at": "2026-11-27T14:02:06.564455+00:00",
+    "route_version": 3,
+    "state": "AVAILABLE",
+    "writes_enabled": true
+  },
+  "completed_at": "2026-11-27T14:02:07.995566+00:00",
+  "consistency_check": "TARGET_LOCAL_INVARIANT_ONLY_SOURCE_IS_STALE_AFTER_CUTOVER",
+  "control_health": {
+    "databases": [
+      {
+        "database_name": "parth_commerce_source",
+        "endpoint_id": "source",
+        "error": null,
+        "latency_ms": 6.0,
+        "observed_at": "2026-11-27T14:02:07.889844Z",
+        "postgres_version": "PostgreSQL 16.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit",
+        "resource_name": "pg-source-parth",
+        "state": "AVAILABLE"
+      },
+      {
+        "database_name": "parth_commerce_target",
+        "endpoint_id": "target",
+        "error": null,
+        "latency_ms": 5.04,
+        "observed_at": "2026-11-27T14:02:07.894924Z",
+        "postgres_version": "PostgreSQL 16.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit",
+        "resource_name": "pg-target-parth",
+        "state": "AVAILABLE"
+      },
+      {
+        "database_name": "cloudshift_control",
+        "endpoint_id": "control",
+        "error": null,
+        "latency_ms": 3.96,
+        "observed_at": "2026-11-27T14:02:07.898906Z",
+        "postgres_version": "PostgreSQL 16.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit",
+        "resource_name": "pg-control-parth",
+        "state": "AVAILABLE"
+      }
+    ],
+    "deployment_mode": "LIVE_LOCAL",
+    "observed_at": "2026-11-27T14:02:07.898951Z",
+    "service": "cloudshift-control-plane",
+    "state": "AVAILABLE"
+  },
+  "control_health_available": true,
+  "detected": {
+    "payload": {
+      "active_database": "TARGET",
+      "application": "parth-commerce-application",
+      "observed_at": "2026-11-27T14:02:07.356300+00:00",
+      "route_version": 3,
+      "state": "UNREACHABLE",
+      "writes_enabled": true
+    },
+    "transport_ok": true
+  },
+  "detection_duration_ms": 524,
+  "experiment_id": "990ae9a9-7b8d-4c73-b4e5-eeb1415cdb06",
+  "incident_id": "0dc7ff4d-34be-4625-beb7-cf56b0623f51",
+  "post_cutover_order_count": 1,
+  "recovered": {
+    "active_database": "TARGET",
+    "application": "parth-commerce-application",
+    "observed_at": "2026-11-27T14:02:07.880098+00:00",
+    "route_version": 3,
+    "state": "AVAILABLE",
+    "writes_enabled": true
+  },
+  "recovery_duration_ms": 1241,
+  "remaining_risk": "Single local experiment; no failover replica is configured.",
+  "result": "RECOVERED",
+  "scenario": "DESTINATION_DATABASE_INTERRUPTION",
+  "schema_version": 1,
+  "service_recovery_poll_ms": 295,
+  "started_at": "2026-11-27T14:02:06.524697+00:00",
+  "timeout_seconds": 45
+}

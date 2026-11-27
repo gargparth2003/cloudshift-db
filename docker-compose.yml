@@ -1,0 +1,470 @@
+name: cloudshift-parth
+
+x-postgres-common: &postgres-common
+  image: postgres:16.6-alpine
+  restart: unless-stopped
+  profiles: [core]
+  networks: [cloudshift-parth-network]
+  shm_size: 128mb
+  deploy:
+    resources:
+      limits:
+        memory: 768M
+        cpus: "1.50"
+  healthcheck:
+    test: [CMD-SHELL, "pg_isready -U cloudshift_admin -d $${POSTGRES_DB}"]
+    interval: 5s
+    timeout: 3s
+    retries: 20
+    start_period: 10s
+
+services:
+  source-db:
+    <<: *postgres-common
+    container_name: pg-source-parth
+    environment:
+      POSTGRES_USER: cloudshift_admin
+      POSTGRES_PASSWORD: ${SOURCE_POSTGRES_PASSWORD:?copy .env.example to .env}
+      POSTGRES_DB: parth_commerce_source
+      MIGRATION_DB_PASSWORD: ${MIGRATION_DB_PASSWORD:?required}
+      APP_DB_PASSWORD: ${APP_DB_PASSWORD:?required}
+      OBSERVER_DB_PASSWORD: ${OBSERVER_DB_PASSWORD:?required}
+    command:
+      - postgres
+      - -c
+      - wal_level=logical
+      - -c
+      - max_replication_slots=10
+      - -c
+      - max_wal_senders=10
+      - -c
+      - max_connections=100
+      - -c
+      - shared_buffers=192MB
+      - -c
+      - work_mem=4MB
+      - -c
+      - maintenance_work_mem=64MB
+    ports:
+      - 127.0.0.1:${CLOUDSHIFT_SOURCE_PORT:-15432}:5432
+    volumes:
+      - cloudshift-source-data:/var/lib/postgresql/data
+      - ./database/source/init:/docker-entrypoint-initdb.d:ro
+
+  target-db:
+    <<: *postgres-common
+    container_name: pg-target-parth
+    environment:
+      POSTGRES_USER: cloudshift_admin
+      POSTGRES_PASSWORD: ${TARGET_POSTGRES_PASSWORD:?copy .env.example to .env}
+      POSTGRES_DB: parth_commerce_target
+      MIGRATION_DB_PASSWORD: ${MIGRATION_DB_PASSWORD:?required}
+      APP_DB_PASSWORD: ${APP_DB_PASSWORD:?required}
+      OBSERVER_DB_PASSWORD: ${OBSERVER_DB_PASSWORD:?required}
+    command:
+      - postgres
+      - -c
+      - max_connections=100
+      - -c
+      - shared_buffers=192MB
+      - -c
+      - work_mem=4MB
+      - -c
+      - maintenance_work_mem=64MB
+    ports:
+      - 127.0.0.1:${CLOUDSHIFT_TARGET_PORT:-15433}:5432
+    volumes:
+      - cloudshift-target-data:/var/lib/postgresql/data
+      - ./database/target/init/001_roles.sh:/docker-entrypoint-initdb.d/001_roles.sh:ro
+      - ./database/source/init/010_commerce_schema.sql:/docker-entrypoint-initdb.d/010_commerce_schema.sql:ro
+
+  control-db:
+    <<: *postgres-common
+    container_name: pg-control-parth
+    environment:
+      POSTGRES_USER: cloudshift_admin
+      POSTGRES_PASSWORD: ${CONTROL_POSTGRES_PASSWORD:?copy .env.example to .env}
+      POSTGRES_DB: cloudshift_control
+    command:
+      - postgres
+      - -c
+      - max_connections=80
+      - -c
+      - shared_buffers=128MB
+      - -c
+      - work_mem=4MB
+    ports:
+      - 127.0.0.1:${CLOUDSHIFT_CONTROL_PORT:-15434}:5432
+    volumes:
+      - cloudshift-control-data:/var/lib/postgresql/data
+      - ./database/control/init:/docker-entrypoint-initdb.d:ro
+
+  control-plane:
+    build:
+      context: ./services/control-plane
+      dockerfile: Dockerfile
+    image: cloudshift-parth-control-plane
+    container_name: cloudshift-control-plane
+    restart: unless-stopped
+    profiles: [core]
+    init: true
+    depends_on:
+      source-db:
+        condition: service_healthy
+      target-db:
+        condition: service_healthy
+      control-db:
+        condition: service_healthy
+    environment:
+      DEPLOYMENT_MODE: LIVE_LOCAL
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      CONTROL_API_TOKEN: ${CONTROL_API_TOKEN:?required}
+      MIGRATION_DB_PASSWORD: ${MIGRATION_DB_PASSWORD:?required}
+      SOURCE_DATABASE_URL: postgresql://cloudshift_admin:${SOURCE_POSTGRES_PASSWORD}@source-db:5432/parth_commerce_source
+      TARGET_DATABASE_URL: postgresql://cloudshift_admin:${TARGET_POSTGRES_PASSWORD}@target-db:5432/parth_commerce_target
+      CONTROL_DATABASE_URL: postgresql://cloudshift_admin:${CONTROL_POSTGRES_PASSWORD}@control-db:5432/cloudshift_control
+      APP_SOURCE_DATABASE_URL: postgresql://parth_commerce_app:${APP_DB_PASSWORD}@source-db:5432/parth_commerce_source
+      APP_TARGET_DATABASE_URL: postgresql://parth_commerce_app:${APP_DB_PASSWORD}@target-db:5432/parth_commerce_target
+    ports:
+      - 127.0.0.1:${CLOUDSHIFT_API_PORT:-18000}:8000
+    networks: [cloudshift-parth-network]
+    deploy:
+      resources:
+        limits:
+          memory: 384M
+          cpus: "1.00"
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health/live', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  commerce-demo:
+    image: cloudshift-parth-control-plane
+    container_name: parth-commerce-application
+    command: [uvicorn, app.commerce:app, --host, 0.0.0.0, --port, "8001"]
+    restart: unless-stopped
+    profiles: [core]
+    init: true
+    depends_on:
+      source-db:
+        condition: service_healthy
+      target-db:
+        condition: service_healthy
+      control-db:
+        condition: service_healthy
+    environment:
+      DEPLOYMENT_MODE: LIVE_LOCAL
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      CONTROL_API_TOKEN: ${CONTROL_API_TOKEN:?required}
+      MIGRATION_DB_PASSWORD: ${MIGRATION_DB_PASSWORD:?required}
+      SOURCE_DATABASE_URL: postgresql://cloudshift_admin:${SOURCE_POSTGRES_PASSWORD}@source-db:5432/parth_commerce_source
+      TARGET_DATABASE_URL: postgresql://cloudshift_admin:${TARGET_POSTGRES_PASSWORD}@target-db:5432/parth_commerce_target
+      CONTROL_DATABASE_URL: postgresql://cloudshift_admin:${CONTROL_POSTGRES_PASSWORD}@control-db:5432/cloudshift_control
+      APP_SOURCE_DATABASE_URL: postgresql://parth_commerce_app:${APP_DB_PASSWORD}@source-db:5432/parth_commerce_source
+      APP_TARGET_DATABASE_URL: postgresql://parth_commerce_app:${APP_DB_PASSWORD}@target-db:5432/parth_commerce_target
+    ports:
+      - 127.0.0.1:18001:8001
+    networks: [cloudshift-parth-network]
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: "0.75"
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8001/api/v1/commerce/health', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  workload-generator:
+    image: cloudshift-parth-control-plane
+    container_name: cloudshift-workload-generator
+    command: [uvicorn, app.workload:app, --host, 0.0.0.0, --port, "8002"]
+    restart: unless-stopped
+    profiles: [core]
+    init: true
+    depends_on:
+      control-plane:
+        condition: service_healthy
+      commerce-demo:
+        condition: service_healthy
+    environment:
+      DEPLOYMENT_MODE: LIVE_LOCAL
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      CONTROL_API_TOKEN: ${CONTROL_API_TOKEN:?required}
+      MIGRATION_DB_PASSWORD: ${MIGRATION_DB_PASSWORD:?required}
+      SOURCE_DATABASE_URL: postgresql://cloudshift_admin:${SOURCE_POSTGRES_PASSWORD}@source-db:5432/parth_commerce_source
+      TARGET_DATABASE_URL: postgresql://cloudshift_admin:${TARGET_POSTGRES_PASSWORD}@target-db:5432/parth_commerce_target
+      CONTROL_DATABASE_URL: postgresql://cloudshift_admin:${CONTROL_POSTGRES_PASSWORD}@control-db:5432/cloudshift_control
+      APP_SOURCE_DATABASE_URL: postgresql://parth_commerce_app:${APP_DB_PASSWORD}@source-db:5432/parth_commerce_source
+      APP_TARGET_DATABASE_URL: postgresql://parth_commerce_app:${APP_DB_PASSWORD}@target-db:5432/parth_commerce_target
+      COMMERCE_BASE_URL: http://commerce-demo:8001
+    ports:
+      - 127.0.0.1:${CLOUDSHIFT_WORKLOAD_PORT:-18002}:8002
+    networks: [cloudshift-parth-network]
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: "1.00"
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8002/api/v1/workload/health', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  console:
+    build:
+      context: ./apps/console
+      dockerfile: Dockerfile
+    image: cloudshift-parth-console
+    container_name: cloudshift-console
+    restart: unless-stopped
+    profiles: [core]
+    depends_on:
+      control-plane:
+        condition: service_healthy
+      commerce-demo:
+        condition: service_healthy
+      workload-generator:
+        condition: service_healthy
+    ports:
+      - 127.0.0.1:18080:8080
+    networks: [cloudshift-parth-network]
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+          cpus: "0.50"
+    healthcheck:
+      test: [CMD, wget, --quiet, --tries=1, --spider, http://127.0.0.1:8080/]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
+
+  prometheus:
+    image: prom/prometheus:v3.1.0
+    container_name: cloudshift-prometheus
+    restart: unless-stopped
+    profiles: [observability, full]
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=6h
+      - --web.enable-lifecycle
+    depends_on:
+      control-plane:
+        condition: service_healthy
+      commerce-demo:
+        condition: service_healthy
+      workload-generator:
+        condition: service_healthy
+    ports:
+      - 127.0.0.1:${CLOUDSHIFT_PROMETHEUS_PORT:-19090}:9090
+    volumes:
+      - ./observability/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./observability/prometheus/alerts.yml:/etc/prometheus/alerts.yml:ro
+      - cloudshift-prometheus-data:/prometheus
+    networks: [cloudshift-parth-network]
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: "0.50"
+    healthcheck:
+      test: [CMD, wget, --quiet, --tries=1, --spider, http://127.0.0.1:9090/-/healthy]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  restore-db:
+    image: postgres:16.6-alpine
+    container_name: cloudshift-restore-db
+    restart: unless-stopped
+    profiles: [backup, full]
+    environment:
+      POSTGRES_USER: cloudshift_admin
+      POSTGRES_PASSWORD: ${RESTORE_POSTGRES_PASSWORD:?required}
+      POSTGRES_DB: postgres
+    command:
+      - postgres
+      - -c
+      - max_connections=30
+      - -c
+      - shared_buffers=96MB
+    volumes:
+      - cloudshift-restore-data:/var/lib/postgresql/data
+      - ./backups:/backups:ro
+    networks: [cloudshift-parth-network]
+    deploy:
+      resources:
+        limits:
+          memory: 384M
+          cpus: "0.75"
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U cloudshift_admin -d postgres"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 10s
+
+  redis-lab:
+    image: redis:7.4.1-alpine
+    container_name: cloudshift-redis-lab
+    profiles: [academic-redis, academic, full]
+    command: [redis-server, --appendonly, "yes", --requirepass, "${REDIS_PASSWORD:?required}"]
+    volumes: [cloudshift-redis-data:/data]
+    networks: [cloudshift-parth-network]
+    deploy:
+      resources:
+        limits: { memory: 192M, cpus: "0.50" }
+    healthcheck:
+      test: [CMD-SHELL, "redis-cli -a '$${REDIS_PASSWORD}' ping || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 5s
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD:?required}
+
+  mongo-lab:
+    image: mongo:8.0.4-noble
+    container_name: cloudshift-mongo-lab
+    profiles: [academic-mongo, academic, full]
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: cloudshift_admin
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:?required}
+    volumes: [cloudshift-mongo-data:/data/db]
+    networks: [cloudshift-parth-network]
+    deploy:
+      resources:
+        limits: { memory: 512M, cpus: "0.75" }
+    healthcheck:
+      test: [CMD, mongosh, --quiet, --eval, "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 15s
+
+  neo4j-lab:
+    image: neo4j:5.26.1-community
+    container_name: cloudshift-neo4j-lab
+    profiles: [academic-graph, academic, full]
+    environment:
+      NEO4J_AUTH: neo4j/${NEO4J_PASSWORD:?required}
+      NEO4J_server_memory_heap_initial__size: 128m
+      NEO4J_server_memory_heap_max__size: 256m
+      NEO4J_server_memory_pagecache_size: 128m
+    volumes: [cloudshift-neo4j-data:/data]
+    networks: [cloudshift-parth-network]
+    deploy:
+      resources:
+        limits: { memory: 640M, cpus: "0.75" }
+    healthcheck:
+      test: [CMD-SHELL, "wget --quiet --tries=1 --spider http://127.0.0.1:7474 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+
+  shard-north:
+    image: postgres:16.6-alpine
+    container_name: pg-shard-north-parth
+    profiles: [distributed, full]
+    environment: &shard-env
+      POSTGRES_USER: cloudshift_admin
+      POSTGRES_PASSWORD: ${SHARD_POSTGRES_PASSWORD:?required}
+      POSTGRES_DB: cloudshift_shard
+    command: [postgres, -c, cloudshift.region=NORTH, -c, shared_buffers=96MB]
+    volumes:
+      - cloudshift-shard-north-data:/var/lib/postgresql/data
+      - ./database/shards/init:/docker-entrypoint-initdb.d:ro
+    networks: [cloudshift-parth-network]
+    deploy: &shard-resources
+      resources:
+        limits: { memory: 384M, cpus: "0.50" }
+    healthcheck: &shard-health
+      test: [CMD-SHELL, "pg_isready -U cloudshift_admin -d cloudshift_shard"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 10s
+
+  shard-south:
+    image: postgres:16.6-alpine
+    container_name: pg-shard-south-parth
+    profiles: [distributed, full]
+    environment: *shard-env
+    command: [postgres, -c, cloudshift.region=SOUTH, -c, shared_buffers=96MB]
+    volumes:
+      - cloudshift-shard-south-data:/var/lib/postgresql/data
+      - ./database/shards/init:/docker-entrypoint-initdb.d:ro
+    networks: [cloudshift-parth-network]
+    deploy: *shard-resources
+    healthcheck: *shard-health
+
+  shard-west:
+    image: postgres:16.6-alpine
+    container_name: pg-shard-west-parth
+    profiles: [distributed, full]
+    environment: *shard-env
+    command: [postgres, -c, cloudshift.region=WEST, -c, shared_buffers=96MB]
+    volumes:
+      - cloudshift-shard-west-data:/var/lib/postgresql/data
+      - ./database/shards/init:/docker-entrypoint-initdb.d:ro
+    networks: [cloudshift-parth-network]
+    deploy: *shard-resources
+    healthcheck: *shard-health
+
+networks:
+  cloudshift-parth-network:
+    name: cloudshift-parth-network
+    driver: bridge
+    labels:
+      com.cloudshift.project: cloudshift-db
+
+volumes:
+  cloudshift-source-data:
+    name: cloudshift-parth-source-data
+    labels:
+      com.cloudshift.project: cloudshift-db
+  cloudshift-target-data:
+    name: cloudshift-parth-target-data
+    labels:
+      com.cloudshift.project: cloudshift-db
+  cloudshift-control-data:
+    name: cloudshift-parth-control-data
+    labels:
+      com.cloudshift.project: cloudshift-db
+  cloudshift-prometheus-data:
+    name: cloudshift-parth-prometheus-data
+    labels:
+      com.cloudshift.project: cloudshift-db
+  cloudshift-restore-data:
+    name: cloudshift-parth-restore-data
+    labels:
+      com.cloudshift.project: cloudshift-db
+  cloudshift-redis-data:
+    name: cloudshift-parth-redis-data
+    labels: { com.cloudshift.project: cloudshift-db }
+  cloudshift-mongo-data:
+    name: cloudshift-parth-mongo-data
+    labels: { com.cloudshift.project: cloudshift-db }
+  cloudshift-neo4j-data:
+    name: cloudshift-parth-neo4j-data
+    labels: { com.cloudshift.project: cloudshift-db }
+  cloudshift-shard-north-data:
+    name: cloudshift-parth-shard-north-data
+    labels: { com.cloudshift.project: cloudshift-db }
+  cloudshift-shard-south-data:
+    name: cloudshift-parth-shard-south-data
+    labels: { com.cloudshift.project: cloudshift-db }
+  cloudshift-shard-west-data:
+    name: cloudshift-parth-shard-west-data
+    labels: { com.cloudshift.project: cloudshift-db }

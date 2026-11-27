@@ -1,0 +1,69 @@
+{
+  "observed_at": "2026-11-27T14:15:28.335878+00:00",
+  "practical_4": {
+    "cross_shard_transaction_limit": "No atomic transaction coordinator is implemented across shards.",
+    "distribution": [
+      {
+        "annual_value": 8633625.0,
+        "duration_ms": 62.842,
+        "region": "NORTH",
+        "rows": 1000,
+        "service": "shard-north"
+      },
+      {
+        "annual_value": 8633625.0,
+        "duration_ms": 56.224,
+        "region": "SOUTH",
+        "rows": 1000,
+        "service": "shard-south"
+      },
+      {
+        "annual_value": 8633625.0,
+        "duration_ms": 56.146,
+        "region": "WEST",
+        "rows": 1000,
+        "service": "shard-west"
+      }
+    ],
+    "independent_services": [
+      "shard-north",
+      "shard-south",
+      "shard-west"
+    ],
+    "shard_key": "region_code",
+    "total_rows": 3000
+  },
+  "practical_5": {
+    "decomposition": "one partial aggregate per physical PostgreSQL shard",
+    "limitations": "One warm local trial; process and Docker overhead dominate this small dataset.",
+    "merged_rows": 3000,
+    "parallel_duration_ms": 67.808,
+    "parallel_responses": [
+      {
+        "annual_value": 8633625.0,
+        "duration_ms": 65.617,
+        "region": "NORTH",
+        "rows": 1000,
+        "service": "shard-north"
+      },
+      {
+        "annual_value": 8633625.0,
+        "duration_ms": 67.468,
+        "region": "SOUTH",
+        "rows": 1000,
+        "service": "shard-south"
+      },
+      {
+        "annual_value": 8633625.0,
+        "duration_ms": 64.373,
+        "region": "WEST",
+        "rows": 1000,
+        "service": "shard-west"
+      }
+    ],
+    "query": "count and sum annual_value grouped locally by region",
+    "results_identical": true,
+    "sequential_duration_ms": 175.241
+  },
+  "schema_version": 1
+}

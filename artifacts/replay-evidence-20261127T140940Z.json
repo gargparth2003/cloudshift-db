@@ -1,0 +1,4616 @@
+{
+  "captured_at": "2026-11-27T14:09:40.436217+00:00",
+  "claim_boundary": "Sanitized observations from one local development run; not a production, cloud, zero-downtime, or capacity claim.",
+  "commerce_application": {
+    "activity": {
+      "available": true,
+      "value": {
+        "active_database": "TARGET",
+        "items": [
+          {
+            "committed_at": "2026-11-27T13:48:30.426077+00:00",
+            "entity_id": 1059,
+            "entity_type": "ORDER",
+            "event_id": 1422,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-F89F046F7A2A4EE4",
+              "route": "TARGET"
+            },
+            "transaction_ref": "commerce-db7269b8-f32f-4a0b-9157-4039b57cb527"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:29.993789+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1421,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "probe-9831e3ef-5931-4cc9-b939-646e10a985d9"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:29.899675+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1420,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-shipment_update-6c5e49ee-1e98-46c5-98ca-a7b2c1d69663"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:29.645325+00:00",
+            "entity_id": 172,
+            "entity_type": "PRODUCT",
+            "event_id": 1419,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-product_update-9cde6f24-5552-4af6-b9f8-cabf1adb21e5"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:29.517311+00:00",
+            "entity_id": 3061,
+            "entity_type": "CUSTOMER",
+            "event_id": 1418,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-customer-b139c5f9-8b53-4c2d-809f-b29fbd9e1601"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:29.387081+00:00",
+            "entity_id": 1058,
+            "entity_type": "ORDER",
+            "event_id": 1417,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-2269E24A88DB4192",
+              "route": "TARGET"
+            },
+            "transaction_ref": "commerce-8bcc3744-c1f5-4991-97f9-6e0960dacd34"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:29.110197+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1416,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-shipment_update-4d0636c7-d8db-4682-a306-2b70436181e5"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:28.967718+00:00",
+            "entity_id": 1057,
+            "entity_type": "ORDER",
+            "event_id": 1415,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-F9EE4521CF77408B",
+              "route": "TARGET"
+            },
+            "transaction_ref": "commerce-c8a85e73-621c-4c3d-89d3-8ccb69f6cc81"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:28.851440+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1414,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "probe-95c191d3-0506-48f1-8aca-1341e859bca2"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:28.840712+00:00",
+            "entity_id": 1056,
+            "entity_type": "PAYMENT",
+            "event_id": 1413,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-payment_update-bd2d9280-5495-4a31-a861-6dec43dbd371"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:28.709746+00:00",
+            "entity_id": 3,
+            "entity_type": "PRODUCT",
+            "event_id": 1412,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-product_update-c73b4954-e147-4331-805f-c6f97b84cf6a"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:28.450302+00:00",
+            "entity_id": 1056,
+            "entity_type": "PAYMENT",
+            "event_id": 1411,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-payment_update-65a5ea1a-19ad-49bd-bc96-d299424e3ac6"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:28.063606+00:00",
+            "entity_id": 1056,
+            "entity_type": "PAYMENT",
+            "event_id": 1410,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-payment_update-cfc8f18e-6cfe-495d-96d6-94f910d1c4f0"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:27.932230+00:00",
+            "entity_id": 3060,
+            "entity_type": "CUSTOMER",
+            "event_id": 1409,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-delete_customer-9d686d02-aa99-4a44-b9cd-88355618c955"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:27.799002+00:00",
+            "entity_id": 539,
+            "entity_type": "PRODUCT",
+            "event_id": 1408,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-product_update-334ca8de-3949-4f4d-a36b-efa6f724bb00"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:27.731443+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1407,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "probe-8b10ae45-b652-4bbd-b12a-4b177602de96"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:27.532323+00:00",
+            "entity_id": 3060,
+            "entity_type": "CUSTOMER",
+            "event_id": 1406,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-customer-80410425-9917-4591-8b42-85e3172cede0"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:26.855770+00:00",
+            "entity_id": 1056,
+            "entity_type": "ORDER",
+            "event_id": 1405,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-A35C0E11716C475A",
+              "route": "TARGET"
+            },
+            "transaction_ref": "commerce-ce3c20e4-9da5-4d63-88ff-3de84d7ea4de"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:26.638740+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1404,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "probe-033326e9-b827-49a9-87a6-f6db4ccb3c17"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:26.332446+00:00",
+            "entity_id": 15,
+            "entity_type": "PRODUCT",
+            "event_id": 1403,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-product_update-5048eeb7-1c3d-45ce-9bc7-8040d2b2c48c"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:26.187334+00:00",
+            "entity_id": 3059,
+            "entity_type": "CUSTOMER",
+            "event_id": 1402,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-delete_customer-236eb895-1e20-4f7b-a132-936e333a392b"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:25.916704+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1401,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-shipment_update-4f653d34-1b75-412a-9ba6-9c3c6324fcea"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:25.794759+00:00",
+            "entity_id": 1055,
+            "entity_type": "PAYMENT",
+            "event_id": 1400,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-payment_update-6fd5e2dc-3a74-417d-b8d8-7d6aa4546874"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:25.556135+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1399,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "probe-53d54eb9-adbf-4827-9da2-2d97ca0369ad"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:25.102944+00:00",
+            "entity_id": 1055,
+            "entity_type": "PAYMENT",
+            "event_id": 1398,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-payment_update-b989d0dc-1227-46d3-a896-60cb2561ba4c"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:24.863959+00:00",
+            "entity_id": 3059,
+            "entity_type": "CUSTOMER",
+            "event_id": 1397,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-customer-1146bb85-e1a2-4a9b-b4d6-62b841454ed1"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:24.516051+00:00",
+            "entity_id": 839,
+            "entity_type": "PRODUCT",
+            "event_id": 1396,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-product_update-359119fa-60c6-4f21-b188-ec979c1e82ac"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:24.420908+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1395,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "probe-21c93498-cefd-4560-80f0-6ff868a53b5d"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:24.389936+00:00",
+            "entity_id": 943,
+            "entity_type": "PRODUCT",
+            "event_id": 1394,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-product_update-32c2dc13-7c3e-4a0c-9388-666e2dd50cc8"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:24.121100+00:00",
+            "entity_id": 861,
+            "entity_type": "PRODUCT",
+            "event_id": 1393,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-product_update-aa900208-0c54-4d6e-9254-0dcc9b7a499d"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:23.974428+00:00",
+            "entity_id": 3058,
+            "entity_type": "CUSTOMER",
+            "event_id": 1392,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-delete_customer-1a582d36-b237-4fd3-ac78-87697d4c7561"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:23.575132+00:00",
+            "entity_id": 860,
+            "entity_type": "PRODUCT",
+            "event_id": 1391,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-product_update-14c8825b-3535-4b93-9d96-4649b3dcea2d"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:23.333985+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1390,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "probe-e727c164-f602-49b1-ac52-a80f7af7ab1f"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:23.174455+00:00",
+            "entity_id": 3058,
+            "entity_type": "CUSTOMER",
+            "event_id": 1389,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-customer-611bacb1-affb-4e8c-ba35-1711768fc60a"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:23.040239+00:00",
+            "entity_id": 611,
+            "entity_type": "PRODUCT",
+            "event_id": 1388,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-product_update-96515e4a-acf1-4c1c-9c8e-0ccc9064e605"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:22.654379+00:00",
+            "entity_id": 3057,
+            "entity_type": "CUSTOMER",
+            "event_id": 1387,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-delete_customer-a18eb7b4-8dca-4a51-90f9-0311107fded2"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:22.404200+00:00",
+            "entity_id": 26,
+            "entity_type": "PRODUCT",
+            "event_id": 1386,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-product_update-3ea46cf5-71da-4dfb-907a-719858cdf856"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:22.207893+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1385,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "probe-7b33bad1-8fbc-45aa-ac16-78178140b11e"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:22.029161+00:00",
+            "entity_id": 1055,
+            "entity_type": "PAYMENT",
+            "event_id": 1384,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-payment_update-2ddbb868-b4c4-4a7b-b7a3-7a8cd7fcb2b4"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:21.886707+00:00",
+            "entity_id": 1055,
+            "entity_type": "ORDER",
+            "event_id": 1383,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-398D7821AE4242F4",
+              "route": "TARGET"
+            },
+            "transaction_ref": "commerce-41bd3ddf-a375-44ff-8015-3c6c86b5bf0c"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:21.616195+00:00",
+            "entity_id": 272,
+            "entity_type": "PRODUCT",
+            "event_id": 1382,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-product_update-2c560a04-70e7-4c64-a999-92efb9caab7e"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:21.119738+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1381,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "probe-20802370-5454-4e4c-97ec-e776cada2aa7"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:21.104700+00:00",
+            "entity_id": 3056,
+            "entity_type": "CUSTOMER",
+            "event_id": 1380,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-delete_customer-c613ab65-958c-4a9b-90af-4d84ff4ae8d9"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:20.851007+00:00",
+            "entity_id": 1054,
+            "entity_type": "ORDER",
+            "event_id": 1379,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-2D097B74263344AC",
+              "route": "TARGET"
+            },
+            "transaction_ref": "commerce-845d964c-092e-4682-bfc9-b01f799d251a"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:20.726981+00:00",
+            "entity_id": 1053,
+            "entity_type": "ORDER",
+            "event_id": 1378,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-6CE064632FD04B79",
+              "route": "TARGET"
+            },
+            "transaction_ref": "commerce-533f0f05-b2c6-4ea1-a337-b4c74de67a17"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:20.595076+00:00",
+            "entity_id": 3057,
+            "entity_type": "CUSTOMER",
+            "event_id": 1377,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-customer-c2d4ecc1-880e-44e6-8e50-382c32bc4a1c"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:20.344179+00:00",
+            "entity_id": 1052,
+            "entity_type": "PAYMENT",
+            "event_id": 1376,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-payment_update-a547d080-d282-4a75-8f66-6dfe0393cf75"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:20.101310+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1375,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-shipment_update-82bde00c-9a9f-4d46-9875-6c36c8a20d7c"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:20.005559+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1374,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "probe-ab418c30-4d1c-4782-8dc1-0265e5a3f7eb"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:19.832163+00:00",
+            "entity_id": 952,
+            "entity_type": "PRODUCT",
+            "event_id": 1373,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-product_update-4c702630-e475-4237-acdf-0a8015366fcb"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:19.456300+00:00",
+            "entity_id": 3056,
+            "entity_type": "CUSTOMER",
+            "event_id": 1372,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-customer-6c06db6f-ad2c-4973-87f6-f98c2cbc100d"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:19.304520+00:00",
+            "entity_id": 456,
+            "entity_type": "PRODUCT",
+            "event_id": 1371,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-product_update-3c162778-9f97-432c-ab0a-2cf2081ed2b3"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:19.025185+00:00",
+            "entity_id": 918,
+            "entity_type": "PRODUCT",
+            "event_id": 1370,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-product_update-0bf47166-0ca0-4bfc-b750-46f33f6dcaee"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:18.871492+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1369,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "probe-8dea8037-f65d-4fc2-872b-28d80c238e25"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:18.642499+00:00",
+            "entity_id": 118,
+            "entity_type": "PRODUCT",
+            "event_id": 1368,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-product_update-b2830ac8-7737-42fa-922c-1680bbae9732"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:18.254130+00:00",
+            "entity_id": 748,
+            "entity_type": "PRODUCT",
+            "event_id": 1367,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-product_update-e2d6664b-6d0a-4482-84eb-36a2746d567c"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:17.766569+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1366,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "probe-4ea2ad9d-4985-4a28-8231-0dddab09394d"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:17.718190+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1365,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-shipment_update-f4d300b0-9272-479f-a9fe-e00a969bbafb"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:17.449470+00:00",
+            "entity_id": 263,
+            "entity_type": "PRODUCT",
+            "event_id": 1364,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-product_update-3f082261-b6bf-4321-92ff-6973e18a6a18"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:17.305663+00:00",
+            "entity_id": 462,
+            "entity_type": "PRODUCT",
+            "event_id": 1363,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-product_update-e8d4b41e-81fb-430c-8f76-d522cdab2c76"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:16.676466+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1362,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "probe-aa7f014e-0b1b-4b55-af65-7c81cafe27bb"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:16.375215+00:00",
+            "entity_id": 1052,
+            "entity_type": "PAYMENT",
+            "event_id": 1361,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-payment_update-524c39d7-f514-47d2-a45a-e3fde7c721f0"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:15.951790+00:00",
+            "entity_id": 1052,
+            "entity_type": "ORDER",
+            "event_id": 1360,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-347A8E2205C94E03",
+              "route": "TARGET"
+            },
+            "transaction_ref": "commerce-fb92b28e-8a35-435b-a1d9-1fbce639e954"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:15.813666+00:00",
+            "entity_id": 724,
+            "entity_type": "PRODUCT",
+            "event_id": 1359,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-product_update-6d11b3a5-d345-46cf-b4a9-8828300c6e70"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:15.670316+00:00",
+            "entity_id": 1051,
+            "entity_type": "ORDER",
+            "event_id": 1358,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-4F337BAECB8A41D8",
+              "route": "TARGET"
+            },
+            "transaction_ref": "commerce-92c9e099-7dd4-448c-b53b-c3869c956bb9"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:15.558303+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1357,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "probe-eb63175f-a0e2-4a67-89df-ad86cec3f8fe"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:15.403440+00:00",
+            "entity_id": 1050,
+            "entity_type": "PAYMENT",
+            "event_id": 1356,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-payment_update-9d5530f9-4e1a-47fe-9f9c-a449590e282d"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:14.991612+00:00",
+            "entity_id": 1050,
+            "entity_type": "ORDER",
+            "event_id": 1355,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-975FB3685ECE4247",
+              "route": "TARGET"
+            },
+            "transaction_ref": "commerce-aa11ddff-8acc-41e1-90b6-31957f0f449c"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:14.438846+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1354,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "probe-0129d603-0643-453a-8748-8e410efecec8"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:14.386617+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1353,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-shipment_update-ca37c001-0c52-4454-936d-3f4bd4f2c72d"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:13.847030+00:00",
+            "entity_id": 1049,
+            "entity_type": "ORDER",
+            "event_id": 1352,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-23221BFB12084A10",
+              "route": "TARGET"
+            },
+            "transaction_ref": "commerce-2354790e-7ca6-409f-be36-0802652b9e9a"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:13.357145+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1351,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "probe-1d489dc1-a6a1-45d9-9089-7c5a6d36b297"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:13.169545+00:00",
+            "entity_id": 3055,
+            "entity_type": "CUSTOMER",
+            "event_id": 1350,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-delete_customer-0808f58e-77ed-4611-9609-588547d00b1d"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:12.875643+00:00",
+            "entity_id": 3055,
+            "entity_type": "CUSTOMER",
+            "event_id": 1349,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-customer-50a40e44-e3f9-48d5-ba0a-271e9eec579f"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:12.466449+00:00",
+            "entity_id": 3054,
+            "entity_type": "CUSTOMER",
+            "event_id": 1348,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-delete_customer-71fdfa1c-4560-4d86-9ea5-3c438ec3a75b"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:12.211296+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1347,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "probe-195e4251-dc7d-49a7-8ab4-17e455fdb095"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:12.199195+00:00",
+            "entity_id": 1048,
+            "entity_type": "PAYMENT",
+            "event_id": 1346,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-payment_update-7f70d09d-52ba-44e2-80b0-1b2eafb37c07"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:11.936013+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1345,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-shipment_update-2b4c1abf-f1a8-49a2-9abb-3a5cf14c236b"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:11.808544+00:00",
+            "entity_id": 3054,
+            "entity_type": "CUSTOMER",
+            "event_id": 1344,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-customer-e827fd74-4e53-484e-a440-4dd2857d5379"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:11.677910+00:00",
+            "entity_id": 3053,
+            "entity_type": "CUSTOMER",
+            "event_id": 1343,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-delete_customer-770bf55c-4425-4a29-89e4-7f09b5393e6f"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:11.173308+00:00",
+            "entity_id": 1048,
+            "entity_type": "ORDER",
+            "event_id": 1342,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-CCB3CD20633E4004",
+              "route": "TARGET"
+            },
+            "transaction_ref": "commerce-af75dc98-063a-42da-8a37-e37f10f2d7f2"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:11.095641+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1341,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "probe-5be6bd57-26a6-4261-9669-28bef5fd4572"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:10.537497+00:00",
+            "entity_id": 3053,
+            "entity_type": "CUSTOMER",
+            "event_id": 1340,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-customer-7f21e13b-8ec0-470b-947c-e6b406ccb341"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:10.403634+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1339,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "TARGET"
+            },
+            "transaction_ref": "workload-shipment_update-c7e73e77-cffe-4a12-b199-6f01210ecd36"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:09.691850+00:00",
+            "entity_id": 819,
+            "entity_type": "PRODUCT",
+            "event_id": 1338,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-product_update-d99a0196-9a21-467d-ba65-d38de2b49685"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:09.567062+00:00",
+            "entity_id": 3052,
+            "entity_type": "CUSTOMER",
+            "event_id": 1337,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-419e7d01-12ee-4a71-b843-139c79f306ed"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:09.322741+00:00",
+            "entity_id": 3052,
+            "entity_type": "CUSTOMER",
+            "event_id": 1336,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-customer-6e862575-b08f-4f29-85b5-f27e15b54d7a"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:09.188430+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1335,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-shipment_update-f8c2bb07-0b8e-449f-a6b7-930450214590"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:08.940836+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1334,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "probe-841fa8f1-b213-49ad-bcf1-e9b7753ce2df"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:08.925258+00:00",
+            "entity_id": 3051,
+            "entity_type": "CUSTOMER",
+            "event_id": 1333,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-0feeef04-af8a-44e3-b032-6228eea0f5eb"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:08.372842+00:00",
+            "entity_id": 1047,
+            "entity_type": "ORDER",
+            "event_id": 1332,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-1E0B05602C2D4222",
+              "route": "SOURCE"
+            },
+            "transaction_ref": "commerce-f9dde4fc-cc62-4f64-8bce-27d6a840a355"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:07.866435+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1331,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-shipment_update-e9b19234-e1b5-4b70-99e9-7aff88c45aa2"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:07.804979+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1330,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "probe-417438da-8972-431e-b157-43bb1eba7748"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:07.737205+00:00",
+            "entity_id": 1046,
+            "entity_type": "ORDER",
+            "event_id": 1329,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-ABB16842F66F417C",
+              "route": "SOURCE"
+            },
+            "transaction_ref": "commerce-55b1b8a9-cf77-4266-9838-d9ac25ce4a20"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:07.219205+00:00",
+            "entity_id": 1045,
+            "entity_type": "PAYMENT",
+            "event_id": 1328,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-payment_update-085c9696-8982-452a-a132-a7caf70c13de"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:06.941243+00:00",
+            "entity_id": 84,
+            "entity_type": "PRODUCT",
+            "event_id": 1327,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-product_update-5c5e9d24-9c48-42c9-97fb-1158dbd58c54"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:06.719546+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1326,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "probe-5af60304-9008-491b-b3b8-9ea1b685062a"
+          },
+          {
+            "committed_at": "2026-11-27T13:48:06.678475+00:00",
+            "entity_id": 211,
+            "entity_type": "PRODUCT",
+            "event_id": 1325,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-product_update-06fe01e3-776d-4904-bc7b-ae0625158e51"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:49.467416+00:00",
+            "entity_id": 1045,
+            "entity_type": "PAYMENT",
+            "event_id": 1324,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-payment_update-ad02f285-aaca-4abb-9f60-fcf06be2f7e2"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:49.330580+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1323,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-shipment_update-4fd9959d-6e80-422c-bb87-1763a1aa1760"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:49.220945+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1322,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "probe-4082041e-16a7-456d-a6ff-2082fc99919f"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:49.194800+00:00",
+            "entity_id": 3051,
+            "entity_type": "CUSTOMER",
+            "event_id": 1321,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-customer-45523ff9-4365-47be-a039-c912fe5904e3"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:49.042114+00:00",
+            "entity_id": 1045,
+            "entity_type": "ORDER",
+            "event_id": 1320,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-193FC0359EE84F48",
+              "route": "SOURCE"
+            },
+            "transaction_ref": "commerce-bfead41c-ff57-49e1-91ad-a13a5f3a985c"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:48.767349+00:00",
+            "entity_id": 1044,
+            "entity_type": "ORDER",
+            "event_id": 1319,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-FF70C9BD242243AC",
+              "route": "SOURCE"
+            },
+            "transaction_ref": "commerce-ae97689c-0b04-4721-b4dd-538a729c0536"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:48.630522+00:00",
+            "entity_id": 3050,
+            "entity_type": "CUSTOMER",
+            "event_id": 1318,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-f0cfde51-268f-499a-aae5-2059c73235d4"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:48.369359+00:00",
+            "entity_id": 3049,
+            "entity_type": "CUSTOMER",
+            "event_id": 1317,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-d3774534-588c-4eb6-8786-61f8e19a1d54"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:48.240316+00:00",
+            "entity_id": 1043,
+            "entity_type": "PAYMENT",
+            "event_id": 1316,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-payment_update-2298d01b-5967-4db1-a9f8-6e3b06f7245e"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:48.126069+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1315,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "probe-86aaf406-b30d-45f8-99e1-b9083514296a"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:48.112147+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1314,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-shipment_update-21cebd93-81b6-42fb-8cd3-6212572b19b5"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:47.983845+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1313,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-shipment_update-e05a9577-2ed7-4774-8e1d-2dcedabf8ee1"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:47.843180+00:00",
+            "entity_id": 1043,
+            "entity_type": "PAYMENT",
+            "event_id": 1312,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-payment_update-854d0e84-a46d-4001-b8a4-0d17ec24bc8f"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:47.710995+00:00",
+            "entity_id": 1043,
+            "entity_type": "ORDER",
+            "event_id": 1311,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-94BEC91C6E7B4AC3",
+              "route": "SOURCE"
+            },
+            "transaction_ref": "commerce-7941fdb1-61d6-459c-a56d-1db8c96d5355"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:47.539839+00:00",
+            "entity_id": 3048,
+            "entity_type": "CUSTOMER",
+            "event_id": 1310,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-52ae6d90-125d-417c-853b-f76774e6e3ed"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:47.407892+00:00",
+            "entity_id": 1042,
+            "entity_type": "PAYMENT",
+            "event_id": 1309,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-payment_update-60f9256b-116d-4ba9-a48b-c9f15c4f625b"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:47.266039+00:00",
+            "entity_id": 3047,
+            "entity_type": "CUSTOMER",
+            "event_id": 1308,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-3fd5499d-82cc-4e00-a7b5-d8432abcc675"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:47.118789+00:00",
+            "entity_id": 1042,
+            "entity_type": "ORDER",
+            "event_id": 1307,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-0C891A765488459A",
+              "route": "SOURCE"
+            },
+            "transaction_ref": "commerce-cae6606a-823d-4ba3-92f9-9efe921f38be"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:47.006575+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1306,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "probe-2e196615-6251-4966-a51e-4459bcb578a3"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:46.987533+00:00",
+            "entity_id": 17,
+            "entity_type": "PRODUCT",
+            "event_id": 1305,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-product_update-ffd427a3-7fc7-442e-ae60-f8e6a21ce1bf"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:46.555433+00:00",
+            "entity_id": 1041,
+            "entity_type": "PAYMENT",
+            "event_id": 1304,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-payment_update-cc2eb629-94c1-46a2-9b4a-bf463cae0d80"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:46.417415+00:00",
+            "entity_id": 3050,
+            "entity_type": "CUSTOMER",
+            "event_id": 1303,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-customer-a9dfda2d-5424-4b36-a806-712c471e1bcf"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:46.153413+00:00",
+            "entity_id": 696,
+            "entity_type": "PRODUCT",
+            "event_id": 1302,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-product_update-3579e169-37e4-40d5-a433-38d851a7078b"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:45.912734+00:00",
+            "entity_id": 1041,
+            "entity_type": "PAYMENT",
+            "event_id": 1301,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-payment_update-c086db0b-a96f-4e26-8464-66af22527597"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:45.848922+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1300,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "probe-e863f19d-e6f8-41ff-99d2-a347dc13d534"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:45.787837+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1299,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-shipment_update-e03a322d-d59f-4f50-b2fc-9452d241d108"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:45.655822+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1298,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-shipment_update-254c48e1-8f41-44ee-8285-79903ce6efbb"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:45.407096+00:00",
+            "entity_id": 3049,
+            "entity_type": "CUSTOMER",
+            "event_id": 1297,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-customer-04524cc7-bc74-4d7e-b803-0c925f6a5975"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:45.267543+00:00",
+            "entity_id": 1041,
+            "entity_type": "PAYMENT",
+            "event_id": 1296,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-payment_update-f61cd6b4-d430-4ee3-a732-4f48bfe02259"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:45.134224+00:00",
+            "entity_id": 3046,
+            "entity_type": "CUSTOMER",
+            "event_id": 1295,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-a9feb7bf-ab32-4c91-944a-a4299db70a13"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:45.000766+00:00",
+            "entity_id": 1041,
+            "entity_type": "ORDER",
+            "event_id": 1294,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-11C7894DA1FD4C39",
+              "route": "SOURCE"
+            },
+            "transaction_ref": "commerce-e5d27c26-14a3-4430-a256-fa1a6b5cf6af"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:44.769163+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1293,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "probe-a8ff8698-4810-4b8e-bd6d-5216e71bea49"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:44.742267+00:00",
+            "entity_id": 3048,
+            "entity_type": "CUSTOMER",
+            "event_id": 1292,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-customer-7e1512d5-5590-4961-bd46-17255afe267c"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:44.487347+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1291,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-shipment_update-15094727-9457-4ee2-8ba5-7e7f24a00a32"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:44.212381+00:00",
+            "entity_id": 3047,
+            "entity_type": "CUSTOMER",
+            "event_id": 1290,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-customer-71cb4552-c002-489f-a895-736a30783563"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:44.076826+00:00",
+            "entity_id": 1040,
+            "entity_type": "ORDER",
+            "event_id": 1289,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-00BCEFF34363426D",
+              "route": "SOURCE"
+            },
+            "transaction_ref": "commerce-a3e7948d-e273-4360-8c20-d37bc1bde9df"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:43.948237+00:00",
+            "entity_id": 1039,
+            "entity_type": "ORDER",
+            "event_id": 1288,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-6FF44691EFE54DE8",
+              "route": "SOURCE"
+            },
+            "transaction_ref": "commerce-08e08f5b-4380-46e9-a80f-9ec46e5de8eb"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:43.659642+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1287,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "probe-e031cec7-f4e0-4512-9cd0-227e21ba76b4"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:43.433074+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1286,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-shipment_update-b9120951-22d1-470f-baab-81a0d4174ce3"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:43.162130+00:00",
+            "entity_id": 3046,
+            "entity_type": "CUSTOMER",
+            "event_id": 1285,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-customer-063abb40-df26-4ad3-9dbb-5e8ea22bf9e7"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:43.034143+00:00",
+            "entity_id": 1038,
+            "entity_type": "PAYMENT",
+            "event_id": 1284,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-payment_update-88e27c7c-a17e-4121-b54b-43d35d7911ff"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:42.888564+00:00",
+            "entity_id": 1038,
+            "entity_type": "ORDER",
+            "event_id": 1283,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-E8C3F060B4CE4CE0",
+              "route": "SOURCE"
+            },
+            "transaction_ref": "commerce-44b244e6-e6cd-428a-9b19-c45773bfa268"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:42.760439+00:00",
+            "entity_id": 426,
+            "entity_type": "PRODUCT",
+            "event_id": 1282,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-product_update-81f931ab-eb78-470a-a3c0-e92e34b2bda0"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:42.629581+00:00",
+            "entity_id": 996,
+            "entity_type": "PRODUCT",
+            "event_id": 1281,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-product_update-17c49e8f-9e46-4b5e-a0fe-a861c9d7f081"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:42.552660+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1280,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "probe-853189ff-e97e-4965-8ead-d1e748d73623"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:42.366488+00:00",
+            "entity_id": 119,
+            "entity_type": "PRODUCT",
+            "event_id": 1279,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-product_update-c4646d32-72f1-4a0d-a096-5b40aadda1d5"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:42.231510+00:00",
+            "entity_id": 3045,
+            "entity_type": "CUSTOMER",
+            "event_id": 1278,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-7e789ec1-2a8e-49a6-8da7-e165ab1e8538"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:42.094875+00:00",
+            "entity_id": 435,
+            "entity_type": "PRODUCT",
+            "event_id": 1277,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-product_update-3fa47120-8ac9-4ce5-bda8-fd32580d5992"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:41.832790+00:00",
+            "entity_id": 1037,
+            "entity_type": "PAYMENT",
+            "event_id": 1276,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-payment_update-ab8474d0-3a5d-49f8-8bca-346bbec74a9d"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:41.459944+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1275,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "probe-3b87f269-4180-41bb-9749-8865fdc028f2"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:41.441184+00:00",
+            "entity_id": 1037,
+            "entity_type": "ORDER",
+            "event_id": 1274,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-7327FF10585646B4",
+              "route": "SOURCE"
+            },
+            "transaction_ref": "commerce-1e6c8b47-8200-4730-bd52-f6b49fe2124d"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:41.290930+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1273,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-shipment_update-774effd9-cb81-4471-bc43-79394e991a4b"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:41.151373+00:00",
+            "entity_id": 3044,
+            "entity_type": "CUSTOMER",
+            "event_id": 1272,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-d04903d9-a7e1-47ba-9d62-6968e1df0da1"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:41.019206+00:00",
+            "entity_id": 3043,
+            "entity_type": "CUSTOMER",
+            "event_id": 1271,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-b42e7089-ab78-4570-a3a1-fd1de64345c6"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:40.766815+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1270,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-shipment_update-4126b466-d000-4b67-be07-427753e9f168"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:40.645007+00:00",
+            "entity_id": 3045,
+            "entity_type": "CUSTOMER",
+            "event_id": 1269,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-customer-aecfbb35-5883-4958-b52f-99ec3eee20c4"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:40.518448+00:00",
+            "entity_id": 3042,
+            "entity_type": "CUSTOMER",
+            "event_id": 1268,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-75b5f532-272d-4d6d-9c61-b829bd2bef20"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:40.386474+00:00",
+            "entity_id": 1036,
+            "entity_type": "ORDER",
+            "event_id": 1267,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-7A2921CE99A240F6",
+              "route": "SOURCE"
+            },
+            "transaction_ref": "commerce-dc52a024-2b04-4a31-b9c1-9a681ba1bc26"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:40.326178+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1266,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "probe-359dd0b0-6b12-4bc0-bb77-040d1d0d536e"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:40.262058+00:00",
+            "entity_id": 3041,
+            "entity_type": "CUSTOMER",
+            "event_id": 1265,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-dd30719d-cb25-4771-a68c-4bc1f42c8a9c"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:40.137872+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1264,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-shipment_update-9c4d2543-06b8-4d4d-8f65-3ad3d7c97a83"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:40.014157+00:00",
+            "entity_id": 1035,
+            "entity_type": "ORDER",
+            "event_id": 1263,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-F069F6AB7ACE417C",
+              "route": "SOURCE"
+            },
+            "transaction_ref": "commerce-f3c8f0b4-7e80-4222-b3e5-88436a9102b4"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:39.884217+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1262,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-shipment_update-8d8aa7e5-d6d4-4f1d-84bd-6331a00b1c9a"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:39.753571+00:00",
+            "entity_id": 1034,
+            "entity_type": "ORDER",
+            "event_id": 1261,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-580D11EDC6AC4584",
+              "route": "SOURCE"
+            },
+            "transaction_ref": "commerce-33ee230f-95c9-40aa-b389-ae2d545b16ad"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:39.622362+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1260,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-shipment_update-4c1dcce8-0092-43d2-8581-812553c5ec6b"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:39.235038+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1259,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "probe-e519892a-f9e8-495e-a844-ec2995a599fc"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:39.216607+00:00",
+            "entity_id": 1033,
+            "entity_type": "ORDER",
+            "event_id": 1258,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-C81B3F1A9FF44097",
+              "route": "SOURCE"
+            },
+            "transaction_ref": "commerce-32a40fa1-d25b-406e-b210-df279e63dd25"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:38.930109+00:00",
+            "entity_id": 3040,
+            "entity_type": "CUSTOMER",
+            "event_id": 1257,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-d12fbada-da76-4745-bde9-a4d6e312a485"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:38.653571+00:00",
+            "entity_id": 3039,
+            "entity_type": "CUSTOMER",
+            "event_id": 1256,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-c6732c3c-295c-4241-b918-5965b9788259"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:38.522997+00:00",
+            "entity_id": 149,
+            "entity_type": "PRODUCT",
+            "event_id": 1255,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-product_update-7e349761-bc02-4521-aad9-bc44aae5096f"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:38.275774+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1254,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-shipment_update-37ddc564-c860-4759-b97b-8f74c4c9fee5"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:38.149367+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1253,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-shipment_update-a3bbfa31-0194-48e5-8f3b-e72480154f30"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:38.103238+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1252,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "probe-9770e753-48d3-4efe-9923-4c3d5bb83b19"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:38.017896+00:00",
+            "entity_id": 1032,
+            "entity_type": "ORDER",
+            "event_id": 1251,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-EF8DEE47D8EC45A5",
+              "route": "SOURCE"
+            },
+            "transaction_ref": "commerce-17bad530-28e0-4b17-8555-8ae1d5e72321"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:37.880724+00:00",
+            "entity_id": 3038,
+            "entity_type": "CUSTOMER",
+            "event_id": 1250,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-00abdeaf-ff48-4054-b5fb-c908097df9d5"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:37.627013+00:00",
+            "entity_id": 3044,
+            "entity_type": "CUSTOMER",
+            "event_id": 1249,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-customer-2d43fea1-cb21-48cb-9414-8cf043a88c07"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:37.503692+00:00",
+            "entity_id": 794,
+            "entity_type": "PRODUCT",
+            "event_id": 1248,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-product_update-d388b9ea-0c4c-4ae3-a298-e48b0abaa287"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:37.115891+00:00",
+            "entity_id": 517,
+            "entity_type": "PRODUCT",
+            "event_id": 1247,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-product_update-7be92b00-44b9-4370-ab7f-363f99c544ce"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:37.012279+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1246,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "probe-ef256fbe-6900-44fc-82ec-cb7781bd7385"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:36.986571+00:00",
+            "entity_id": 784,
+            "entity_type": "PRODUCT",
+            "event_id": 1245,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-product_update-9b82f73a-2036-4d8e-b5b3-92f14f9b6e90"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:36.851050+00:00",
+            "entity_id": 3037,
+            "entity_type": "CUSTOMER",
+            "event_id": 1244,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-c14ae15c-27b9-47b2-b544-47bf11e8113d"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:36.441893+00:00",
+            "entity_id": 3036,
+            "entity_type": "CUSTOMER",
+            "event_id": 1243,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-a9c886bf-4973-4957-a08d-94b0d39dfc72"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:36.297271+00:00",
+            "entity_id": 184,
+            "entity_type": "PRODUCT",
+            "event_id": 1242,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-product_update-e16c304a-b038-4c5c-92ac-bddefd316e29"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:36.163672+00:00",
+            "entity_id": 3043,
+            "entity_type": "CUSTOMER",
+            "event_id": 1241,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-customer-a6a383a4-491a-4f84-9798-ac9beb4f6b35"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:36.026970+00:00",
+            "entity_id": 1031,
+            "entity_type": "ORDER",
+            "event_id": 1240,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-D92C29ECE1484806",
+              "route": "SOURCE"
+            },
+            "transaction_ref": "commerce-50c1bdf1-4f04-43e2-b354-443ff83488e9"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:35.917906+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1239,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "probe-d06a4a3a-2c12-4cbf-9574-a1eb61fa2cb2"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:35.889409+00:00",
+            "entity_id": 1030,
+            "entity_type": "PAYMENT",
+            "event_id": 1238,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-payment_update-ff465c85-edad-49a3-b4bf-ee51e0872b77"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:35.752562+00:00",
+            "entity_id": 1030,
+            "entity_type": "PAYMENT",
+            "event_id": 1237,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-payment_update-85d9f24f-6fea-40fc-bbdc-2d86927d59ee"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:35.358116+00:00",
+            "entity_id": 295,
+            "entity_type": "PRODUCT",
+            "event_id": 1236,
+            "event_type": "PRODUCT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-product_update-8b08e8bf-7286-42fc-8808-e25b4522e50d"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:34.835587+00:00",
+            "entity_id": 3035,
+            "entity_type": "CUSTOMER",
+            "event_id": 1235,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-9908d726-80da-4c9d-af48-746aef8f95ae"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:34.805087+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1234,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "probe-77f39ee2-a7a3-4676-b032-d9a42c722307"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:34.589063+00:00",
+            "entity_id": 3034,
+            "entity_type": "CUSTOMER",
+            "event_id": 1233,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-971714cc-dd74-418c-9f54-2167a8dc36df"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:34.462398+00:00",
+            "entity_id": 3033,
+            "entity_type": "CUSTOMER",
+            "event_id": 1232,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-40f8b50a-22ef-4a5f-9769-9557e18778c1"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:34.327232+00:00",
+            "entity_id": 3042,
+            "entity_type": "CUSTOMER",
+            "event_id": 1231,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-customer-009934cc-a056-4939-80f5-4ce97f8f787f"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:34.205559+00:00",
+            "entity_id": 1030,
+            "entity_type": "PAYMENT",
+            "event_id": 1230,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-payment_update-8af07d50-1ec8-4622-843b-071d94e0bdc8"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:34.076351+00:00",
+            "entity_id": 1030,
+            "entity_type": "PAYMENT",
+            "event_id": 1229,
+            "event_type": "PAYMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-payment_update-3ba5033b-f7c0-4c7b-be20-8ce121360056"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:33.956836+00:00",
+            "entity_id": 3032,
+            "entity_type": "CUSTOMER",
+            "event_id": 1228,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-485272d3-7396-4e9f-9a3b-b5dea2c05454"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:33.833892+00:00",
+            "entity_id": 1000,
+            "entity_type": "SHIPMENT",
+            "event_id": 1227,
+            "event_type": "SHIPMENT_UPDATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-shipment_update-024dd473-969e-4791-bb75-55a4b271f700"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:33.719991+00:00",
+            "entity_id": 0,
+            "entity_type": "AVAILABILITY_PROBE",
+            "event_id": 1226,
+            "event_type": "PROBE_WRITE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "probe-e7704676-f208-4878-8f22-443c58a83eeb"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:33.702884+00:00",
+            "entity_id": 3031,
+            "entity_type": "CUSTOMER",
+            "event_id": 1225,
+            "event_type": "CONTROLLED_DELETE",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-delete_customer-3e35c0f1-1753-49f6-95c9-f046d86c4c97"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:33.441410+00:00",
+            "entity_id": 1030,
+            "entity_type": "ORDER",
+            "event_id": 1224,
+            "event_type": "ORDER_CREATED",
+            "payload": {
+              "order_ref": "ORD-LIVE-16D761BF75AA4400",
+              "route": "SOURCE"
+            },
+            "transaction_ref": "commerce-da4d50e2-9b78-4248-b397-ff909c205579"
+          },
+          {
+            "committed_at": "2026-11-27T13:47:33.319732+00:00",
+            "entity_id": 3041,
+            "entity_type": "CUSTOMER",
+            "event_id": 1223,
+            "event_type": "CUSTOMER_CREATED",
+            "payload": {
+              "route": "SOURCE"
+            },
+            "transaction_ref": "workload-customer-0bee473d-fa10-4675-bee9-293ce8fb18bd"
+          }
+        ]
+      }
+    },
+    "health": {
+      "available": true,
+      "value": {
+        "active_database": "TARGET",
+        "application": "parth-commerce-application",
+        "observed_at": "2026-11-27T14:09:40.626220+00:00",
+        "route_version": 3,
+        "state": "AVAILABLE",
+        "writes_enabled": true
+      }
+    },
+    "orders": {
+      "available": true,
+      "value": {
+        "active_database": "TARGET",
+        "items": [
+          {
+            "created_at": "2026-11-27T13:48:30.426077+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1059,
+            "order_ref": "ORD-LIVE-F89F046F7A2A4EE4",
+            "status": "PAID",
+            "total": 95.8
+          },
+          {
+            "created_at": "2026-11-27T13:48:29.387081+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1058,
+            "order_ref": "ORD-LIVE-2269E24A88DB4192",
+            "status": "PAID",
+            "total": 1020.17
+          },
+          {
+            "created_at": "2026-11-27T13:48:28.967718+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1057,
+            "order_ref": "ORD-LIVE-F9EE4521CF77408B",
+            "status": "PAID",
+            "total": 972.73
+          },
+          {
+            "created_at": "2026-11-27T13:48:26.855770+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1056,
+            "order_ref": "ORD-LIVE-A35C0E11716C475A",
+            "status": "PAID",
+            "total": 195.49
+          },
+          {
+            "created_at": "2026-11-27T13:48:21.886707+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1055,
+            "order_ref": "ORD-LIVE-398D7821AE4242F4",
+            "status": "PAID",
+            "total": 509.74
+          },
+          {
+            "created_at": "2026-11-27T13:48:20.851007+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1054,
+            "order_ref": "ORD-LIVE-2D097B74263344AC",
+            "status": "PAID",
+            "total": 135.98
+          },
+          {
+            "created_at": "2026-11-27T13:48:20.726981+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1053,
+            "order_ref": "ORD-LIVE-6CE064632FD04B79",
+            "status": "PAID",
+            "total": 672.84
+          },
+          {
+            "created_at": "2026-11-27T13:48:15.951790+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1052,
+            "order_ref": "ORD-LIVE-347A8E2205C94E03",
+            "status": "PAID",
+            "total": 198.49
+          },
+          {
+            "created_at": "2026-11-27T13:48:15.670316+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1051,
+            "order_ref": "ORD-LIVE-4F337BAECB8A41D8",
+            "status": "PAID",
+            "total": 72.4
+          },
+          {
+            "created_at": "2026-11-27T13:48:14.991612+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1050,
+            "order_ref": "ORD-LIVE-975FB3685ECE4247",
+            "status": "PAID",
+            "total": 953.46
+          },
+          {
+            "created_at": "2026-11-27T13:48:13.847030+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1049,
+            "order_ref": "ORD-LIVE-23221BFB12084A10",
+            "status": "PAID",
+            "total": 440.23
+          },
+          {
+            "created_at": "2026-11-27T13:48:11.173308+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1048,
+            "order_ref": "ORD-LIVE-CCB3CD20633E4004",
+            "status": "PAID",
+            "total": 1856.49
+          },
+          {
+            "created_at": "2026-11-27T13:48:08.372842+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1047,
+            "order_ref": "ORD-LIVE-1E0B05602C2D4222",
+            "status": "PAID",
+            "total": 394.03
+          },
+          {
+            "created_at": "2026-11-27T13:48:07.737205+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1046,
+            "order_ref": "ORD-LIVE-ABB16842F66F417C",
+            "status": "PAID",
+            "total": 41.29
+          },
+          {
+            "created_at": "2026-11-27T13:47:49.042114+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1045,
+            "order_ref": "ORD-LIVE-193FC0359EE84F48",
+            "status": "PAID",
+            "total": 1972.11
+          },
+          {
+            "created_at": "2026-11-27T13:47:48.767349+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1044,
+            "order_ref": "ORD-LIVE-FF70C9BD242243AC",
+            "status": "PAID",
+            "total": 1743.73
+          },
+          {
+            "created_at": "2026-11-27T13:47:47.710995+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1043,
+            "order_ref": "ORD-LIVE-94BEC91C6E7B4AC3",
+            "status": "PAID",
+            "total": 103.57
+          },
+          {
+            "created_at": "2026-11-27T13:47:47.118789+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1042,
+            "order_ref": "ORD-LIVE-0C891A765488459A",
+            "status": "PAID",
+            "total": 925.3
+          },
+          {
+            "created_at": "2026-11-27T13:47:45.000766+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1041,
+            "order_ref": "ORD-LIVE-11C7894DA1FD4C39",
+            "status": "PAID",
+            "total": 782.89
+          },
+          {
+            "created_at": "2026-11-27T13:47:44.076826+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1040,
+            "order_ref": "ORD-LIVE-00BCEFF34363426D",
+            "status": "PAID",
+            "total": 296.11
+          },
+          {
+            "created_at": "2026-11-27T13:47:43.948237+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1039,
+            "order_ref": "ORD-LIVE-6FF44691EFE54DE8",
+            "status": "PAID",
+            "total": 699.82
+          },
+          {
+            "created_at": "2026-11-27T13:47:42.888564+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1038,
+            "order_ref": "ORD-LIVE-E8C3F060B4CE4CE0",
+            "status": "PAID",
+            "total": 530.48
+          },
+          {
+            "created_at": "2026-11-27T13:47:41.441184+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1037,
+            "order_ref": "ORD-LIVE-7327FF10585646B4",
+            "status": "PAID",
+            "total": 870.39
+          },
+          {
+            "created_at": "2026-11-27T13:47:40.386474+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1036,
+            "order_ref": "ORD-LIVE-7A2921CE99A240F6",
+            "status": "PAID",
+            "total": 1485.67
+          },
+          {
+            "created_at": "2026-11-27T13:47:40.014157+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1035,
+            "order_ref": "ORD-LIVE-F069F6AB7ACE417C",
+            "status": "PAID",
+            "total": 85.73
+          },
+          {
+            "created_at": "2026-11-27T13:47:39.753571+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1034,
+            "order_ref": "ORD-LIVE-580D11EDC6AC4584",
+            "status": "PAID",
+            "total": 453.31
+          },
+          {
+            "created_at": "2026-11-27T13:47:39.216607+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1033,
+            "order_ref": "ORD-LIVE-C81B3F1A9FF44097",
+            "status": "PAID",
+            "total": 972.49
+          },
+          {
+            "created_at": "2026-11-27T13:47:38.017896+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1032,
+            "order_ref": "ORD-LIVE-EF8DEE47D8EC45A5",
+            "status": "PAID",
+            "total": 627.12
+          },
+          {
+            "created_at": "2026-11-27T13:47:36.026970+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1031,
+            "order_ref": "ORD-LIVE-D92C29ECE1484806",
+            "status": "PAID",
+            "total": 468.4
+          },
+          {
+            "created_at": "2026-11-27T13:47:33.441410+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1030,
+            "order_ref": "ORD-LIVE-16D761BF75AA4400",
+            "status": "PAID",
+            "total": 1257.2
+          },
+          {
+            "created_at": "2026-11-27T13:47:30.790392+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1029,
+            "order_ref": "ORD-LIVE-D7C5D83CEC0846D2",
+            "status": "PAID",
+            "total": 1444.08
+          },
+          {
+            "created_at": "2026-11-27T13:47:27.028270+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1028,
+            "order_ref": "ORD-LIVE-F21CE3B5AB3A4C20",
+            "status": "PAID",
+            "total": 214.81
+          },
+          {
+            "created_at": "2026-11-27T13:47:26.886706+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1027,
+            "order_ref": "ORD-LIVE-8A7B620A902442FC",
+            "status": "PAID",
+            "total": 492.14
+          },
+          {
+            "created_at": "2026-11-27T13:47:25.817454+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1026,
+            "order_ref": "ORD-LIVE-9CC11FCDF8BB40C4",
+            "status": "PAID",
+            "total": 238.55
+          },
+          {
+            "created_at": "2026-11-27T13:47:25.437857+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1025,
+            "order_ref": "ORD-LIVE-D4E84FC591064352",
+            "status": "PAID",
+            "total": 302.01
+          },
+          {
+            "created_at": "2026-11-27T13:47:23.768629+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1024,
+            "order_ref": "ORD-LIVE-728792FEBD9E45CF",
+            "status": "PAID",
+            "total": 808.08
+          },
+          {
+            "created_at": "2026-11-27T13:47:23.641450+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1023,
+            "order_ref": "ORD-LIVE-BFB008BCE1BB4DC3",
+            "status": "PAID",
+            "total": 458.08
+          },
+          {
+            "created_at": "2026-11-27T13:47:23.370008+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1022,
+            "order_ref": "ORD-LIVE-C741FEB967C244F1",
+            "status": "PAID",
+            "total": 1800.07
+          },
+          {
+            "created_at": "2026-11-27T13:47:21.803209+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1021,
+            "order_ref": "ORD-LIVE-7F77414AE9DE4659",
+            "status": "PAID",
+            "total": 481.77
+          },
+          {
+            "created_at": "2026-11-27T13:47:21.249158+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1020,
+            "order_ref": "ORD-LIVE-5E97BB3933A04D40",
+            "status": "PAID",
+            "total": 932.72
+          },
+          {
+            "created_at": "2026-11-27T13:47:18.717645+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1019,
+            "order_ref": "ORD-LIVE-CEE8F26D5044455F",
+            "status": "PAID",
+            "total": 306.78
+          },
+          {
+            "created_at": "2026-11-27T13:47:16.341414+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1018,
+            "order_ref": "ORD-LIVE-3271CF14F0CE4159",
+            "status": "PAID",
+            "total": 1530.2
+          },
+          {
+            "created_at": "2026-11-27T13:47:15.144925+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1017,
+            "order_ref": "ORD-LIVE-EC2C8EA063B44844",
+            "status": "PAID",
+            "total": 1657.71
+          },
+          {
+            "created_at": "2026-11-27T13:47:15.007492+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1016,
+            "order_ref": "ORD-LIVE-FABEB427C8FD49A5",
+            "status": "PAID",
+            "total": 474.35
+          },
+          {
+            "created_at": "2026-11-27T13:47:14.184245+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1015,
+            "order_ref": "ORD-LIVE-C922F52AFE104178",
+            "status": "PAID",
+            "total": 931.2
+          },
+          {
+            "created_at": "2026-11-27T13:47:13.415399+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1014,
+            "order_ref": "ORD-LIVE-F4FC0AD552444A0C",
+            "status": "PAID",
+            "total": 1987.05
+          },
+          {
+            "created_at": "2026-11-27T13:47:12.611026+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1013,
+            "order_ref": "ORD-LIVE-127FF7053ED04F98",
+            "status": "PAID",
+            "total": 1969.16
+          },
+          {
+            "created_at": "2026-11-27T13:47:12.094316+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1012,
+            "order_ref": "ORD-LIVE-F9BFC0D85BDF4661",
+            "status": "PAID",
+            "total": 938.62
+          },
+          {
+            "created_at": "2026-11-27T13:47:08.876350+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1011,
+            "order_ref": "ORD-LIVE-9B20C512CEBC44F5",
+            "status": "PAID",
+            "total": 194.06
+          },
+          {
+            "created_at": "2026-11-27T13:47:07.860753+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1010,
+            "order_ref": "ORD-LIVE-F885A2B9F35D46A7",
+            "status": "PAID",
+            "total": 1815.01
+          },
+          {
+            "created_at": "2026-11-27T13:47:07.445318+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1009,
+            "order_ref": "ORD-LIVE-9D359A71CCA5468C",
+            "status": "PAID",
+            "total": 1951.46
+          },
+          {
+            "created_at": "2026-11-27T13:47:07.306174+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1008,
+            "order_ref": "ORD-LIVE-6DC928CD96104840",
+            "status": "PAID",
+            "total": 16.07
+          },
+          {
+            "created_at": "2026-11-27T13:47:05.865406+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1007,
+            "order_ref": "ORD-LIVE-BD073A6DBCD749B2",
+            "status": "PAID",
+            "total": 935.67
+          },
+          {
+            "created_at": "2026-11-27T13:47:04.686982+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1006,
+            "order_ref": "ORD-LIVE-8D80078F131C47E5",
+            "status": "PAID",
+            "total": 483.25
+          },
+          {
+            "created_at": "2026-11-27T13:47:03.881150+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1005,
+            "order_ref": "ORD-LIVE-5984B807F6CE4AAF",
+            "status": "PAID",
+            "total": 788.84
+          },
+          {
+            "created_at": "2026-11-27T13:47:03.509010+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1004,
+            "order_ref": "ORD-LIVE-86591BB0554C4346",
+            "status": "PAID",
+            "total": 266.72
+          },
+          {
+            "created_at": "2026-11-27T13:47:03.000910+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1003,
+            "order_ref": "ORD-LIVE-7A929D5B46E04736",
+            "status": "PAID",
+            "total": 1043.96
+          },
+          {
+            "created_at": "2026-11-27T13:47:02.340166+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1002,
+            "order_ref": "ORD-LIVE-EE5196C9F4C14354",
+            "status": "PAID",
+            "total": 339.37
+          },
+          {
+            "created_at": "2026-11-27T13:46:59.631651+00:00",
+            "currency": "INR",
+            "customer_id": 1,
+            "order_id": 1001,
+            "order_ref": "ORD-LIVE-BAF09896F11645A6",
+            "status": "PAID",
+            "total": 272.66
+          },
+          {
+            "created_at": "2026-02-02T09:20:00+00:00",
+            "currency": "INR",
+            "customer_id": 1001,
+            "order_id": 1000,
+            "order_ref": "ORD-00001000",
+            "status": "PAID",
+            "total": 129.5
+          },
+          {
+            "created_at": "2026-02-02T09:18:00+00:00",
+            "currency": "INR",
+            "customer_id": 988,
+            "order_id": 999,
+            "order_ref": "ORD-00000999",
+            "status": "PAID",
+            "total": 2353.7
+          },
+          {
+            "created_at": "2026-02-02T09:16:00+00:00",
+            "currency": "INR",
+            "customer_id": 975,
+            "order_id": 998,
+            "order_ref": "ORD-00000998",
+            "status": "PAID",
+            "total": 1627.9
+          },
+          {
+            "created_at": "2026-02-02T09:14:00+00:00",
+            "currency": "INR",
+            "customer_id": 962,
+            "order_id": 997,
+            "order_ref": "ORD-00000997",
+            "status": "PAID",
+            "total": 902.1
+          },
+          {
+            "created_at": "2026-02-02T09:12:00+00:00",
+            "currency": "INR",
+            "customer_id": 949,
+            "order_id": 996,
+            "order_ref": "ORD-00000996",
+            "status": "PAID",
+            "total": 176.3
+          },
+          {
+            "created_at": "2026-02-02T09:10:00+00:00",
+            "currency": "INR",
+            "customer_id": 936,
+            "order_id": 995,
+            "order_ref": "ORD-00000995",
+            "status": "PAID",
+            "total": 2400.5
+          },
+          {
+            "created_at": "2026-02-02T09:08:00+00:00",
+            "currency": "INR",
+            "customer_id": 923,
+            "order_id": 994,
+            "order_ref": "ORD-00000994",
+            "status": "PAID",
+            "total": 1674.7
+          },
+          {
+            "created_at": "2026-02-02T09:06:00+00:00",
+            "currency": "INR",
+            "customer_id": 910,
+            "order_id": 993,
+            "order_ref": "ORD-00000993",
+            "status": "PAID",
+            "total": 948.9
+          },
+          {
+            "created_at": "2026-02-02T09:04:00+00:00",
+            "currency": "INR",
+            "customer_id": 897,
+            "order_id": 992,
+            "order_ref": "ORD-00000992",
+            "status": "PAID",
+            "total": 223.1
+          },
+          {
+            "created_at": "2026-02-02T09:02:00+00:00",
+            "currency": "INR",
+            "customer_id": 884,
+            "order_id": 991,
+            "order_ref": "ORD-00000991",
+            "status": "PAID",
+            "total": 2447.3
+          },
+          {
+            "created_at": "2026-02-02T09:00:00+00:00",
+            "currency": "INR",
+            "customer_id": 871,
+            "order_id": 990,
+            "order_ref": "ORD-00000990",
+            "status": "PAID",
+            "total": 1721.5
+          },
+          {
+            "created_at": "2026-02-02T08:58:00+00:00",
+            "currency": "INR",
+            "customer_id": 858,
+            "order_id": 989,
+            "order_ref": "ORD-00000989",
+            "status": "PAID",
+            "total": 995.7
+          },
+          {
+            "created_at": "2026-02-02T08:56:00+00:00",
+            "currency": "INR",
+            "customer_id": 845,
+            "order_id": 988,
+            "order_ref": "ORD-00000988",
+            "status": "PAID",
+            "total": 269.9
+          },
+          {
+            "created_at": "2026-02-02T08:54:00+00:00",
+            "currency": "INR",
+            "customer_id": 832,
+            "order_id": 987,
+            "order_ref": "ORD-00000987",
+            "status": "PAID",
+            "total": 2494.1
+          },
+          {
+            "created_at": "2026-02-02T08:52:00+00:00",
+            "currency": "INR",
+            "customer_id": 819,
+            "order_id": 986,
+            "order_ref": "ORD-00000986",
+            "status": "PAID",
+            "total": 1768.3
+          },
+          {
+            "created_at": "2026-02-02T08:50:00+00:00",
+            "currency": "INR",
+            "customer_id": 806,
+            "order_id": 985,
+            "order_ref": "ORD-00000985",
+            "status": "PAID",
+            "total": 1042.5
+          },
+          {
+            "created_at": "2026-02-02T08:48:00+00:00",
+            "currency": "INR",
+            "customer_id": 793,
+            "order_id": 984,
+            "order_ref": "ORD-00000984",
+            "status": "PAID",
+            "total": 316.7
+          },
+          {
+            "created_at": "2026-02-02T08:46:00+00:00",
+            "currency": "INR",
+            "customer_id": 780,
+            "order_id": 983,
+            "order_ref": "ORD-00000983",
+            "status": "PAID",
+            "total": 2540.9
+          },
+          {
+            "created_at": "2026-02-02T08:44:00+00:00",
+            "currency": "INR",
+            "customer_id": 767,
+            "order_id": 982,
+            "order_ref": "ORD-00000982",
+            "status": "PAID",
+            "total": 1815.1
+          },
+          {
+            "created_at": "2026-02-02T08:42:00+00:00",
+            "currency": "INR",
+            "customer_id": 754,
+            "order_id": 981,
+            "order_ref": "ORD-00000981",
+            "status": "PAID",
+            "total": 1089.3
+          },
+          {
+            "created_at": "2026-02-02T08:40:00+00:00",
+            "currency": "INR",
+            "customer_id": 741,
+            "order_id": 980,
+            "order_ref": "ORD-00000980",
+            "status": "PAID",
+            "total": 363.5
+          },
+          {
+            "created_at": "2026-02-02T08:38:00+00:00",
+            "currency": "INR",
+            "customer_id": 728,
+            "order_id": 979,
+            "order_ref": "ORD-00000979",
+            "status": "PAID",
+            "total": 2587.7
+          },
+          {
+            "created_at": "2026-02-02T08:36:00+00:00",
+            "currency": "INR",
+            "customer_id": 715,
+            "order_id": 978,
+            "order_ref": "ORD-00000978",
+            "status": "PAID",
+            "total": 1861.9
+          },
+          {
+            "created_at": "2026-02-02T08:34:00+00:00",
+            "currency": "INR",
+            "customer_id": 702,
+            "order_id": 977,
+            "order_ref": "ORD-00000977",
+            "status": "PAID",
+            "total": 1136.1
+          },
+          {
+            "created_at": "2026-02-02T08:32:00+00:00",
+            "currency": "INR",
+            "customer_id": 689,
+            "order_id": 976,
+            "order_ref": "ORD-00000976",
+            "status": "PAID",
+            "total": 410.3
+          },
+          {
+            "created_at": "2026-02-02T08:30:00+00:00",
+            "currency": "INR",
+            "customer_id": 676,
+            "order_id": 975,
+            "order_ref": "ORD-00000975",
+            "status": "PAID",
+            "total": 2634.5
+          },
+          {
+            "created_at": "2026-02-02T08:28:00+00:00",
+            "currency": "INR",
+            "customer_id": 663,
+            "order_id": 974,
+            "order_ref": "ORD-00000974",
+            "status": "PAID",
+            "total": 1908.7
+          },
+          {
+            "created_at": "2026-02-02T08:26:00+00:00",
+            "currency": "INR",
+            "customer_id": 650,
+            "order_id": 973,
+            "order_ref": "ORD-00000973",
+            "status": "PAID",
+            "total": 1182.9
+          },
+          {
+            "created_at": "2026-02-02T08:24:00+00:00",
+            "currency": "INR",
+            "customer_id": 637,
+            "order_id": 972,
+            "order_ref": "ORD-00000972",
+            "status": "PAID",
+            "total": 457.1
+          },
+          {
+            "created_at": "2026-02-02T08:22:00+00:00",
+            "currency": "INR",
+            "customer_id": 624,
+            "order_id": 971,
+            "order_ref": "ORD-00000971",
+            "status": "PAID",
+            "total": 2681.3
+          },
+          {
+            "created_at": "2026-02-02T08:20:00+00:00",
+            "currency": "INR",
+            "customer_id": 611,
+            "order_id": 970,
+            "order_ref": "ORD-00000970",
+            "status": "PAID",
+            "total": 1955.5
+          },
+          {
+            "created_at": "2026-02-02T08:18:00+00:00",
+            "currency": "INR",
+            "customer_id": 598,
+            "order_id": 969,
+            "order_ref": "ORD-00000969",
+            "status": "PAID",
+            "total": 1229.7
+          },
+          {
+            "created_at": "2026-02-02T08:16:00+00:00",
+            "currency": "INR",
+            "customer_id": 585,
+            "order_id": 968,
+            "order_ref": "ORD-00000968",
+            "status": "PAID",
+            "total": 503.9
+          },
+          {
+            "created_at": "2026-02-02T08:14:00+00:00",
+            "currency": "INR",
+            "customer_id": 572,
+            "order_id": 967,
+            "order_ref": "ORD-00000967",
+            "status": "PAID",
+            "total": 2728.1
+          },
+          {
+            "created_at": "2026-02-02T08:12:00+00:00",
+            "currency": "INR",
+            "customer_id": 559,
+            "order_id": 966,
+            "order_ref": "ORD-00000966",
+            "status": "PAID",
+            "total": 2002.3
+          },
+          {
+            "created_at": "2026-02-02T08:10:00+00:00",
+            "currency": "INR",
+            "customer_id": 546,
+            "order_id": 965,
+            "order_ref": "ORD-00000965",
+            "status": "PAID",
+            "total": 1276.5
+          },
+          {
+            "created_at": "2026-02-02T08:08:00+00:00",
+            "currency": "INR",
+            "customer_id": 533,
+            "order_id": 964,
+            "order_ref": "ORD-00000964",
+            "status": "PAID",
+            "total": 550.7
+          },
+          {
+            "created_at": "2026-02-02T08:06:00+00:00",
+            "currency": "INR",
+            "customer_id": 520,
+            "order_id": 963,
+            "order_ref": "ORD-00000963",
+            "status": "PAID",
+            "total": 2774.9
+          },
+          {
+            "created_at": "2026-02-02T08:04:00+00:00",
+            "currency": "INR",
+            "customer_id": 507,
+            "order_id": 962,
+            "order_ref": "ORD-00000962",
+            "status": "PAID",
+            "total": 2049.1
+          },
+          {
+            "created_at": "2026-02-02T08:02:00+00:00",
+            "currency": "INR",
+            "customer_id": 494,
+            "order_id": 961,
+            "order_ref": "ORD-00000961",
+            "status": "PAID",
+            "total": 1323.3
+          },
+          {
+            "created_at": "2026-02-02T08:00:00+00:00",
+            "currency": "INR",
+            "customer_id": 481,
+            "order_id": 960,
+            "order_ref": "ORD-00000960",
+            "status": "PAID",
+            "total": 597.5
+          }
+        ]
+      }
+    }
+  },
+  "compose": {
+    "available": true,
+    "value": [
+      {
+        "Health": "healthy",
+        "Image": "cloudshift-parth-console",
+        "Name": "cloudshift-console",
+        "Publishers": [
+          {
+            "Protocol": "tcp",
+            "PublishedPort": 18080,
+            "TargetPort": 8080,
+            "URL": "127.0.0.1"
+          }
+        ],
+        "Service": "console",
+        "State": "running"
+      },
+      {
+        "Health": "healthy",
+        "Image": "cloudshift-parth-control-plane",
+        "Name": "cloudshift-control-plane",
+        "Publishers": [
+          {
+            "Protocol": "tcp",
+            "PublishedPort": 18000,
+            "TargetPort": 8000,
+            "URL": "127.0.0.1"
+          }
+        ],
+        "Service": "control-plane",
+        "State": "running"
+      },
+      {
+        "Health": "healthy",
+        "Image": "prom/prometheus:v3.1.0",
+        "Name": "cloudshift-prometheus",
+        "Publishers": [
+          {
+            "Protocol": "tcp",
+            "PublishedPort": 19090,
+            "TargetPort": 9090,
+            "URL": "127.0.0.1"
+          }
+        ],
+        "Service": "prometheus",
+        "State": "running"
+      },
+      {
+        "Health": "starting",
+        "Image": "cloudshift-parth-control-plane",
+        "Name": "cloudshift-workload-generator",
+        "Publishers": [
+          {
+            "Protocol": "tcp",
+            "PublishedPort": 18002,
+            "TargetPort": 8002,
+            "URL": "127.0.0.1"
+          }
+        ],
+        "Service": "workload-generator",
+        "State": "running"
+      },
+      {
+        "Health": "healthy",
+        "Image": "sha256:cb1d6889d3aa5bcf630ea2b780c6e3eae1a047a002c8aad7ba4ffa6ba76e2a8d",
+        "Name": "parth-commerce-application",
+        "Publishers": [
+          {
+            "Protocol": "tcp",
+            "PublishedPort": 18001,
+            "TargetPort": 8001,
+            "URL": "127.0.0.1"
+          }
+        ],
+        "Service": "commerce-demo",
+        "State": "running"
+      },
+      {
+        "Health": "healthy",
+        "Image": "postgres:16.6-alpine",
+        "Name": "pg-control-parth",
+        "Publishers": [
+          {
+            "Protocol": "tcp",
+            "PublishedPort": 15434,
+            "TargetPort": 5432,
+            "URL": "127.0.0.1"
+          }
+        ],
+        "Service": "control-db",
+        "State": "running"
+      },
+      {
+        "Health": "healthy",
+        "Image": "postgres:16.6-alpine",
+        "Name": "pg-source-parth",
+        "Publishers": [
+          {
+            "Protocol": "tcp",
+            "PublishedPort": 15432,
+            "TargetPort": 5432,
+            "URL": "127.0.0.1"
+          }
+        ],
+        "Service": "source-db",
+        "State": "running"
+      },
+      {
+        "Health": "healthy",
+        "Image": "postgres:16.6-alpine",
+        "Name": "pg-target-parth",
+        "Publishers": [
+          {
+            "Protocol": "tcp",
+            "PublishedPort": 15433,
+            "TargetPort": 5432,
+            "URL": "127.0.0.1"
+          }
+        ],
+        "Service": "target-db",
+        "State": "running"
+      }
+    ]
+  },
+  "control_plane": {
+    "backups": {
+      "available": true,
+      "value": [
+        {
+          "backup_id": "31409b6a-55da-4646-9010-faa4abe54c33",
+          "checksum": "56696f44a6185bfed9af4d73020e22eb50d4ffb72d9f626db0e61f0162d69028",
+          "created_at": "2026-11-27T13:52:54.993847+00:00",
+          "endpoint_key": "target",
+          "resource_name": "pg-target-parth",
+          "size_bytes": 238246,
+          "storage_reference": "backups/target-20261127T135254Z.dump",
+          "verification_status": "VERIFIED",
+          "verified_at": "2026-11-27T13:52:54.993847+00:00"
+        },
+        {
+          "backup_id": "ffb37bd3-adc6-46da-b466-252251b432ce",
+          "checksum": "78e2a76f63bf6386c4f6a89aeb5dbe4a8d914e7d5657f08e2f28434050bdce0a",
+          "created_at": "2026-11-27T13:51:40.344597+00:00",
+          "endpoint_key": "target",
+          "resource_name": "pg-target-parth",
+          "size_bytes": 238778,
+          "storage_reference": "backups/target-20261127T135139Z.dump",
+          "verification_status": "REVOKED_EMBEDDED_SUBSCRIPTION",
+          "verified_at": "2026-11-27T13:51:40.344597+00:00"
+        }
+      ]
+    },
+    "cutovers": {
+      "available": true,
+      "value": [
+        {
+          "completed_at": "2026-11-27T13:48:10.193979+00:00",
+          "cutover_id": "e8ac3dd6-cc6b-4054-9d31-df4cb51bfe9e",
+          "evidence": {
+            "measurement": "CONTROLLED_WRITE_FENCE_DURATION",
+            "sequence_count": 12,
+            "target_smoke_test": true
+          },
+          "final_validation_run_id": "14aa1dc2-72f0-4100-b54c-04adb1659f67",
+          "outcome": "COMPLETED",
+          "requested_at": "2026-11-27T13:48:09.735922+00:00",
+          "stages": [
+            {
+              "completed_at": "2026-11-27T13:48:09.749825+00:00",
+              "error_message": null,
+              "evidence": {
+                "health": "AVAILABLE"
+              },
+              "stage_name": "DESTINATION_READINESS",
+              "stage_order": 1,
+              "started_at": "2026-11-27T13:48:09.742450+00:00",
+              "status": "COMPLETED"
+            },
+            {
+              "completed_at": "2026-11-27T13:48:09.760988+00:00",
+              "error_message": null,
+              "evidence": {
+                "fenced_at": "2026-11-27 13:48:09.757527+00:00"
+              },
+              "stage_name": "SOURCE_WRITE_FENCE",
+              "stage_order": 2,
+              "started_at": "2026-11-27T13:48:09.753757+00:00",
+              "status": "COMPLETED"
+            },
+            {
+              "completed_at": "2026-11-27T13:48:09.771337+00:00",
+              "error_message": null,
+              "evidence": {},
+              "stage_name": "IN_FLIGHT_DRAIN",
+              "stage_order": 3,
+              "started_at": "2026-11-27T13:48:09.764686+00:00",
+              "status": "COMPLETED"
+            },
+            {
+              "completed_at": "2026-11-27T13:48:09.914183+00:00",
+              "error_message": null,
+              "evidence": {
+                "wal_byte_lag": 0
+              },
+              "stage_name": "FINAL_SYNCHRONIZATION",
+              "stage_order": 4,
+              "started_at": "2026-11-27T13:48:09.774967+00:00",
+              "status": "COMPLETED"
+            },
+            {
+              "completed_at": "2026-11-27T13:48:10.102623+00:00",
+              "error_message": null,
+              "evidence": {
+                "rows_checked": 13563,
+                "validation_run_id": "14aa1dc2-72f0-4100-b54c-04adb1659f67"
+              },
+              "stage_name": "FINAL_VALIDATION",
+              "stage_order": 5,
+              "started_at": "2026-11-27T13:48:09.918822+00:00",
+              "status": "COMPLETED"
+            },
+            {
+              "completed_at": "2026-11-27T13:48:10.143416+00:00",
+              "error_message": null,
+              "evidence": {
+                "sequence_count": 12
+              },
+              "stage_name": "SEQUENCE_SYNCHRONIZATION",
+              "stage_order": 6,
+              "started_at": "2026-11-27T13:48:10.131783+00:00",
+              "status": "COMPLETED"
+            },
+            {
+              "completed_at": "2026-11-27T13:48:10.165277+00:00",
+              "error_message": null,
+              "evidence": {},
+              "stage_name": "SOURCE_WRITE_PROTECTION",
+              "stage_order": 7,
+              "started_at": "2026-11-27T13:48:10.157119+00:00",
+              "status": "COMPLETED"
+            },
+            {
+              "completed_at": "2026-11-27T13:48:10.153445+00:00",
+              "error_message": null,
+              "evidence": {
+                "subscription_enabled": false
+              },
+              "stage_name": "REPLICATION_TRANSITION",
+              "stage_order": 8,
+              "started_at": "2026-11-27T13:48:10.146701+00:00",
+              "status": "COMPLETED"
+            },
+            {
+              "completed_at": "2026-11-27T13:48:10.184183+00:00",
+              "error_message": null,
+              "evidence": {
+                "active_endpoint": "TARGET"
+              },
+              "stage_name": "APPLICATION_ROUTE_SWITCH",
+              "stage_order": 9,
+              "started_at": "2026-11-27T13:48:10.178143+00:00",
+              "status": "COMPLETED"
+            },
+            {
+              "completed_at": "2026-11-27T13:48:10.174915+00:00",
+              "error_message": null,
+              "evidence": {},
+              "stage_name": "DESTINATION_SMOKE_TEST",
+              "stage_order": 10,
+              "started_at": "2026-11-27T13:48:10.168539+00:00",
+              "status": "COMPLETED"
+            },
+            {
+              "completed_at": "2026-11-27T13:48:10.187477+00:00",
+              "error_message": null,
+              "evidence": {
+                "writes_enabled": true
+              },
+              "stage_name": "APPLICATION_TRAFFIC_RESTORED",
+              "stage_order": 11,
+              "started_at": null,
+              "status": "COMPLETED"
+            }
+          ],
+          "write_unavailability_ms": 424
+        }
+      ]
+    },
+    "events": {
+      "available": true,
+      "value": [
+        {
+          "component": "cloudshift-workload-generator",
+          "event_id": 23,
+          "event_type": "AVAILABILITY_PROBE_STOPPED",
+          "evidence": {
+            "run_id": "4c1f6247-a736-4841-874b-570a15d7ed2f",
+            "summary": {
+              "failed": 1,
+              "first_failure": "2026-11-27 13:48:10.015224+00:00",
+              "first_observation": "2026-11-27 13:48:06.710149+00:00",
+              "first_target_success": "2026-11-27 13:48:10.278784+00:00",
+              "first_target_write": "2026-11-27 13:48:11.103900+00:00",
+              "first_write_failure": "2026-11-27 13:48:10.015224+00:00",
+              "last_observation": "2026-11-27 13:48:30.010290+00:00",
+              "last_source_success": "2026-11-27 13:48:10.006224+00:00",
+              "last_source_write": "2026-11-27 13:48:08.949603+00:00",
+              "method": "HTTP commerce read and committed synthetic write probes",
+              "observations": 107,
+              "observed_at": "2026-11-27 13:48:30.301284+00:00",
+              "observed_request_failure_window_ms": 264,
+              "observed_write_unavailability_ms": 1089,
+              "precision_limit_ms": 250,
+              "probe_run_id": "4c1f6247-a736-4841-874b-570a15d7ed2f",
+              "sample_interval_ms": 250,
+              "state": "STOPPED",
+              "successful": 106,
+              "successful_reads": 85,
+              "successful_writes": 21,
+              "write_interval_ms": 1000
+            }
+          },
+          "message": "Independent availability probe stopped.",
+          "occurred_at": "2026-11-27T13:48:30.306096+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-workload-generator",
+          "event_id": 22,
+          "event_type": "WORKLOAD_STOPPED",
+          "evidence": {
+            "metrics": {
+              "active_database": "TARGET",
+              "active_window_seconds": 23.368,
+              "committed_transactions": 76,
+              "configured_rate": 10,
+              "failed_operations": 10,
+              "measurement_window": "LAST_60_SECONDS_IN_PROCESS",
+              "observed_at": "2026-11-27 13:48:30.028019+00:00",
+              "operations_per_second": 7.617,
+              "p50_latency_ms": 19.586,
+              "p95_latency_ms": 34.185,
+              "p99_latency_ms": 36.739,
+              "profile": "BALANCED",
+              "reads_per_second": 3.937,
+              "rolled_back_or_rejected": 10,
+              "state": "STOPPED",
+              "successful_operations": 168,
+              "transactions_per_second": 3.252,
+              "workload_run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754",
+              "writes_per_second": 3.68
+            },
+            "run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+          },
+          "message": "Continuous workload stopped.",
+          "occurred_at": "2026-11-27T13:48:30.031598+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-control-plane",
+          "event_id": 21,
+          "event_type": "STATE_TRANSITION",
+          "evidence": {
+            "current_state": "COMPLETED",
+            "previous_state": "CUTOVER_IN_PROGRESS",
+            "trigger": "TARGET_SMOKE_TEST_PASSED"
+          },
+          "message": "Migration transitioned from CUTOVER_IN_PROGRESS to COMPLETED.",
+          "occurred_at": "2026-11-27T13:48:10.190575+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-control-plane",
+          "event_id": 20,
+          "event_type": "STATE_TRANSITION",
+          "evidence": {
+            "current_state": "CUTOVER_IN_PROGRESS",
+            "previous_state": "READY_FOR_CUTOVER",
+            "trigger": "CUTOVER_CONFIRMED"
+          },
+          "message": "Migration transitioned from READY_FOR_CUTOVER to CUTOVER_IN_PROGRESS.",
+          "occurred_at": "2026-11-27T13:48:10.118120+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-control-plane",
+          "event_id": 19,
+          "event_type": "STATE_TRANSITION",
+          "evidence": {
+            "current_state": "READY_FOR_CUTOVER",
+            "previous_state": "VALIDATING",
+            "trigger": "VALIDATION_COMPLETED"
+          },
+          "message": "Migration transitioned from VALIDATING to READY_FOR_CUTOVER.",
+          "occurred_at": "2026-11-27T13:48:10.098881+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-control-plane",
+          "event_id": 18,
+          "event_type": "STATE_TRANSITION",
+          "evidence": {
+            "current_state": "VALIDATING",
+            "previous_state": "CONTINUOUS_REPLICATION",
+            "trigger": "VALIDATION_REQUEST"
+          },
+          "message": "Migration transitioned from CONTINUOUS_REPLICATION to VALIDATING.",
+          "occurred_at": "2026-11-27T13:48:09.940428+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-workload-generator",
+          "event_id": 17,
+          "event_type": "AVAILABILITY_PROBE_STARTED",
+          "evidence": {
+            "run_id": "4c1f6247-a736-4841-874b-570a15d7ed2f",
+            "sample_interval_ms": 250,
+            "write_interval_ms": 1000
+          },
+          "message": "Independent availability probe started.",
+          "occurred_at": "2026-11-27T13:48:06.686960+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-workload-generator",
+          "event_id": 16,
+          "event_type": "WORKLOAD_STARTED",
+          "evidence": {
+            "configured_rate": 10,
+            "profile": "BALANCED",
+            "run_id": "655b3af1-5fca-4ed3-9078-bcec6a37d754"
+          },
+          "message": "Continuous workload started.",
+          "occurred_at": "2026-11-27T13:48:06.656131+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-control-plane",
+          "event_id": 15,
+          "event_type": "STATE_TRANSITION",
+          "evidence": {
+            "current_state": "CONTINUOUS_REPLICATION",
+            "previous_state": "VALIDATING",
+            "trigger": "VALIDATION_COMPLETED"
+          },
+          "message": "Migration transitioned from VALIDATING to CONTINUOUS_REPLICATION.",
+          "occurred_at": "2026-11-27T13:47:50.894845+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-control-plane",
+          "event_id": 14,
+          "event_type": "STATE_TRANSITION",
+          "evidence": {
+            "current_state": "VALIDATING",
+            "previous_state": "CONTINUOUS_REPLICATION",
+            "trigger": "VALIDATION_REQUEST"
+          },
+          "message": "Migration transitioned from CONTINUOUS_REPLICATION to VALIDATING.",
+          "occurred_at": "2026-11-27T13:47:50.740252+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-control-plane",
+          "event_id": 13,
+          "event_type": "STATE_TRANSITION",
+          "evidence": {
+            "current_state": "CONTINUOUS_REPLICATION",
+            "previous_state": "VALIDATING",
+            "trigger": "VALIDATION_COMPLETED"
+          },
+          "message": "Migration transitioned from VALIDATING to CONTINUOUS_REPLICATION.",
+          "occurred_at": "2026-11-27T13:47:50.576066+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-control-plane",
+          "event_id": 12,
+          "event_type": "STATE_TRANSITION",
+          "evidence": {
+            "current_state": "VALIDATING",
+            "previous_state": "CONTINUOUS_REPLICATION",
+            "trigger": "VALIDATION_REQUEST"
+          },
+          "message": "Migration transitioned from CONTINUOUS_REPLICATION to VALIDATING.",
+          "occurred_at": "2026-11-27T13:47:50.407826+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-workload-generator",
+          "event_id": 11,
+          "event_type": "AVAILABILITY_PROBE_STOPPED",
+          "evidence": {
+            "run_id": "36308d88-6d64-4e55-9288-0821e9ae0d01",
+            "summary": {
+              "failed": 0,
+              "first_failure": null,
+              "first_observation": "2026-11-27 13:46:59.282109+00:00",
+              "first_target_success": null,
+              "first_target_write": null,
+              "first_write_failure": null,
+              "last_observation": "2026-11-27 13:47:49.760917+00:00",
+              "last_source_success": "2026-11-27 13:47:49.760917+00:00",
+              "last_source_write": "2026-11-27 13:47:49.228777+00:00",
+              "method": "HTTP commerce read and committed synthetic write probes",
+              "observations": 229,
+              "observed_at": "2026-11-27 13:47:50.028331+00:00",
+              "observed_request_failure_window_ms": null,
+              "observed_write_unavailability_ms": null,
+              "precision_limit_ms": 250,
+              "probe_run_id": "36308d88-6d64-4e55-9288-0821e9ae0d01",
+              "sample_interval_ms": 250,
+              "state": "STOPPED",
+              "successful": 229,
+              "successful_reads": 183,
+              "successful_writes": 46,
+              "write_interval_ms": 1000
+            }
+          },
+          "message": "Independent availability probe stopped.",
+          "occurred_at": "2026-11-27T13:47:50.032478+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-workload-generator",
+          "event_id": 10,
+          "event_type": "WORKLOAD_STOPPED",
+          "evidence": {
+            "metrics": {
+              "active_database": "SOURCE",
+              "active_window_seconds": 50.647,
+              "committed_transactions": 274,
+              "configured_rate": 10,
+              "failed_operations": 4,
+              "measurement_window": "LAST_60_SECONDS_IN_PROCESS",
+              "observed_at": "2026-11-27 13:47:49.847217+00:00",
+              "operations_per_second": 7.542,
+              "p50_latency_ms": 21.631,
+              "p95_latency_ms": 32.308,
+              "p99_latency_ms": 37.87,
+              "profile": "WRITE_HEAVY",
+              "reads_per_second": 2.053,
+              "rolled_back_or_rejected": 4,
+              "state": "STOPPED",
+              "successful_operations": 378,
+              "transactions_per_second": 5.41,
+              "workload_run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109",
+              "writes_per_second": 5.489
+            },
+            "run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+          },
+          "message": "Continuous workload stopped.",
+          "occurred_at": "2026-11-27T13:47:49.850759+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-control-plane",
+          "event_id": 9,
+          "event_type": "STATE_TRANSITION",
+          "evidence": {
+            "current_state": "CONTINUOUS_REPLICATION",
+            "previous_state": "PAUSED",
+            "trigger": "REPLICATION_RESUME_REQUEST"
+          },
+          "message": "Migration transitioned from PAUSED to CONTINUOUS_REPLICATION.",
+          "occurred_at": "2026-11-27T13:47:33.188816+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-control-plane",
+          "event_id": 8,
+          "event_type": "STATE_TRANSITION",
+          "evidence": {
+            "current_state": "PAUSED",
+            "previous_state": "CONTINUOUS_REPLICATION",
+            "trigger": "REPLICATION_PAUSE_REQUEST"
+          },
+          "message": "Migration transitioned from CONTINUOUS_REPLICATION to PAUSED.",
+          "occurred_at": "2026-11-27T13:47:15.629400+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-workload-generator",
+          "event_id": 7,
+          "event_type": "AVAILABILITY_PROBE_STARTED",
+          "evidence": {
+            "run_id": "36308d88-6d64-4e55-9288-0821e9ae0d01",
+            "sample_interval_ms": 250,
+            "write_interval_ms": 1000
+          },
+          "message": "Independent availability probe started.",
+          "occurred_at": "2026-11-27T13:46:59.255445+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-workload-generator",
+          "event_id": 6,
+          "event_type": "WORKLOAD_STARTED",
+          "evidence": {
+            "configured_rate": 10,
+            "profile": "WRITE_HEAVY",
+            "run_id": "eced57e3-b466-4935-9d9c-e4bcf18c8109"
+          },
+          "message": "Continuous workload started.",
+          "occurred_at": "2026-11-27T13:46:59.214199+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-control-plane",
+          "event_id": 5,
+          "event_type": "STATE_TRANSITION",
+          "evidence": {
+            "current_state": "CONTINUOUS_REPLICATION",
+            "previous_state": "INITIAL_SYNC",
+            "trigger": "REPLICATION_READY_OBSERVED"
+          },
+          "message": "Migration transitioned from INITIAL_SYNC to CONTINUOUS_REPLICATION.",
+          "occurred_at": "2026-11-27T13:46:40.904745+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-control-plane",
+          "event_id": 4,
+          "event_type": "STATE_TRANSITION",
+          "evidence": {
+            "current_state": "INITIAL_SYNC",
+            "previous_state": "READY",
+            "trigger": "API_START_REQUEST"
+          },
+          "message": "Migration transitioned from READY to INITIAL_SYNC.",
+          "occurred_at": "2026-11-27T13:46:32.184200+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-control-plane",
+          "event_id": 3,
+          "event_type": "STATE_TRANSITION",
+          "evidence": {
+            "current_state": "READY",
+            "previous_state": "ASSESSING",
+            "trigger": "ASSESSMENT_COMPLETED"
+          },
+          "message": "Migration transitioned from ASSESSING to READY.",
+          "occurred_at": "2026-11-27T13:46:32.164390+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-control-plane",
+          "event_id": 2,
+          "event_type": "STATE_TRANSITION",
+          "evidence": {
+            "current_state": "ASSESSING",
+            "previous_state": "DRAFT",
+            "trigger": "API_ASSESSMENT_REQUEST"
+          },
+          "message": "Migration transitioned from DRAFT to ASSESSING.",
+          "occurred_at": "2026-11-27T13:46:32.140187+00:00",
+          "severity": "INFORMATIONAL"
+        },
+        {
+          "component": "cloudshift-control-plane",
+          "event_id": 1,
+          "event_type": "MIGRATION_CREATED",
+          "evidence": {},
+          "message": "Migration task created in DRAFT state.",
+          "occurred_at": "2026-11-27T13:45:42.225279+00:00",
+          "severity": "INFORMATIONAL"
+        }
+      ]
+    },
+    "experiments": {
+      "available": true,
+      "value": [
+        {
+          "completed_at": "2026-11-27T14:02:08.055491+00:00",
+          "configuration": {
+            "scope": "cloudshift-parth",
+            "service": "target-db",
+            "timeout_seconds": 45
+          },
+          "experiment_id": "990ae9a9-7b8d-4c73-b4e5-eeb1415cdb06",
+          "experiment_type": "DESTINATION_DATABASE_INTERRUPTION",
+          "result": {
+            "baseline": {
+              "active_database": "TARGET",
+              "application": "parth-commerce-application",
+              "observed_at": "2026-11-27T14:02:06.564455+00:00",
+              "route_version": 3,
+              "state": "AVAILABLE",
+              "writes_enabled": true
+            },
+            "completed_at": "2026-11-27T14:02:07.995566+00:00",
+            "consistency_check": "TARGET_LOCAL_INVARIANT_ONLY_SOURCE_IS_STALE_AFTER_CUTOVER",
+            "control_health": {
+              "databases": [
+                {
+                  "database_name": "parth_commerce_source",
+                  "endpoint_id": "source",
+                  "error": null,
+                  "latency_ms": 6.0,
+                  "observed_at": "2026-11-27T14:02:07.889844Z",
+                  "postgres_version": "PostgreSQL 16.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit",
+                  "resource_name": "pg-source-parth",
+                  "state": "AVAILABLE"
+                },
+                {
+                  "database_name": "parth_commerce_target",
+                  "endpoint_id": "target",
+                  "error": null,
+                  "latency_ms": 5.04,
+                  "observed_at": "2026-11-27T14:02:07.894924Z",
+                  "postgres_version": "PostgreSQL 16.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit",
+                  "resource_name": "pg-target-parth",
+                  "state": "AVAILABLE"
+                },
+                {
+                  "database_name": "cloudshift_control",
+                  "endpoint_id": "control",
+                  "error": null,
+                  "latency_ms": 3.96,
+                  "observed_at": "2026-11-27T14:02:07.898906Z",
+                  "postgres_version": "PostgreSQL 16.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit",
+                  "resource_name": "pg-control-parth",
+                  "state": "AVAILABLE"
+                }
+              ],
+              "deployment_mode": "LIVE_LOCAL",
+              "observed_at": "2026-11-27T14:02:07.898951Z",
+              "service": "cloudshift-control-plane",
+              "state": "AVAILABLE"
+            },
+            "control_health_available": true,
+            "detected": {
+              "payload": {
+                "active_database": "TARGET",
+                "application": "parth-commerce-application",
+                "observed_at": "2026-11-27T14:02:07.356300+00:00",
+                "route_version": 3,
+                "state": "UNREACHABLE",
+                "writes_enabled": true
+              },
+              "transport_ok": true
+            },
+            "detection_duration_ms": 524,
+            "experiment_id": "990ae9a9-7b8d-4c73-b4e5-eeb1415cdb06",
+            "incident_id": "0dc7ff4d-34be-4625-beb7-cf56b0623f51",
+            "post_cutover_order_count": 1,
+            "recovered": {
+              "active_database": "TARGET",
+              "application": "parth-commerce-application",
+              "observed_at": "2026-11-27T14:02:07.880098+00:00",
+              "route_version": 3,
+              "state": "AVAILABLE",
+              "writes_enabled": true
+            },
+            "recovery_duration_ms": 1241,
+            "remaining_risk": "Single local experiment; no failover replica is configured.",
+            "result": "RECOVERED",
+            "scenario": "DESTINATION_DATABASE_INTERRUPTION",
+            "schema_version": 1,
+            "service_recovery_poll_ms": 295,
+            "started_at": "2026-11-27T14:02:06.524697+00:00",
+            "timeout_seconds": 45
+          },
+          "started_at": "2026-11-27T14:02:06.630770+00:00",
+          "status": "COMPLETED"
+        }
+      ]
+    },
+    "health": {
+      "available": true,
+      "value": {
+        "databases": [
+          {
+            "database_name": "parth_commerce_source",
+            "endpoint_id": "source",
+            "error": null,
+            "latency_ms": 3.48,
+            "observed_at": "2026-11-27T14:09:40.498741Z",
+            "postgres_version": "PostgreSQL 16.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit",
+            "resource_name": "pg-source-parth",
+            "state": "AVAILABLE"
+          },
+          {
+            "database_name": "parth_commerce_target",
+            "endpoint_id": "target",
+            "error": null,
+            "latency_ms": 3.13,
+            "observed_at": "2026-11-27T14:09:40.501894Z",
+            "postgres_version": "PostgreSQL 16.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit",
+            "resource_name": "pg-target-parth",
+            "state": "AVAILABLE"
+          },
+          {
+            "database_name": "cloudshift_control",
+            "endpoint_id": "control",
+            "error": null,
+            "latency_ms": 3.05,
+            "observed_at": "2026-11-27T14:09:40.504968Z",
+            "postgres_version": "PostgreSQL 16.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit",
+            "resource_name": "pg-control-parth",
+            "state": "AVAILABLE"
+          }
+        ],
+        "deployment_mode": "LIVE_LOCAL",
+        "observed_at": "2026-11-27T14:09:40.504986Z",
+        "service": "cloudshift-control-plane",
+        "state": "AVAILABLE"
+      }
+    },
+    "incidents": {
+      "available": true,
+      "value": [
+        {
+          "affected_resources": [
+            "pg-target-parth"
+          ],
+          "detected_at": "2026-11-27T14:02:07.461353+00:00",
+          "detection_duration_ms": 524,
+          "incident_id": "0dc7ff4d-34be-4625-beb7-cf56b0623f51",
+          "recovery_action": "Restarted target-db and waited for PostgreSQL and commerce health.",
+          "recovery_duration_ms": 1241,
+          "recovery_result": "RECOVERED; target-only post-cutover order remained present.",
+          "recovery_timestamp": "2026-11-27T14:02:08.054378+00:00",
+          "remaining_risk": "Single local experiment; no failover replica is configured.",
+          "resolved_at": "2026-11-27T14:02:08.054378+00:00",
+          "severity": "CRITICAL",
+          "supporting_evidence": {
+            "experiment_id": "990ae9a9-7b8d-4c73-b4e5-eeb1415cdb06",
+            "observation": "{'transport_ok': True, 'payload': {'application': 'parth-commerce-application', 'state': 'UNREACHABLE', 'active_database': 'TARGET', 'writes_enabled': True, 'route_version': 3, 'observed_at': '2026-11-27T14:02:07.356300+00:00'}}"
+          },
+          "suspected_cause": "Controlled destination database interruption.",
+          "symptoms": "Target-routed commerce health became unavailable.",
+          "task_key": "parth-commerce-migration-001",
+          "verified_cause": "The project-owned target-db service was stopped by a bounded experiment."
+        }
+      ]
+    },
+    "migration": {
+      "available": true,
+      "value": {
+        "created_at": "2026-11-27T13:45:42.224779+00:00",
+        "state": "COMPLETED",
+        "task_key": "parth-commerce-migration-001",
+        "updated_at": "2026-11-27T13:48:10.190575+00:00",
+        "version": 15
+      }
+    },
+    "replication": {
+      "available": true,
+      "value": {
+        "measurement": {
+          "table_progress": "OBSERVED_STATE",
+          "wal_byte_lag": "MEASURED"
+        },
+        "observed_at": "2026-11-27T14:09:40.527948+00:00",
+        "ready_tables": 13,
+        "slot": {
+          "active": false,
+          "confirmed_flush_lsn": "0/207E130",
+          "wal_byte_lag": 46696
+        },
+        "state": "COMPLETED",
+        "subscription": {
+          "latest_end_lsn": null,
+          "latest_end_time": null,
+          "received_lsn": null,
+          "subname": "parth_cloudshift_subscription",
+          "worker_active": false
+        },
+        "table_states": {
+          "r": 13
+        },
+        "task_key": "parth-commerce-migration-001",
+        "total_tables": 13
+      }
+    },
+    "route": {
+      "available": true,
+      "value": {
+        "active_endpoint": "TARGET",
+        "route_key": "parth-commerce-application",
+        "updated_at": "2026-11-27T13:48:10.181312+00:00",
+        "version": 3,
+        "writes_enabled": true
+      }
+    },
+    "tables": {
+      "available": true,
+      "value": [
+        {
+          "schema": "commerce",
+          "source_bytes": 368640,
+          "source_row_estimate": 2000,
+          "subscription_state": "r",
+          "table": "customer_addresses",
+          "target_bytes": 368640,
+          "target_row_estimate": 2000,
+          "validation": {
+            "completed_at": "2026-11-27T13:48:10.094176+00:00",
+            "extra_rows": 0,
+            "mismatched_rows": 0,
+            "missing_rows": 0,
+            "status": "MATCHED",
+            "table_name": "customer_addresses"
+          }
+        },
+        {
+          "schema": "commerce",
+          "source_bytes": 1089536,
+          "source_row_estimate": 3000,
+          "subscription_state": "r",
+          "table": "customers",
+          "target_bytes": 1089536,
+          "target_row_estimate": 3004,
+          "validation": {
+            "completed_at": "2026-11-27T13:48:10.094176+00:00",
+            "extra_rows": 0,
+            "mismatched_rows": 0,
+            "missing_rows": 0,
+            "status": "MATCHED",
+            "table_name": "customers"
+          }
+        },
+        {
+          "schema": "commerce",
+          "source_bytes": 221184,
+          "source_row_estimate": 1000,
+          "subscription_state": "r",
+          "table": "inventory",
+          "target_bytes": 221184,
+          "target_row_estimate": 1000,
+          "validation": {
+            "completed_at": "2026-11-27T13:48:10.094176+00:00",
+            "extra_rows": 0,
+            "mismatched_rows": 0,
+            "missing_rows": 0,
+            "status": "MATCHED",
+            "table_name": "inventory"
+          }
+        },
+        {
+          "schema": "commerce",
+          "source_bytes": 163840,
+          "source_row_estimate": 1000,
+          "subscription_state": "r",
+          "table": "inventory_movements",
+          "target_bytes": 172032,
+          "target_row_estimate": 1002,
+          "validation": {
+            "completed_at": "2026-11-27T13:48:10.094176+00:00",
+            "extra_rows": 0,
+            "mismatched_rows": 0,
+            "missing_rows": 0,
+            "status": "MATCHED",
+            "table_name": "inventory_movements"
+          }
+        },
+        {
+          "schema": "commerce",
+          "source_bytes": 196608,
+          "source_row_estimate": 1000,
+          "subscription_state": "r",
+          "table": "order_items",
+          "target_bytes": 204800,
+          "target_row_estimate": 1002,
+          "validation": {
+            "completed_at": "2026-11-27T13:48:10.094176+00:00",
+            "extra_rows": 0,
+            "mismatched_rows": 0,
+            "missing_rows": 0,
+            "status": "MATCHED",
+            "table_name": "order_items"
+          }
+        },
+        {
+          "schema": "commerce",
+          "source_bytes": 385024,
+          "source_row_estimate": 1000,
+          "subscription_state": "r",
+          "table": "orders",
+          "target_bytes": 409600,
+          "target_row_estimate": 1002,
+          "validation": {
+            "completed_at": "2026-11-27T13:48:10.094176+00:00",
+            "extra_rows": 0,
+            "mismatched_rows": 0,
+            "missing_rows": 0,
+            "status": "MATCHED",
+            "table_name": "orders"
+          }
+        },
+        {
+          "schema": "commerce",
+          "source_bytes": 294912,
+          "source_row_estimate": 1000,
+          "subscription_state": "r",
+          "table": "payments",
+          "target_bytes": 311296,
+          "target_row_estimate": 1002,
+          "validation": {
+            "completed_at": "2026-11-27T13:48:10.094176+00:00",
+            "extra_rows": 0,
+            "mismatched_rows": 0,
+            "missing_rows": 0,
+            "status": "MATCHED",
+            "table_name": "payments"
+          }
+        },
+        {
+          "schema": "commerce",
+          "source_bytes": 49152,
+          "source_row_estimate": 0,
+          "subscription_state": "r",
+          "table": "product_categories",
+          "target_bytes": 49152,
+          "target_row_estimate": 0,
+          "validation": {
+            "completed_at": "2026-11-27T13:48:10.094176+00:00",
+            "extra_rows": 0,
+            "mismatched_rows": 0,
+            "missing_rows": 0,
+            "status": "MATCHED",
+            "table_name": "product_categories"
+          }
+        },
+        {
+          "schema": "commerce",
+          "source_bytes": 335872,
+          "source_row_estimate": 1000,
+          "subscription_state": "r",
+          "table": "products",
+          "target_bytes": 475136,
+          "target_row_estimate": 1000,
+          "validation": {
+            "completed_at": "2026-11-27T13:48:10.094176+00:00",
+            "extra_rows": 0,
+            "mismatched_rows": 0,
+            "missing_rows": 0,
+            "status": "MATCHED",
+            "table_name": "products"
+          }
+        },
+        {
+          "schema": "commerce",
+          "source_bytes": 352256,
+          "source_row_estimate": 1000,
+          "subscription_state": "r",
+          "table": "shipments",
+          "target_bytes": 376832,
+          "target_row_estimate": 1000,
+          "validation": {
+            "completed_at": "2026-11-27T13:48:10.094176+00:00",
+            "extra_rows": 0,
+            "mismatched_rows": 0,
+            "missing_rows": 0,
+            "status": "MATCHED",
+            "table_name": "shipments"
+          }
+        },
+        {
+          "schema": "commerce",
+          "source_bytes": 49152,
+          "source_row_estimate": 0,
+          "subscription_state": "r",
+          "table": "suppliers",
+          "target_bytes": 49152,
+          "target_row_estimate": 0,
+          "validation": {
+            "completed_at": "2026-11-27T13:48:10.094176+00:00",
+            "extra_rows": 0,
+            "mismatched_rows": 0,
+            "missing_rows": 0,
+            "status": "MATCHED",
+            "table_name": "suppliers"
+          }
+        },
+        {
+          "schema": "commerce",
+          "source_bytes": 475136,
+          "source_row_estimate": 1324,
+          "subscription_state": "r",
+          "table": "transaction_events",
+          "target_bytes": 507904,
+          "target_row_estimate": 1324,
+          "validation": {
+            "completed_at": "2026-11-27T13:48:10.094176+00:00",
+            "extra_rows": 0,
+            "mismatched_rows": 0,
+            "missing_rows": 0,
+            "status": "MATCHED",
+            "table_name": "transaction_events"
+          }
+        },
+        {
+          "schema": "commerce",
+          "source_bytes": 49152,
+          "source_row_estimate": 0,
+          "subscription_state": "r",
+          "table": "warehouses",
+          "target_bytes": 49152,
+          "target_row_estimate": 0,
+          "validation": {
+            "completed_at": "2026-11-27T13:48:10.094176+00:00",
+            "extra_rows": 0,
+            "mismatched_rows": 0,
+            "missing_rows": 0,
+            "status": "MATCHED",
+            "table_name": "warehouses"
+          }
+        }
+      ]
+    },
+    "topology": {
+      "available": true,
+      "value": {
+        "connections": [
+          {
+            "active": true,
+            "category": "APPLICATION",
+            "id": "commerce-router",
+            "source": "commerce",
+            "target": "router"
+          },
+          {
+            "active": false,
+            "category": "APPLICATION",
+            "id": "router-source",
+            "source": "router",
+            "target": "source"
+          },
+          {
+            "active": true,
+            "category": "APPLICATION",
+            "id": "router-target",
+            "source": "router",
+            "target": "target"
+          },
+          {
+            "active": false,
+            "category": "REPLICATION",
+            "id": "source-replication",
+            "source": "source",
+            "target": "replication"
+          },
+          {
+            "active": false,
+            "category": "REPLICATION",
+            "id": "replication-target",
+            "source": "replication",
+            "target": "target"
+          },
+          {
+            "active": false,
+            "category": "VALIDATION",
+            "id": "source-validation",
+            "source": "source",
+            "target": "validation"
+          },
+          {
+            "active": false,
+            "category": "VALIDATION",
+            "id": "target-validation",
+            "source": "target",
+            "target": "validation"
+          }
+        ],
+        "observed_at": "2026-11-27T14:09:40.555758+00:00",
+        "replication": {
+          "measurement": {
+            "table_progress": "OBSERVED_STATE",
+            "wal_byte_lag": "MEASURED"
+          },
+          "observed_at": "2026-11-27T14:09:40.555743+00:00",
+          "ready_tables": 13,
+          "slot": {
+            "active": false,
+            "confirmed_flush_lsn": "0/207E130",
+            "wal_byte_lag": 46696
+          },
+          "state": "COMPLETED",
+          "subscription": {
+            "latest_end_lsn": null,
+            "latest_end_time": null,
+            "received_lsn": null,
+            "subname": "parth_cloudshift_subscription",
+            "worker_active": false
+          },
+          "table_states": {
+            "r": 13
+          },
+          "task_key": "parth-commerce-migration-001",
+          "total_tables": 13
+        },
+        "resources": [
+          {
+            "health": "AVAILABLE",
+            "id": "commerce",
+            "name": "parth-commerce-application",
+            "type": "APPLICATION"
+          },
+          {
+            "health": "AVAILABLE",
+            "id": "router",
+            "name": "parth-application-router",
+            "state": "TARGET",
+            "type": "ROUTER"
+          },
+          {
+            "health": "AVAILABLE",
+            "id": "source",
+            "last_observed": "2026-11-27T14:09:40.535906+00:00",
+            "name": "pg-source-parth",
+            "type": "POSTGRESQL",
+            "version": "PostgreSQL 16.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit"
+          },
+          {
+            "health": "AVAILABLE",
+            "id": "target",
+            "last_observed": "2026-11-27T14:09:40.538939+00:00",
+            "name": "pg-target-parth",
+            "type": "POSTGRESQL",
+            "version": "PostgreSQL 16.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit"
+          },
+          {
+            "health": "AVAILABLE",
+            "id": "control",
+            "last_observed": "2026-11-27T14:09:40.541793+00:00",
+            "name": "pg-control-parth",
+            "type": "POSTGRESQL",
+            "version": "PostgreSQL 16.6 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit"
+          },
+          {
+            "health": "AVAILABLE",
+            "id": "replication",
+            "name": "PostgreSQL logical replication",
+            "state": "STOPPED",
+            "type": "INTERNAL_WORKER"
+          },
+          {
+            "health": "AVAILABLE",
+            "id": "validation",
+            "name": "cloudshift-validation-engine",
+            "type": "CONTROL_PLANE"
+          }
+        ],
+        "route": {
+          "active_endpoint": "TARGET",
+          "route_key": "parth-commerce-application",
+          "updated_at": "2026-11-27T13:48:10.181312+00:00",
+          "version": 3,
+          "writes_enabled": true
+        },
+        "state": "COMPLETED",
+        "task_key": "parth-commerce-migration-001"
+      }
+    },
+    "validations": {
+      "available": true,
+      "value": [
+        {
+          "completed_at": "2026-11-27T13:48:10.094176+00:00",
+          "mismatches": 0,
+          "rows_checked": 13563,
+          "scope": "FINAL_QUIESCED",
+          "started_at": "2026-11-27T13:48:09.944337+00:00",
+          "status": "MATCHED",
+          "validation_run_id": "14aa1dc2-72f0-4100-b54c-04adb1659f67"
+        },
+        {
+          "completed_at": "2026-11-27T13:47:50.889788+00:00",
+          "mismatches": 0,
+          "rows_checked": 13542,
+          "scope": "FULL",
+          "started_at": "2026-11-27T13:47:50.744517+00:00",
+          "status": "MATCHED",
+          "validation_run_id": "a54a9993-938d-48bb-ade9-f30225c23a75"
+        },
+        {
+          "completed_at": "2026-11-27T13:47:50.570062+00:00",
+          "mismatches": 1,
+          "rows_checked": 13542,
+          "scope": "FULL",
+          "started_at": "2026-11-27T13:47:50.413293+00:00",
+          "status": "MISMATCHED",
+          "validation_run_id": "f0d8afd2-15ad-47ce-b140-4bcf7de2d595"
+        }
+      ]
+    }
+  },
+  "host": {
+    "machine": "arm64",
+    "system": "Darwin"
+  },
+  "kind": "cloudshift-local-replay-evidence",
+  "prometheus": {
+    "database_available": {
+      "available": true,
+      "value": {
+        "data": {
+          "result": [
+            {
+              "metric": {
+                "__name__": "cloudshift_database_available",
+                "endpoint": "source",
+                "instance": "control-plane:8000",
+                "job": "cloudshift-control-plane"
+              },
+              "value": [
+                1795788580.649,
+                "1"
+              ]
+            },
+            {
+              "metric": {
+                "__name__": "cloudshift_database_available",
+                "endpoint": "target",
+                "instance": "control-plane:8000",
+                "job": "cloudshift-control-plane"
+              },
+              "value": [
+                1795788580.649,
+                "1"
+              ]
+            },
+            {
+              "metric": {
+                "__name__": "cloudshift_database_available",
+                "endpoint": "control",
+                "instance": "control-plane:8000",
+                "job": "cloudshift-control-plane"
+              },
+              "value": [
+                1795788580.649,
+                "1"
+              ]
+            }
+          ],
+          "resultType": "vector"
+        },
+        "status": "success"
+      }
+    },
+    "migration_state": {
+      "available": true,
+      "value": {
+        "data": {
+          "result": [
+            {
+              "metric": {
+                "__name__": "cloudshift_migration_state",
+                "instance": "control-plane:8000",
+                "job": "cloudshift-control-plane",
+                "state": "COMPLETED"
+              },
+              "value": [
+                1795788580.65,
+                "1"
+              ]
+            }
+          ],
+          "resultType": "vector"
+        },
+        "status": "success"
+      }
+    },
+    "retained_wal_bytes": {
+      "available": true,
+      "value": {
+        "data": {
+          "result": [
+            {
+              "metric": {
+                "__name__": "cloudshift_replication_wal_byte_lag",
+                "instance": "control-plane:8000",
+                "job": "cloudshift-control-plane"
+              },
+              "value": [
+                1795788580.65,
+                "46696"
+              ]
+            }
+          ],
+          "resultType": "vector"
+        },
+        "status": "success"
+      }
+    },
+    "scrape_up": {
+      "available": true,
+      "value": {
+        "data": {
+          "result": [
+            {
+              "metric": {
+                "__name__": "up",
+                "instance": "control-plane:8000",
+                "job": "cloudshift-control-plane"
+              },
+              "value": [
+                1795788580.648,
+                "1"
+              ]
+            },
+            {
+              "metric": {
+                "__name__": "up",
+                "instance": "commerce-demo:8001",
+                "job": "cloudshift-commerce"
+              },
+              "value": [
+                1795788580.648,
+                "1"
+              ]
+            },
+            {
+              "metric": {
+                "__name__": "up",
+                "instance": "workload-generator:8002",
+                "job": "cloudshift-workload"
+              },
+              "value": [
+                1795788580.648,
+                "0"
+              ]
+            }
+          ],
+          "resultType": "vector"
+        },
+        "status": "success"
+      }
+    }
+  },
+  "schema_version": 1,
+  "workload_and_probe": {
+    "probe": {
+      "available": false,
+      "error": "RemoteDisconnected: Remote end closed connection without response"
+    },
+    "probe_observations": {
+      "available": false,
+      "error": "RemoteDisconnected: Remote end closed connection without response"
+    },
+    "workload": {
+      "available": false,
+      "error": "RemoteDisconnected: Remote end closed connection without response"
+    },
+    "workload_operations": {
+      "available": false,
+      "error": "RemoteDisconnected: Remote end closed connection without response"
+    }
+  }
+}
