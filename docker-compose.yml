@@ -241,7 +241,7 @@ services:
           memory: 128M
           cpus: "0.50"
     healthcheck:
-      test: [CMD-SHELL, "wget --quiet --tries=1 --output-document=/dev/null http://127.0.0.1:8080/ || exit 1"]
+      test: [CMD-SHELL, "/bin/busybox wget -q -O /dev/null http://127.0.0.1:8080/ || exit 1"]
       interval: 10s
       timeout: 3s
       retries: 10

@@ -4,10 +4,12 @@ Last updated: 2026-11-27 (Asia/Kolkata)
 
 ## Current phase
 
-Phase 6 — Local acceptance complete; release preparation remains deliberately local. A clean
+Phase 7 — Public v1.0.0 release candidate. Local acceptance is complete, the sanitized read-only
+demonstration is deployed on GitHub Pages, and the public repository is configured. A clean
 DRAFT-to-COMPLETED run verified the migration core, workload, independent availability measurement,
 interruption recovery, mismatch guard, staged automated cutover, telemetry, replay, backup/restore,
-DBMS practicals, and the expanded command center.
+DBMS practicals, and the expanded command center. The release tag remains gated on a fully green
+final GitHub Actions run.
 
 ## Phase 0 findings
 
@@ -141,9 +143,14 @@ DBMS practicals, and the expanded command center.
 - Terraform 1.17.2 initialized pinned AWS provider 6.74.0 and validated the no-apply reference architecture.
   Kubernetes Kustomize rendering succeeded; cluster-aware dry-run did not because no reachable cluster is
   configured, so Kubernetes is manifest-prepared but not deployment-verified.
-- Local Gitleaks 8.30.1 ultimately scanned approximately 2.28 MB of source/evidence configuration and found
-  no leaks. GitHub Actions definitions exist for frontend, backend, Compose integration, infrastructure,
-  browser replay, secret scanning, and manual-only Pages deployment; no remote workflow has run.
+- Final local Gitleaks 8.30.1 scanning covered approximately 4.60 MB and found no leaks. GitHub Actions
+  independently passed the frontend/public-offline suite, all 43 backend tests, infrastructure validation,
+  and secret scan; the final Compose/browser release-candidate run is tracked by the public workflow.
+- The public repository is `https://github.com/gargparth2003/cloudshift-db`. GitHub Pages successfully
+  deployed the read-only demonstration at `https://gargparth2003.github.io/cloudshift-db/`; its direct
+  replay and database-engineering-lab routes passed four Playwright tests against the deployed HTTPS site.
+- The release evidence now includes eleven purpose-specific screenshots and an actual WebM migration replay.
+  The public bundle is schema v2 with 13 table records and 200 transaction-operation records.
 - The reproducible benchmark snapshot retained 30 timed reads after five warm-ups for each of three live
   endpoints. Median control/commerce/workload latencies were 0.909/7.738/0.715 ms in that run, with raw
   values, summary statistics, CSV, and an SVG chart saved. Benchmark cells A–E remain explicitly partial;
@@ -161,10 +168,11 @@ DBMS practicals, and the expanded command center.
 - SQL control migrations exist, but Alembic orchestration is not yet configured.
 - Browser automation verifies replay interaction, completed topology, and reduced-motion behavior; it
   does not yet automate every destructive pre-cutover lifecycle control.
-- Replay and screenshots are verified locally. No video or public deployment exists.
-- Kubernetes and AWS resources are configuration-only and not deployed. CI workflows are unexecuted
-  locally-authored definitions. Backup/restore is verified for logical dumps, but WAL archiving/PITR is
-  not implemented. No statistically controlled benchmark matrix across 100k/1M datasets exists yet.
+- The public site is a static, sanitized replay, not a hosted control plane or a claim that live databases
+  are publicly reachable. Its controls cannot mutate local or cloud infrastructure.
+- Kubernetes and AWS resources are configuration-only and not deployed. Backup/restore is verified for
+  logical dumps, but WAL archiving/PITR is not implemented. No statistically controlled benchmark matrix
+  across 100k/1M datasets exists yet.
 - The disabled subscription retains its slot; post-cutover WAL retention and explicit slot retirement policy remain to be implemented.
 - Development credentials in `.env` are disposable local values; deployment secret management is not implemented.
 - Materialized views are not refreshed during cutover. Sequence synchronization is implemented, but concurrent DDL and schema evolution remain unsupported.
@@ -175,8 +183,10 @@ DBMS practicals, and the expanded command center.
    repeated profile/rate matrix, and sampled-validation comparison.
 2. Add bounded worker, control-plane, and source interruption plus connection-saturation experiments using
    the existing incident evidence model.
-3. Expand browser coverage across safe pre-cutover lifecycle controls and add video only if it materially
-   improves the evidence package.
+3. Expand browser coverage across safe pre-cutover lifecycle controls; the current video is a recorded
+   release artifact rather than an exhaustive lifecycle test.
 4. Decide and implement a post-cutover replication-slot retirement policy and WAL-archiving/PITR design.
-5. Run the authored CI workflows on a remote only after a Git remote/push is explicitly authorized.
-6. Deploy the static public replay or prepared infrastructure only after explicit publication/cloud approval.
+5. Add production-grade identity, secret management, HA, and statistically controlled performance testing
+   before considering any non-demo deployment.
+6. Keep AWS and Kubernetes deployment configuration-only until separately authorized; no AWS resource has
+   been created by this release.

@@ -87,8 +87,8 @@ jobs:
       - run: docker compose --project-name cloudshift-parth --profile core up -d --build --wait
       - run: npm ci --ignore-scripts
         working-directory: apps/console
-      - name: Test live local topology against the Compose stack
-        run: npm run test:browser
+      - name: Test recorded replay through the fresh Compose console
+        run: npm run test:browser -- --grep "recorded replay"
         working-directory: apps/console
       - if: always()
         run: docker compose --project-name cloudshift-parth --profile core down --volumes

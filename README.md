@@ -1,5 +1,8 @@
 # CloudShift DB
 
+[![CloudShift CI](https://github.com/gargparth2003/cloudshift-db/actions/workflows/ci.yml/badge.svg)](https://github.com/gargparth2003/cloudshift-db/actions/workflows/ci.yml)
+[![GitHub Pages](https://github.com/gargparth2003/cloudshift-db/actions/workflows/pages.yml/badge.svg)](https://github.com/gargparth2003/cloudshift-db/actions/workflows/pages.yml)
+
 CloudShift DB is a PostgreSQL migration and reliability platform for moving a transactional application
 while writes continue. It combines native logical replication, deterministic integrity checks, staged
 cutover, independent availability measurement, recovery evidence, and an interactive infrastructure console.
